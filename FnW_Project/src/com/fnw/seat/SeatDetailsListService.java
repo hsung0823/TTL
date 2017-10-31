@@ -1,5 +1,7 @@
 package com.fnw.seat;
 
+import java.util.ArrayList;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -10,8 +12,19 @@ public class SeatDetailsListService implements Action {
 
 	@Override
 	public ActionFoward doProcess(HttpServletRequest request, HttpServletResponse response) {
-		// TODO Auto-generated method stub
-		return null;
+		ActionFoward actionFoward = new ActionFoward();
+		Seat_DetailsDAO seat_DetailsDAO = new Seat_DetailsDAO();
+		
+		ArrayList<Seat_DetailsDTO> list = new ArrayList<>();
+		try {
+			list = seat_DetailsDAO.selectList("joy");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		request.setAttribute("seatList", list);
+		actionFoward.setCheck(true);
+		actionFoward.setPath("../WEB-INF/view/seat/seatTotalList.jsp");
+		return actionFoward;
 	}
 
 }

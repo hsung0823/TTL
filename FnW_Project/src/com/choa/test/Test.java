@@ -34,8 +34,8 @@ public class Test {
 				break;
 			}
 			str=str.trim();
-			System.out.println(str);
-			st = new StringTokenizer(str, "~~");
+
+			st = new StringTokenizer(str, "	~~	");
 			while(st.hasMoreTokens()) {
 				Book_TotalDTO book_TotalDTO = new Book_TotalDTO();
 				

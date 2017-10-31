@@ -4,12 +4,9 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>MyPage</title>
+<title>Insert title here</title>
 </head>
 <body>
-<h1>MyPage</h1>
-	<p><a href="./member/memberUpdatePwCheck.member">MyPage Update O</a></p>
-	<p><a href="./market/marketTotalList.market">Market Order List O</a></p>
-	<p><a href="./seat/seatTotalList.seat">Seat Rent List O</a></p>
+
 </body>
 </html>

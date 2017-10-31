@@ -17,7 +17,7 @@ public class MarketTotalListService implements Action {
 		
 		ArrayList<Market_TotalDTO> list = new ArrayList<>();
 		try {
-			list = market_TotalDAO.selectList();
+			list = market_TotalDAO.selectList("joy");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
