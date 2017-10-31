@@ -8,8 +8,8 @@ public class Book_TotalDTO {
 	private String writer;
 	private String company;
 	private Date publish_date;
-	private int location;
-	private String library;
+	private String section;
+	private int library;
 	private int type;
 	private int state;
 	private String rent_id;
@@ -45,16 +45,18 @@ public class Book_TotalDTO {
 	public void setPublish_date(Date publish_date) {
 		this.publish_date = publish_date;
 	}
-	public int getLocation() {
-		return location;
+	
+	
+	public String getSection() {
+		return section;
 	}
-	public void setLocation(int location) {
-		this.location = location;
+	public void setSection(String section) {
+		this.section = section;
 	}
-	public String getLibrary() {
+	public int getLibrary() {
 		return library;
 	}
-	public void setLibrary(String library) {
+	public void setLibrary(int library) {
 		this.library = library;
 	}
 	public int getType() {
