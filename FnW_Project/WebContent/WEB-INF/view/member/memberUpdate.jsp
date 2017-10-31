@@ -19,7 +19,7 @@
 	<p>email<input type="text" name="email" value=${member.email } ></p>
 	<p>library<input type="text" name="library" value=${member.library } ></p>
 	<button type="submit">회원정보 수정</button>
-	<a href="./memberDelete.member"><input type="button" value="회원 탈퇴"></a>
+	<a href="./memberDelete.member?id=${member.id }"><input type="button" value="회원 탈퇴"></a>
 </form>	
 </body>
 </html>

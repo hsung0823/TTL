@@ -62,7 +62,6 @@ public class MemberDAO {
 		String sql="UPDATE member SET pw=?, birth=?, addr=?, phone=?, email=?, library=? WHERE id=?";
 		PreparedStatement st = con.prepareStatement(sql);
 		
-		System.out.println(memberDTO.getPw());
 		st.setString(1, memberDTO.getPw());
 		st.setDate(2, memberDTO.getBirth());
 		st.setString(3, memberDTO.getAddr());
@@ -73,6 +72,16 @@ public class MemberDAO {
 		
 		int result = st.executeUpdate();
 		DBConnector.disConnect(st, con);
+		return result;
+	}
+	public int delete(String id) throws Exception{
+		Connection con = DBConnector.getConnect();
+		String sql="DELETE FROM member WHERE id=?";
+		PreparedStatement st = con.prepareStatement(sql);
+		st.setString(1, id);
+		
+		int result = st.executeUpdate();
+		
 		return result;
 	}
 }
