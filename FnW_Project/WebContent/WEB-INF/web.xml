@@ -14,4 +14,18 @@
 	<servlet-name>member</servlet-name>
 	<url-pattern>*.member</url-pattern>
 </servlet-mapping>
+
+<servlet>
+	<servlet-name>market</servlet-name>
+	<servlet-class>com.fnw.control.MarketController</servlet-class>
+	<init-param>
+		<param-name>properties</param-name>
+		<param-value>market.properties</param-value>
+	</init-param>
+</servlet>
+<servlet-mapping>
+	<servlet-name>market</servlet-name>
+	<url-pattern>*.market</url-pattern>
+</servlet-mapping>
+
 </web-app>
