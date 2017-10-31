@@ -8,15 +8,17 @@ import java.util.ArrayList;
 import com.fnw.util.DBConnector;
 
 public class Market_TotalDAO {
-	public ArrayList<Market_TotalDTO> selectList() throws Exception {
+	public ArrayList<Market_TotalDTO> selectList(String id) throws Exception {
 		Connection con = DBConnector.getConnect();
-		String sql ="select rownum R, M.* from market_total M order by num asc";
+		String sql ="select rownum R, M.* from market_total M where id=? order by num asc";
 		PreparedStatement st = con.prepareStatement(sql);
-		ArrayList<Market_TotalDTO> ar = new ArrayList<>();
-		
+		st.setString(1, id);
 		ResultSet rs = st.executeQuery();
+		
+		ArrayList<Market_TotalDTO> ar = new ArrayList<>();
+		Market_TotalDTO market_TotalDTO = null;
 		while(rs.next()) {
-			Market_TotalDTO market_TotalDTO = new Market_TotalDTO();
+			market_TotalDTO = new Market_TotalDTO();
 			market_TotalDTO.setNum(rs.getInt("num"));
 			market_TotalDTO.setTitle(rs.getString("title"));
 			market_TotalDTO.setWriter(rs.getString("writer"));
@@ -30,7 +32,6 @@ public class Market_TotalDAO {
 			market_TotalDTO.setBook_state(rs.getInt("book_state"));
 			ar.add(market_TotalDTO);
 		}
-		
 		DBConnector.disConnect(rs, st, con);
 		return ar;
 	}
