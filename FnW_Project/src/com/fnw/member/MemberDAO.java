@@ -8,6 +8,27 @@ import java.sql.Date;
 import com.fnw.util.DBConnector;
 
 public class MemberDAO {
+	public int insert(MemberDTO memberDTO) throws Exception{
+		Connection con =  DBConnector.getConnect();
+		String sql = "insert into member values(?,?,?,?,?,?,?,?,?,1)";
+		PreparedStatement st = con.prepareStatement(sql);
+		st.setString(1, memberDTO.getId());
+		st.setString(2, memberDTO.getPw());
+		st.setString(3, memberDTO.getName());
+		st.setDate(4, memberDTO.getBirth());
+		st.setString(5, memberDTO.getGender());
+		st.setString(6, memberDTO.getAddr());
+		st.setString(7, memberDTO.getPhone());
+		st.setString(8, memberDTO.getEmail());
+		/*st.setString(9, memberDTO.getLocation());*/
+		/*st.setInt(10, memberDTO.getKind());*/
+		
+		int result = st.executeUpdate();
+		
+		DBConnector.disConnect(st, con);
+		return result;
+	}
+	
 	public MemberDTO selectOne(String id) throws Exception {
 		Connection con = DBConnector.getConnect();
 		String sql = "SELECT * FROM member WHERE id=?";
