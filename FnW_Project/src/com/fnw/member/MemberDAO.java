@@ -3,6 +3,7 @@ package com.fnw.member;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Date;
 
 import com.fnw.util.DBConnector;
 
@@ -55,5 +56,23 @@ public class MemberDAO {
 		}
 		DBConnector.disConnect(rs, st, con);
 		return memberDTO;
+	}
+	public int update(MemberDTO memberDTO) throws Exception{
+		Connection con = DBConnector.getConnect();
+		String sql="UPDATE member SET pw=?, birth=?, addr=?, phone=?, email=?, library=? WHERE id=?";
+		PreparedStatement st = con.prepareStatement(sql);
+		
+		System.out.println(memberDTO.getPw());
+		st.setString(1, memberDTO.getPw());
+		st.setDate(2, memberDTO.getBirth());
+		st.setString(3, memberDTO.getAddr());
+		st.setString(4, memberDTO.getPhone());
+		st.setString(5, memberDTO.getEmail());
+		st.setInt(6, memberDTO.getLibrary());
+		st.setString(7, memberDTO.getId());
+		
+		int result = st.executeUpdate();
+		DBConnector.disConnect(st, con);
+		return result;
 	}
 }

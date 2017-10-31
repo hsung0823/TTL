@@ -1,6 +1,6 @@
 package com.fnw.member;
 
-import java.util.Date;
+import java.sql.Date;
 
 public class MemberDTO {
 	private String id;
@@ -62,7 +62,6 @@ public class MemberDTO {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	
 	public int getLibrary() {
 		return library;
 	}
