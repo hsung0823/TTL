@@ -20,16 +20,16 @@
 			<th>price</th>
 			<th>approval</th>
 		</tr>
-		<c:forEach items="${marketTotal }" var="mTotal_list">
+		<c:forEach items="${bookDeals }" var="bookDeals_list">
 			<tr>
-			<td>${mTotal_list.num }</td>
- 				<td><a href="./marketTotalDetails.market?num=${mTotal_list.num }">${mTotal_list.title }</a></td>
-				<td>${mTotal_list.writer }</td>
-				<td>${mTotal_list.company }</td>
-				<td>${mTotal_list.publish_date }</td>
-				<td>${mTotal_list.library }</td>
-				<td>${mTotal_list.price }</td>
-				<td>${mTotal_list.approval }</td>
+			<td>${bookDeals_list.num }</td>
+ 				<td><a href="./bookDealsDetails.market?num=${bookDeals_list.num }">${bookDeals_list.title }</a></td>
+				<td>${bookDeals_list.writer }</td>
+				<td>${bookDeals_list.company }</td>
+				<td>${bookDeals_list.publish_date }</td>
+				<td>${bookDeals_list.library }</td>
+				<td>${bookDeals_list.price }</td>
+				<td>${bookDeals_list.approval }</td>
 			</tr>
 		</c:forEach>
 	</table>
