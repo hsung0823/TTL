@@ -8,7 +8,7 @@
 </head>
 <body>
 <h2>Update Pw Check</h2>
-<form action="./memberUpdate.member" method="post">
+<form action="./memberUpdatePwCheck.member" method="post">
 <p>ID<input type="text" name="id" value=${member.id } readonly="readonly"></p>
 <p>Password<input type="password" name="pw"></p>
 <button type="submit">확인</button>

@@ -11,12 +11,10 @@ public class MemberUpdateService implements Action {
 	@Override
 	public ActionFoward doProcess(HttpServletRequest request, HttpServletResponse response) {
 		ActionFoward actionFoward = new ActionFoward();
-		String method = request.getMethod();
-		
+		/*String method = request.getMethod();
 		MemberDAO memberDAO = new MemberDAO();
 		MemberDTO memberDTO = null;
 		if(method.equals("GET")) {
-			System.out.println("GET");
 			try {
 				memberDTO = memberDAO.selectOne("joy");
 			} catch (Exception e) {
@@ -27,7 +25,9 @@ public class MemberUpdateService implements Action {
 			actionFoward.setPath("../WEB-INF/view/member/memberUpdate.jsp");
 		}else {
 			
-		}
+		}*/
+		actionFoward.setCheck(true);
+		actionFoward.setPath("../WEB-INF/view/member/memberUpdate.jsp");
 		return actionFoward;
 	}
 

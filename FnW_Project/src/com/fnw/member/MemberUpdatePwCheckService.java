@@ -14,10 +14,9 @@ public class MemberUpdatePwCheckService implements Action {
 		String method = request.getMethod();
 		
 		MemberDAO memberDAO = new MemberDAO();
-		MemberDTO memberDTO = null;
-		int result = 0;
 		
 		if(method.equals("GET")) {
+			MemberDTO memberDTO = null;
 			try {
 				memberDTO = memberDAO.selectOne("joy");
 			} catch (Exception e) {
@@ -26,27 +25,29 @@ public class MemberUpdatePwCheckService implements Action {
 			request.setAttribute("member", memberDTO);
 			actionFoward.setCheck(true);
 			actionFoward.setPath("../WEB-INF/view/member/memberUpdatePwCheck.jsp");
-		}else {
+		}
+		
+		
+		else {
+			MemberDTO memberDTO = new MemberDTO();	
+			
 			try {
-				memberDTO = memberDAO.selectOne(request.getParameter("id"));
-				result = memberDAO.selectOne(request.getParameter("id"),request.getParameter("pw"));
+				memberDTO = memberDAO.selectOne(request.getParameter("id"),request.getParameter("pw"));
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-			System.out.println(result);
-			if(result>0) {
-				System.out.println("성공");
+			if(memberDTO!=null) {
 				request.setAttribute("member", memberDTO);
-				actionFoward.setCheck(true);
+				actionFoward.setCheck(false);
 				actionFoward.setPath("./memberUpdate.member");
 			}
 			else {
-				System.out.println("실패");
 				request.setAttribute("message", "비밀번호 다시 입력하세요.");
 				actionFoward.setCheck(true);
 				actionFoward.setPath("../WEB-INF/view/common/result.jsp");
 			}
 		}
+		
 		return actionFoward;
 	}
 

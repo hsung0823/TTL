@@ -8,6 +8,5 @@
 </head>
 <body>
 	<h2>Member Update</h2>
-	dd
 </body>
 </html>

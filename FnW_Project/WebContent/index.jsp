@@ -9,7 +9,5 @@
 <body>
 <h1>MyPage</h1>
 	<p><a href="./member/memberUpdatePwCheck.member">MyPage Update</a></p>
-
-789
 </body>
 </html>
