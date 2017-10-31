@@ -11,7 +11,7 @@ public class MemberDTO {
 	private String addr;
 	private String phone;
 	private String email;
-	private String location;
+	private String library;
 	private int kind;
 	
 	public String getId() {
@@ -62,11 +62,11 @@ public class MemberDTO {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public String getLocation() {
-		return location;
+	public String getLibrary() {
+		return library;
 	}
-	public void setLocation(String location) {
-		this.location = location;
+	public void setLibrary(String library) {
+		this.library = library;
 	}
 	public int getKind() {
 		return kind;

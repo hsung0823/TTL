@@ -10,8 +10,25 @@ public class MemberUpdateService implements Action {
 
 	@Override
 	public ActionFoward doProcess(HttpServletRequest request, HttpServletResponse response) {
-		// TODO Auto-generated method stub
-		return null;
+		ActionFoward actionFoward = new ActionFoward();
+		String method = request.getMethod();
+		
+		MemberDAO memberDAO = new MemberDAO();
+		MemberDTO memberDTO = null;
+		if(method.equals("GET")) {
+			System.out.println("GET");
+			try {
+				memberDTO = memberDAO.selectOne("joy");
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			request.setAttribute("member", memberDTO);
+			actionFoward.setCheck(true);
+			actionFoward.setPath("../WEB-INF/view/member/memberUpdate.jsp");
+		}else {
+			
+		}
+		return actionFoward;
 	}
 
 }
