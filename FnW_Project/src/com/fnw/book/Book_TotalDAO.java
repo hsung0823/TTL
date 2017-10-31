@@ -2,7 +2,6 @@ package com.fnw.book;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-<<<<<<< HEAD
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
@@ -10,6 +9,7 @@ import com.fnw.util.DBConnector;
 import com.fnw.util.MakeRow;
 
 public class Book_TotalDAO {
+	
 	public void insert() {}
 	public void delete() {}
 	public void update() {}
@@ -99,11 +99,7 @@ public class Book_TotalDAO {
 
 		return ar;
 	}
-=======
 
-import com.fnw.util.DBConnector;
-
-public class Book_TotalDAO {
 	public int insert(Book_TotalDTO book_TotalDTO) throws Exception
 	{
 		Connection con =  DBConnector.getConnect();
@@ -149,10 +145,7 @@ public class Book_TotalDAO {
 		DBConnector.disConnect(st, con);
 		return result;
 	}
-	public void getTotalCount() {}
-	public void selectOne() {}
-	public void selectList() {}
->>>>>>> 75e5f73ac27790f0487bf3a64102c0536ad96c6d
-	public void rent() {}
-	public void countUpdate() {}
+	
 }
+
+
