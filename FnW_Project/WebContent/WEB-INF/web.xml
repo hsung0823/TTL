@@ -28,4 +28,17 @@
 	<url-pattern>*.market</url-pattern>
 </servlet-mapping>
 
+<servlet>
+	<servlet-name>seat</servlet-name>
+	<servlet-class>com.fnw.control.SeatController</servlet-class>
+	<init-param>
+		<param-name>properties</param-name>
+		<param-value>seat.properties</param-value>
+	</init-param>
+</servlet>
+<servlet-mapping>
+	<servlet-name>seat</servlet-name>
+	<url-pattern>*.seat</url-pattern>
+</servlet-mapping>
+
 </web-app>
