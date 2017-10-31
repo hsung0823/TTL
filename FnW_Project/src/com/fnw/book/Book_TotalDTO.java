@@ -1,6 +1,6 @@
 package com.fnw.book;
 
-import java.util.Date;
+import java.sql.Date;
 
 public class Book_TotalDTO {
 	private int num;
@@ -45,6 +45,11 @@ public class Book_TotalDTO {
 	public void setPublish_date(Date publish_date) {
 		this.publish_date = publish_date;
 	}
+<<<<<<< HEAD
+=======
+	
+	
+>>>>>>> 75e5f73ac27790f0487bf3a64102c0536ad96c6d
 	public String getSection() {
 		return section;
 	}

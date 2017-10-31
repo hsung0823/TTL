@@ -8,6 +8,8 @@
 </head>
 <body>
 <h1>MyPage</h1>
-	<p><a href="./member/memberUpdatePwCheck.member">MyPage Update</a></p>
+	<p><a href="./member/memberUpdatePwCheck.member">MyPage Update O</a></p>
+	<p><a href="./market/marketTotalList.market">Market Order List O</a></p>
+	<p><a href="./seat/seatTotalList.seat">Seat Rent List O</a></p>
 </body>
 </html>
