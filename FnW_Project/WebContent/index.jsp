@@ -10,5 +10,6 @@
 <h1>MyPage</h1>
 	<p><a href="./member/memberUpdatePwCheck.member">MyPage UpdateO</a></p>
 	<p><a href="./market/marketTotalList.market">Market Order ListO</a></p>
+	<p><a href="./book/bookRentDetailsList">Book Rent List</a></p>
 </body>
 </html>

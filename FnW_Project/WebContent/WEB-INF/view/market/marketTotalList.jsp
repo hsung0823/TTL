@@ -23,7 +23,7 @@
 		<c:forEach items="${marketTotal }" var="mTotal_list">
 			<tr>
 			<td>${mTotal_list.num }</td>
-				<td>${mTotal_list.title }</td>
+ 				<td><a href="./marketTotalDetails.market?num=${mTotal_list.num }">${mTotal_list.title }</a></td>
 				<td>${mTotal_list.writer }</td>
 				<td>${mTotal_list.company }</td>
 				<td>${mTotal_list.publish_date }</td>
