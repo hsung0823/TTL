@@ -28,8 +28,29 @@ public class Book_TotalDAO {
 		DBConnector.disConnect(st, con);
 		return result;
 	}
-	public void delete() {}
-	public void update() {}
+	
+	
+	public int update(Book_TotalDTO book_TotalDTO) throws Exception{
+		Connection con = DBConnector.getConnect();
+		String sql="UPDATE book_total SET title=?, writer=?, company=?, publish_date=?, section=?, library=?, type=?, state=?, rent_id=?, rent_count=? WHERE num=?";
+		PreparedStatement st = con.prepareStatement(sql);
+		
+		st.setString(1, book_TotalDTO.getTitle());
+		st.setString(2, book_TotalDTO.getWriter());
+		st.setString(3, book_TotalDTO.getCompany());
+		st.setDate(4, book_TotalDTO.getPublish_date());
+		st.setString(5, book_TotalDTO.getSection());
+		st.setInt(6, book_TotalDTO.getLibrary());
+		st.setInt(7, book_TotalDTO.getType());
+		st.setInt(8, book_TotalDTO.getState());
+		st.setString(9, book_TotalDTO.getRent_id());
+		st.setInt(10, book_TotalDTO.getRent_count());
+		st.setInt(11, book_TotalDTO.getNum());
+		
+		int result = st.executeUpdate();
+		DBConnector.disConnect(st, con);
+		return result;
+	}
 	public void getTotalCount() {}
 	public void selectOne() {}
 	public void selectList() {}

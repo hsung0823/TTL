@@ -29,12 +29,12 @@ public class Test {
 		ArrayList<Book_TotalDTO> ar = new ArrayList<>();
 		
 		while(true) {
-			str = br.readLine(); // new ÇØ´çException()
+			str = br.readLine(); // new ï¿½Ø´ï¿½Exception()
 			if(str==null) {
 				break;
 			}
 			str=str.trim();
-			st = new StringTokenizer(str, "~~");
+			st = new StringTokenizer(str, "	~~	");
 			while(st.hasMoreTokens()) {
 				Book_TotalDTO book_TotalDTO = new Book_TotalDTO();
 				book_TotalDTO.setNum(Integer.parseInt(st.nextToken().trim()));
