@@ -7,13 +7,7 @@
       <param-name>properties</param-name>
       <param-value>member.properties</param-value>
     </init-param>
-<<<<<<< HEAD
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>member</servlet-name>
-    <url-pattern>*.member</url-pattern>
-  </servlet-mapping>
-=======
+
 </servlet>
 
 <servlet-mapping>
@@ -47,5 +41,4 @@
 	<url-pattern>*.seat</url-pattern>
 </servlet-mapping>
 
->>>>>>> 75e5f73ac27790f0487bf3a64102c0536ad96c6d
 </web-app>
