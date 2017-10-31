@@ -34,13 +34,20 @@ public class Test {
 				break;
 			}
 			str=str.trim();
+
 			st = new StringTokenizer(str, "	~~	");
 			while(st.hasMoreTokens()) {
 				Book_TotalDTO book_TotalDTO = new Book_TotalDTO();
+				
 				book_TotalDTO.setNum(Integer.parseInt(st.nextToken().trim()));
+				System.out.println("d");
 				book_TotalDTO.setTitle(st.nextToken().trim());
 				book_TotalDTO.setWriter(st.nextToken().trim());
 				book_TotalDTO.setCompany(st.nextToken().trim());
+				System.out.println("c");
+			
+				System.out.println(Date.valueOf((st.nextToken().trim())));
+				
 				book_TotalDTO.setPublish_date(Date.valueOf(st.nextToken().trim()));
 				book_TotalDTO.setSection(st.nextToken().trim());
 				book_TotalDTO.setLibrary(Integer.parseInt(st.nextToken().trim()));
@@ -49,7 +56,6 @@ public class Test {
 				book_TotalDTO.setRent_id(st.nextToken().trim());
 				book_TotalDTO.setRent_count(Integer.parseInt(st.nextToken().trim()));
 				ar.add(book_TotalDTO);
-				
 				System.out.println(book_TotalDTO.getWriter());
 			}
 		}

@@ -45,8 +45,7 @@ public class Book_TotalDTO {
 	public void setPublish_date(Date publish_date) {
 		this.publish_date = publish_date;
 	}
-	
-	
+
 	public String getSection() {
 		return section;
 	}

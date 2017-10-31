@@ -6,7 +6,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.fnw.action.Action;
 import com.fnw.action.ActionFoward;
 
-public class BookcDealsDetailsViewService implements Action {
+public class BookDealsDetailsViewService implements Action {
 
 	@Override
 	public ActionFoward doProcess(HttpServletRequest request, HttpServletResponse response) {
