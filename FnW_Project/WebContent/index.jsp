@@ -15,8 +15,10 @@
 	<p><a href="./member/memberUpdatePwCheck.member">MyPage Update O</a></p>
 	<p><a href="./market/bookDealsList.market?id=${member.id }">Market Order List O</a></p>
 	<p><a href="./seat/seatTotalList.seat?id=${member.id }">Seat Rent List O</a></p>
-	<p><a href="./book/bookRentList.book?id=${member.id }">Book Rent List</a></p>
+	<p><a href="./book/bookRentList.book?id=${member.id }">Book Rent List O</a></p>
 	</c:if>
+	<h2>TEST</h2>
+	<p><a href="./book/bookOrderList.book">Book Order List</a></p>
 
 	
 	<h2>kim</h2>

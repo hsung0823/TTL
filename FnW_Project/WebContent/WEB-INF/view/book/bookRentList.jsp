@@ -26,7 +26,7 @@
 		<c:forEach items="${bookRentList }" var="bookRent_list">
 			<tr>
 			<td>${bookRent_list.num }</td>
- 				<td><a href="./bookRentDetails.book?num=${bookRent_list.num }">${bookRent_list.title }</a></td>
+ 				<td><a href="./bookOrderDetails.book?num=${bookRent_list.num }">${bookRent_list.title }</a></td>
  				<td>${bookRent_list.section }</td>
 				<td>${bookRent_list.writer }</td>
 				<td>${bookRent_list.company }</td>
