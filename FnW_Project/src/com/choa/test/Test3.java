@@ -254,14 +254,14 @@ public class Test3 {
             	j++;
             	System.out.println("d");
             	System.out.println(book_TotalDTO.getCompany());
-            	book_TotalDTO.setPublish_date(Date.valueOf(txtArr2[j].trim()));
+            	book_TotalDTO.setPublish_date(txtArr2[j].trim());
             	System.out.println("d");
             	j++;
             	book_TotalDTO.setSection(txtArr2[j].trim());
             	j++;
             	book_TotalDTO.setLibrary(Integer.parseInt(txtArr2[j].trim()));
             	j++;
-            	book_TotalDTO.setType(Integer.parseInt(txtArr2[j].trim()));
+            	book_TotalDTO.setType(txtArr2[j].trim());
             	j++;
             	book_TotalDTO.setState(Integer.parseInt(txtArr2[j].trim()));
             	j++;
