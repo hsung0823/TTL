@@ -100,11 +100,9 @@ public class Book_TotalDAO {
 		return ar;
 	}
 
-	public int insert(Book_TotalDTO book_TotalDTO) throws Exception
-
-	{
+	public int insert(Book_TotalDTO book_TotalDTO) throws Exception {
 		Connection con =  DBConnector.getConnect();
-		String sql = "insert into book_total (num) values(?)";
+		String sql = "insert into book_total values(?,?,?,?,?,?,?,?,?,?,?)";
 		PreparedStatement st = con.prepareStatement(sql);
 		st.setInt(1, book_TotalDTO.getNum());
 		st.setString(2, book_TotalDTO.getTitle());

@@ -12,7 +12,7 @@ public class Test3 {
          
          Book_TotalDTO book_TotalDTO = new Book_TotalDTO();
    
-        String txt = "1	~~	(실력이 탐나는)포토샵 일러스트레이터 CS6	~~	유진영	~~	정보문화사	~~	2014.10.13	~~	a.001	~~	  1 	~~	총류	~~	0	~~	0	~~	0	@@\r\n" + 
+        String txt = "1	~~	(실력이 탐나는)포토샵 일러스트레이터 CS6	~~	유진영	~~	정보문화사	~~	2014	~~	a.001	~~	  1 	~~	총류	~~	0	~~	0	~~	0	@@\r\n" + 
         		"2	~~	(이주영 선생님의)책으로 행복한 교실 이야기	~~	이주영	~~	행복한아침독서	~~	2014	~~	a.002	~~	  1 	~~	총류	~~	0	~~	0	~~	0	@@\r\n" + 
         		"3	~~	SketchBook Pro: 디지털 스케치 쉽게하기	~~	노영주	~~	정보문화사	~~	2014	~~	a.003	~~	  1 	~~	총류	~~	0	~~	0	~~	0	@@\r\n" + 
         		"4	~~	낭독은 입문학이다	~~	김보경	~~	현자의마을	~~	2014	~~	a.004	~~	  1 	~~	총류	~~	0	~~	0	~~	0	@@\r\n" + 
@@ -216,6 +216,7 @@ public class Test3 {
         
          
         // split을 이용한 문자열 분리
+        int result=0;
         String[] txtArr1 = txt.split("@@");
         for(int i=0; i<txtArr1.length; i++)  {
        
@@ -243,7 +244,11 @@ public class Test3 {
         		System.out.println(j+"번 : "+txtArr2[j].trim());
         		j++;
         		System.out.println(j+"번 : "+txtArr2[j].trim());
-        		j++;*/
+        		j++;
+        		j=0;*/
+        		
+        		
+        		
         		book_TotalDTO.setNum(Integer.parseInt(txtArr2[j].trim()));
         		j++;
             	book_TotalDTO.setTitle(txtArr2[j].trim());
@@ -252,10 +257,7 @@ public class Test3 {
             	j++;
             	book_TotalDTO.setCompany(txtArr2[j].trim());
             	j++;
-            	System.out.println("d");
-            	System.out.println(book_TotalDTO.getCompany());
             	book_TotalDTO.setPublish_date(txtArr2[j].trim());
-            	System.out.println("d");
             	j++;
             	book_TotalDTO.setSection(txtArr2[j].trim());
             	j++;
@@ -270,38 +272,19 @@ public class Test3 {
             	book_TotalDTO.setRent_count(Integer.parseInt(txtArr2[j].trim()));
             	j++;
         		
-        		//System.out.println(txtArr2[j].trim());
+        		Book_TotalDAO book_TotalDAO = new Book_TotalDAO();
         		
-        		//book_TotalDTO.setNum(Integer.parseInt(txtArr2[j].trim()));
-        		/*book_TotalDTO.setTitle(txtArr2[j+1].trim());*/
-        		
-        	/*	book_TotalDTO.setNum(Integer.parseInt(txtArr2[j].trim()));
-            	book_TotalDTO.setTitle(txtArr2[j].trim());
-            	book_TotalDTO.setWriter(txtArr2[j].trim());
-            	book_TotalDTO.setCompany(txtArr2[j].trim());
-            	book_TotalDTO.setPublish_date(Date.valueOf(txtArr2[j].trim()));
-            	book_TotalDTO.setSection(txtArr2[j].trim());
-            	book_TotalDTO.setLibrary(Integer.parseInt(txtArr2[j].trim()));
-            	book_TotalDTO.setType(Integer.parseInt(txtArr2[j].trim()));
-            	book_TotalDTO.setState(Integer.parseInt(txtArr2[j].trim()));
-            	book_TotalDTO.setRent_id(txtArr2[j].trim());
-            	book_TotalDTO.setRent_count(Integer.parseInt(txtArr2[j].trim()));*/
-        		
-        		
-        		/*Book_TotalDAO book_TotalDAO = new Book_TotalDAO();
         		try {
-					book_TotalDAO.insert2(book_TotalDTO);
+					result = book_TotalDAO.insert(book_TotalDTO);
 				} catch (Exception e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
         		
-        		j+=10;*/
-        		
         	}//for
         	
-        	System.out.println("=========");
         }//for
+        System.out.println(result);
         
      
    
