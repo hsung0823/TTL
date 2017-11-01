@@ -10,7 +10,7 @@ public class Book_TotalDTO {
 	private String publish_date;
 	private String section;
 	private int library;
-	private int type;
+	private String type;
 	private int state;
 	private String rent_id;
 	private int rent_count;
@@ -59,10 +59,11 @@ public class Book_TotalDTO {
 	public void setLibrary(int library) {
 		this.library = library;
 	}
-	public int getType() {
+	
+	public String getType() {
 		return type;
 	}
-	public void setType(int type) {
+	public void setType(String type) {
 		this.type = type;
 	}
 	public int getState() {
