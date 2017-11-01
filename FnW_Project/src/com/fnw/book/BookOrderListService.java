@@ -17,12 +17,11 @@ public class BookOrderListService implements Action {
 		Book_OrderDAO book_OrderDAO = new Book_OrderDAO();
 		ArrayList<Book_OrderDTO> list = new ArrayList<>();
 		try {
-			list = book_OrderDAO.selectList("joy");
+			list = book_OrderDAO.selectList(request.getParameter("id"));
+			request.setAttribute("bookOrderList", list);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
-		request.setAttribute("bookOrderList", list);
 		actionFoward.setCheck(true);
 		actionFoward.setPath("../WEB-INF/view/book/bookOrderList.jsp");
 		return actionFoward;
