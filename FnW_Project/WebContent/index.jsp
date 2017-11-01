@@ -30,5 +30,9 @@
 		login plz
 	</c:if>
 	
+	<c:if test="${sessionScope.member.kind eq 10 }">
+		admin page
+	</c:if>
+	
 </body>
 </html>

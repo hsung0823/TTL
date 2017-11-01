@@ -25,7 +25,7 @@
 		<c:forEach items="${list }" var="dto">
 			<c:if test="${dto.kind == 10 }">
 			<tr>
-				<td><a href="./memberView.member?id=${dto.id }">${dto.id }</a></td>
+				<td><a href="./memberUpdate.member?id=${dto.id }">${dto.id }</a></td>
 				<td>${dto.pw }</td>
 				<td>${dto.name }</td>
 				<td>${dto.birth }</td>
@@ -58,7 +58,7 @@
 		<c:forEach items="${list }" var="dto">
 			<c:if test="${dto.kind <10 }">
 			<tr>
-				<td><a href="./memberView.member?id=${dto.id }">${dto.id }</a></td>
+				<td><a href="./memberUpdate.member?id=${dto.id }">${dto.id }</a></td>
 				<td>${dto.pw }</td>
 				<td>${dto.name }</td>
 				<td>${dto.birth }</td>
@@ -90,7 +90,7 @@
 		<c:forEach items="${list }" var="dto">
 			<c:if test="${dto.kind eq 0 }">
 				<tr>
-					<td><a href="./memberView.member?id=${dto.id }">${dto.id }</a></td>
+					<td><a href="./memberUpdate.member?id=${dto.id }">${dto.id }</a></td>
 					<td>${dto.pw }</td>
 					<td>${dto.name }</td>
 					<td>${dto.birth }</td>
