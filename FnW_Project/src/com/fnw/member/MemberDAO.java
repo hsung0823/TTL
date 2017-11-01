@@ -3,6 +3,7 @@ package com.fnw.member;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 import java.sql.Date;
 
 import com.fnw.util.DBConnector;
@@ -105,4 +106,30 @@ public class MemberDAO {
 		
 		return result;
 	}
+	
+	public ArrayList<MemberDTO> selectList() throws Exception {
+		Connection con = DBConnector.getConnect();
+		String sql ="select rownum R, M.* from member M order by kind desc, id asc";
+		PreparedStatement st = con.prepareStatement(sql);
+		ArrayList<MemberDTO> ar = new ArrayList<>();
+		
+		ResultSet rs = st.executeQuery();
+		while(rs.next()) {
+			MemberDTO memberDTO = new MemberDTO();
+			memberDTO.setId(rs.getString("id"));
+			memberDTO.setPw(rs.getString("pw"));
+			memberDTO.setName(rs.getString("name"));
+			memberDTO.setBirth(rs.getDate("birth"));
+			memberDTO.setGender(rs.getString("gender"));
+			memberDTO.setAddr(rs.getString("addr"));
+			memberDTO.setPhone(rs.getString("phone"));
+			memberDTO.setEmail(rs.getString("email"));
+			memberDTO.setLibrary(rs.getInt("library"));
+			memberDTO.setKind(rs.getInt("kind"));
+			ar.add(memberDTO);
+		}
+		
+		DBConnector.disConnect(rs, st, con);
+		return ar;
+	}//
 }
