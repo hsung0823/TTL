@@ -79,6 +79,58 @@ public class MemberDAO {
 		DBConnector.disConnect(rs, st, con);
 		return memberDTO;
 	}
+	
+	public MemberDTO IdFind(String name,String email) throws Exception {
+		Connection con = DBConnector.getConnect();
+		String sql = "SELECT * FROM member WHERE name=? and email=?";
+		PreparedStatement st = con.prepareStatement(sql);
+		st.setString(1, name);
+		st.setString(2, email);
+		
+		ResultSet rs = st.executeQuery();
+		MemberDTO memberDTO = null;
+		if(rs.next()) {
+			memberDTO = new MemberDTO();
+			memberDTO.setId(rs.getString("id"));
+			memberDTO.setPw(rs.getString("pw"));
+			memberDTO.setName(rs.getString("name"));
+			memberDTO.setBirth(rs.getDate("birth"));
+			memberDTO.setGender(rs.getString("gender"));
+			memberDTO.setAddr(rs.getString("addr"));
+			memberDTO.setPhone(rs.getString("phone"));
+			memberDTO.setEmail(rs.getString("email"));
+			memberDTO.setLibrary(rs.getInt("library"));
+			memberDTO.setKind(rs.getInt("kind"));
+		}
+		DBConnector.disConnect(rs, st, con);
+		return memberDTO;
+	}
+	public MemberDTO PwFind(String id ,String name,String email) throws Exception {
+		Connection con = DBConnector.getConnect();
+		String sql = "SELECT * FROM member WHERE id=? and name=? and email=?";
+		PreparedStatement st = con.prepareStatement(sql);
+		st.setString(1, id);
+		st.setString(2, name);
+		st.setString(3, email);
+		
+		ResultSet rs = st.executeQuery();
+		MemberDTO memberDTO = null;
+		if(rs.next()) {
+			memberDTO = new MemberDTO();
+			memberDTO.setId(rs.getString("id"));
+			memberDTO.setPw(rs.getString("pw"));
+			memberDTO.setName(rs.getString("name"));
+			memberDTO.setBirth(rs.getDate("birth"));
+			memberDTO.setGender(rs.getString("gender"));
+			memberDTO.setAddr(rs.getString("addr"));
+			memberDTO.setPhone(rs.getString("phone"));
+			memberDTO.setEmail(rs.getString("email"));
+			memberDTO.setLibrary(rs.getInt("library"));
+			memberDTO.setKind(rs.getInt("kind"));
+		}
+		DBConnector.disConnect(rs, st, con);
+		return memberDTO;
+	}
 	public int update(MemberDTO memberDTO) throws Exception{
 		Connection con = DBConnector.getConnect();
 		String sql="UPDATE member SET pw=?, birth=?, addr=?, phone=?, email=?, library=?, kind=? WHERE id=?";
