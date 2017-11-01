@@ -36,6 +36,16 @@ public class Book_Buy_WishDAO {
 		DBConnector.disConnect(rs, st, con);
 		return list;
 	}
+	public int delete(int num) throws Exception{
+		Connection con = DBConnector.getConnect();
+		String sql = "delete from book_buy_wish where num=?";
+		PreparedStatement st = con.prepareStatement(sql);
+		st.setInt(1, num);
+		
+		int result = st.executeUpdate();
+		
+		return result;
+	}
 	/*public book_WishDTO selectOne(int num) throws Exception{
 		Connection con = DBConnector.getConnect();
 		String sql = "select * from book_order where num=?";
@@ -60,16 +70,7 @@ public class Book_Buy_WishDAO {
 		}
 		return bookOrderDTO;
 	}
-	public int delete(int num) throws Exception{
-		Connection con = DBConnector.getConnect();
-		String sql = "delete from book_order where num=?";
-		PreparedStatement st = con.prepareStatement(sql);
-		st.setInt(1, num);
-		
-		int result = st.executeUpdate();
-		
-		return result;
-	}
+
 	public int update(book_WishDTO book_WishDTO) throws Exception{
 		Connection con = DBConnector.getConnect();
 		String sql="UPDATE book_order SET title=?, writer=?, company=?, publish_date=?, contents=?, price=?, library=? WHERE num=?";

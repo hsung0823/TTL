@@ -36,4 +36,14 @@ public class Book_Rent_WishDAO {
 		DBConnector.disConnect(rs, st, con);
 		return list;
 	}
+	public int delete(int num) throws Exception{
+		Connection con = DBConnector.getConnect();
+		String sql = "delete from book_rent_wish where num=?";
+		PreparedStatement st = con.prepareStatement(sql);
+		st.setInt(1, num);
+		
+		int result = st.executeUpdate();
+		
+		return result;
+	}
 }

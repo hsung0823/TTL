@@ -17,19 +17,23 @@
 			<th>company</th>
 			<th>publish_date</th>
 			<th>library</th>
+			<th></th>
 			<th>state</th>
 		</tr>
-		<c:forEach items="${bookOrderWishList }" var="bookOrderWish_list">
+		<c:forEach items="${bookRentWishList }" var="bookRentWish_list">
 			<tr>
-				<td>${bookOrderWish_list.num }</td>
-				<td><a
-					href="./bookOrderDetails.book?num=${bookOrderWish_list.num }">${bookOrderWish_list.title }</a></td>
-				<td>${bookOrderWish_list.writer }</td>
-				<td>${bookOrderWish_list.company }</td>
-				<td>${bookOrderWish_list.publish_date }</td>
-				<td>${bookOrderWish_list.section }</td>
-				<td>${bookOrderWish_list.price }</td>
-				<td>${bookOrderWish_list.state }</td>
+				<td>${bookRentWish_list.num }</td>
+				<td>${bookRentWish_list.title }</td>
+				<td>${bookRentWish_list.writer }</td>
+				<td>${bookRentWish_list.company }</td>
+				<td>${bookRentWish_list.publish_date }</td>
+				<td>${bookRentWish_list.section }</td>
+				<td>${bookRentWish_list.state }</td>
+				<td><a href="./bookRentWishDelete.book?num=${bookRentWish_list.num }"><input type="button" value="삭제"></a></td>
+				
+				<c:if test="${bookOrderWish_list.state eq 2 }">
+				<td><a href=""><input type="button" value="대여"></a></td>
+				</c:if>
 			</tr>
 		</c:forEach>
 	</table>
