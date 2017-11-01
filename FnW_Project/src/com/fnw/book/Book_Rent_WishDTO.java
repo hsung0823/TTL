@@ -9,7 +9,7 @@ public class Book_Rent_WishDTO {
 	private String writer;
 	private String company;
 	private Date publish_date;
-	private String location;
+	private String section;
 	private int library;
 	private String id;
 	private int state;
@@ -44,11 +44,11 @@ public class Book_Rent_WishDTO {
 	public void setPublish_date(Date publish_date) {
 		this.publish_date = publish_date;
 	}
-	public String getLocation() {
-		return location;
+	public String getSection() {
+		return section;
 	}
-	public void setLocation(String location) {
-		this.location = location;
+	public void setSection(String section) {
+		this.section = section;
 	}
 	public int getLibrary() {
 		return library;
@@ -68,6 +68,4 @@ public class Book_Rent_WishDTO {
 	public void setState(int state) {
 		this.state = state;
 	}
-	
-	
 }

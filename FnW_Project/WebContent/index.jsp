@@ -18,7 +18,9 @@
 	<p><a href="./book/bookRentList.book?id=${member.id }">Book Rent List O</a></p>
 	<p><a href="./book/bookOrderList.book?id=${member.id }">Book Order List</a></p>
 	</c:if>
-
+	<h2>TEST</h2>
+	<p><a href="./book/bookOrderWishList.book">Basket Book Order List</a></p>
+	<p><a href="./book/bookRentWishList.book">Basket Book Rent List</a></p>
 	
 	<h2>kim</h2>
 	<p><a href="./member/memberLogin.member">login</a>
