@@ -14,6 +14,7 @@
 	
 	<h2>kim</h2>
 	<p><a href="./member/memberJoin.member">Join</a>
+	<p><a href="./member/memberList.member">회원리스트 / 블랙리스트</a></p>
 
 </body>
 </html>
