@@ -1,6 +1,7 @@
 package com.fnw.book;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -71,6 +72,24 @@ public class Book_OrderDAO {
 		
 		int result = st.executeUpdate();
 		
+		return result;
+	}
+	public int update(Book_OrderDTO book_OrderDTO) throws Exception{
+		Connection con = DBConnector.getConnect();
+		String sql="UPDATE book_order SET title=?, writer=?, company=?, publish_date=?, contents=?, price=?, library=? WHERE num=?";
+		PreparedStatement st = con.prepareStatement(sql);
+		
+		st.setString(1, book_OrderDTO.getTitle());
+		st.setString(2, book_OrderDTO.getWriter());
+		st.setString(3, book_OrderDTO.getCompany());
+		st.setDate(4, book_OrderDTO.getPublish_date());
+		st.setString(5, book_OrderDTO.getContents());
+		st.setInt(6, book_OrderDTO.getPrice());
+		st.setInt(7, book_OrderDTO.getLibrary());
+		st.setInt(8, book_OrderDTO.getNum());
+		
+		int result = st.executeUpdate();
+		DBConnector.disConnect(st, con);
 		return result;
 	}
 }

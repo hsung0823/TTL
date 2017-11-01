@@ -1,6 +1,6 @@
 package com.fnw.book;
 
-import java.util.Date;
+import java.sql.Date;
 
 public class Book_OrderDTO {
 	
