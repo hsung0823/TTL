@@ -48,7 +48,7 @@ public class Book_TotalDAO {
 			noticeDTO.setTitle(rs.getString("title"));
 			noticeDTO.setWriter(rs.getString("writer"));
 			noticeDTO.setCompany(rs.getString("company"));
-			noticeDTO.setPublish_date(rs.getDate("publish_date"));
+			noticeDTO.setPublish_date(rs.getString("publish_date"));
 			noticeDTO.setSection(rs.getString("section"));
 			noticeDTO.setLibrary(rs.getInt("library"));
 			noticeDTO.setState(rs.getInt("state"));
@@ -86,7 +86,7 @@ public class Book_TotalDAO {
 			noticeDTO.setTitle(rs.getString("title"));
 			noticeDTO.setWriter(rs.getString("writer"));
 			noticeDTO.setCompany(rs.getString("company"));
-			noticeDTO.setPublish_date(rs.getDate("publish_date"));
+			noticeDTO.setPublish_date(rs.getString("publish_date"));
 			noticeDTO.setSection(rs.getString("section"));
 			noticeDTO.setLibrary(rs.getInt("library"));
 			noticeDTO.setState(rs.getInt("state"));
@@ -170,7 +170,7 @@ public class Book_TotalDAO {
 		String sql = "insert into book_total (publish_date) values(?)";
 		PreparedStatement st = con.prepareStatement(sql);
 		
-		st.setDate(1, book_TotalDTO.getPublish_date());
+		st.setString(1, book_TotalDTO.getPublish_date());
 		
 		
 		int result = st.executeUpdate();
@@ -269,7 +269,7 @@ public class Book_TotalDAO {
 		st.setString(1, book_TotalDTO.getTitle());
 		st.setString(2, book_TotalDTO.getWriter());
 		st.setString(3, book_TotalDTO.getCompany());
-		st.setDate(4, book_TotalDTO.getPublish_date());
+		st.setString(4, book_TotalDTO.getPublish_date());
 		st.setString(5, book_TotalDTO.getSection());
 		st.setInt(6, book_TotalDTO.getLibrary());
 		st.setInt(7, book_TotalDTO.getType());
