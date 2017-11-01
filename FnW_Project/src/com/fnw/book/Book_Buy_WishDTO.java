@@ -1,9 +1,8 @@
-package com.fnw.market;
+package com.fnw.book;
 
-import java.util.Date;
+import java.sql.Date;
 
 public class Book_Buy_WishDTO {
-
 	private int num;
 	private String title;
 	private String writer;
@@ -61,6 +60,4 @@ public class Book_Buy_WishDTO {
 	public void setState(int state) {
 		this.state = state;
 	}
-	
-	
 }
