@@ -12,7 +12,7 @@ public class Test3 {
          
          Book_TotalDTO book_TotalDTO = new Book_TotalDTO();
    
-        String txt = "1	~~	(실력이 탐나는)포토샵 일러스트레이터 CS6	~~	유진영	~~	정보문화사	~~	2014.10.13	~~	a.001	~~	  1 	~~	총류	~~	0	~~	0	~~	0	@@\r\n" + 
+        String txt = "1	~~	(실력이 탐나는)포토샵 일러스트레이터 CS6	~~	유진영	~~	정보문화사	~~	17/10/06	~~	a.001	~~	  1 	~~	총류	~~	0	~~	0	~~	0	@@\r\n" + 
         		"2	~~	(이주영 선생님의)책으로 행복한 교실 이야기	~~	이주영	~~	행복한아침독서	~~	2014	~~	a.002	~~	  1 	~~	총류	~~	0	~~	0	~~	0	@@\r\n" + 
         		"3	~~	SketchBook Pro: 디지털 스케치 쉽게하기	~~	노영주	~~	정보문화사	~~	2014	~~	a.003	~~	  1 	~~	총류	~~	0	~~	0	~~	0	@@\r\n" + 
         		"4	~~	낭독은 입문학이다	~~	김보경	~~	현자의마을	~~	2014	~~	a.004	~~	  1 	~~	총류	~~	0	~~	0	~~	0	@@\r\n" + 
@@ -254,7 +254,7 @@ public class Test3 {
             	j++;
             	System.out.println("d");
             	System.out.println(book_TotalDTO.getCompany());
-            	book_TotalDTO.setPublish_date(Date.valueOf(txtArr2[j].trim()));
+            	/*book_TotalDTO.setPublish_date(Date.valueOf(txtArr2[j].trim()));*/
             	System.out.println("d");
             	j++;
             	book_TotalDTO.setSection(txtArr2[j].trim());
