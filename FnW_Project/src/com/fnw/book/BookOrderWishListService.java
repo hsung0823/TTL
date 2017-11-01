@@ -7,23 +7,23 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.fnw.action.Action;
 import com.fnw.action.ActionFoward;
+import com.fnw.book.Book_Buy_WishDAO;
 
-public class BookOrderListService implements Action {
+public class BookOrderWishListService implements Action {
 
 	@Override
 	public ActionFoward doProcess(HttpServletRequest request, HttpServletResponse response) {
 		ActionFoward actionFoward = new ActionFoward();
-		
-		Book_OrderDAO book_OrderDAO = new Book_OrderDAO();
-		ArrayList<Book_OrderDTO> list = new ArrayList<>();
+		Book_Buy_WishDAO book_Buy_WishDAO = new Book_Buy_WishDAO();
+		ArrayList<Book_Buy_WishDTO> list = new ArrayList<>();
 		try {
-			list = book_OrderDAO.selectList(request.getParameter("id"));
-			request.setAttribute("bookOrderList", list);
+			list = book_Buy_WishDAO.selectList("joy");
+			request.setAttribute("bookOrderWishList", list);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		actionFoward.setCheck(true);
-		actionFoward.setPath("../WEB-INF/view/book/bookOrderList.jsp");
+		actionFoward.setPath("../WEB-INF/view/book/bookOrderWishList.jsp");
 		return actionFoward;
 	}
 }

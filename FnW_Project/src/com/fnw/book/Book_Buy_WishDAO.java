@@ -8,48 +8,44 @@ import java.util.ArrayList;
 
 import com.fnw.util.DBConnector;
 
-public class Book_OrderDAO {
-	public ArrayList<Book_OrderDTO> selectList(String id) throws Exception {
+public class Book_Buy_WishDAO {
+	public ArrayList<Book_Buy_WishDTO> selectList(String id) throws Exception {
 		Connection con = DBConnector.getConnect();
-		String sql = "select * from book_order where id=?";
+		String sql = "select * from book_buy_wish where id=?";
 		PreparedStatement st = con.prepareStatement(sql);
 		st.setString(1, id);
 		
 		ResultSet rs = st.executeQuery();
-		ArrayList<Book_OrderDTO> list = new ArrayList<>();
-		Book_OrderDTO book_OrderDTO = null;
+		ArrayList<Book_Buy_WishDTO> list = new ArrayList<>();
+		Book_Buy_WishDTO book_Buy_WishDTO = null;
 		
 		while(rs.next()) {
-			book_OrderDTO = new Book_OrderDTO();
-			book_OrderDTO.setNum(rs.getInt("num"));
-			book_OrderDTO.setTitle(rs.getString("title"));
-			book_OrderDTO.setWriter(rs.getString("writer"));
-			book_OrderDTO.setCompany(rs.getString("company"));
-			book_OrderDTO.setPublish_date(rs.getDate("publish_date"));
-			book_OrderDTO.setContents(rs.getString("contents"));
-			book_OrderDTO.setId(rs.getString("id"));
-			book_OrderDTO.setPrice(rs.getInt("price"));
-			book_OrderDTO.setLibrary(rs.getInt("library"));
-			book_OrderDTO.setPrice(rs.getInt("price"));
-			book_OrderDTO.setState(rs.getInt("state"));
-			book_OrderDTO.setCancel(rs.getString("cancel"));
+			book_Buy_WishDTO = new Book_Buy_WishDTO();
+			book_Buy_WishDTO.setNum(rs.getInt("num"));
+			book_Buy_WishDTO.setTitle(rs.getString("title"));
+			book_Buy_WishDTO.setWriter(rs.getString("writer"));
+			book_Buy_WishDTO.setPublish_date(rs.getDate("publish_date"));
+			book_Buy_WishDTO.setLibrary(rs.getInt("library"));
+			book_Buy_WishDTO.setId(rs.getString("id"));
+			book_Buy_WishDTO.setPrice(rs.getInt("price"));
+			book_Buy_WishDTO.setState(rs.getInt("state"));
 			
-			list.add(book_OrderDTO);
+			list.add(book_Buy_WishDTO);
 		}
 		
 		DBConnector.disConnect(rs, st, con);
 		return list;
 	}
-	public Book_OrderDTO selectOne(int num) throws Exception{
+	/*public book_WishDTO selectOne(int num) throws Exception{
 		Connection con = DBConnector.getConnect();
 		String sql = "select * from book_order where num=?";
 		PreparedStatement st = con.prepareStatement(sql);
 		st.setInt(1, num);
 		
 		ResultSet rs = st.executeQuery();
-		Book_OrderDTO bookOrderDTO = null;
+		book_WishDTO bookOrderDTO = null;
 		while(rs.next()) {
-			bookOrderDTO = new Book_OrderDTO();
+			bookOrderDTO = new book_WishDTO();
 			bookOrderDTO.setNum(rs.getInt("num"));
 			bookOrderDTO.setTitle(rs.getString("title"));
 			bookOrderDTO.setWriter(rs.getString("writer"));
@@ -74,22 +70,22 @@ public class Book_OrderDAO {
 		
 		return result;
 	}
-	public int update(Book_OrderDTO book_OrderDTO) throws Exception{
+	public int update(book_WishDTO book_WishDTO) throws Exception{
 		Connection con = DBConnector.getConnect();
 		String sql="UPDATE book_order SET title=?, writer=?, company=?, publish_date=?, contents=?, price=?, library=? WHERE num=?";
 		PreparedStatement st = con.prepareStatement(sql);
 		
-		st.setString(1, book_OrderDTO.getTitle());
-		st.setString(2, book_OrderDTO.getWriter());
-		st.setString(3, book_OrderDTO.getCompany());
-		st.setDate(4, book_OrderDTO.getPublish_date());
-		st.setString(5, book_OrderDTO.getContents());
-		st.setInt(6, book_OrderDTO.getPrice());
-		st.setInt(7, book_OrderDTO.getLibrary());
-		st.setInt(8, book_OrderDTO.getNum());
+		st.setString(1, book_WishDTO.getTitle());
+		st.setString(2, book_WishDTO.getWriter());
+		st.setString(3, book_WishDTO.getCompany());
+		st.setDate(4, book_WishDTO.getPublish_date());
+		st.setString(5, book_WishDTO.getContents());
+		st.setInt(6, book_WishDTO.getPrice());
+		st.setInt(7, book_WishDTO.getLibrary());
+		st.setInt(8, book_WishDTO.getNum());
 		
 		int result = st.executeUpdate();
 		DBConnector.disConnect(st, con);
 		return result;
-	}
+	}*/
 }
