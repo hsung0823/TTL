@@ -9,9 +9,7 @@
 	alert('${message}')
 	location.href="${path}";
 </script>
-
 </head>
 <body>
-
 </body>
 </html>

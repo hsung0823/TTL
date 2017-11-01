@@ -7,13 +7,12 @@
 <title>MyPage</title>
 </head>
 <body>
-<h1>MyPage</h1>
+	<h1>MyPage_Hees</h1>
 	<p><a href="./member/memberUpdatePwCheck.member">MyPage Update O</a></p>
 	<p><a href="./market/bookDealsList.market">Market Order List O</a></p>
 	<p><a href="./seat/seatTotalList.seat">Seat Rent List O</a></p>
 	
 	<h2>kim</h2>
-	<p><a href="./member/memberJoin.member">Join</a>
-
+	<p><a href="./member/membe rJoin.member">Join</a>
 </body>
 </html>

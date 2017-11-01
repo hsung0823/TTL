@@ -42,11 +42,13 @@ public class MemberUpdateService implements Action {
 			}
 			if(result>0) {
 				request.setAttribute("message", "수정 완료");
+				request.setAttribute("path", "./memberUpdatePwCheck.member");
 			}else {
 				request.setAttribute("message", "수정 실패");
+				request.setAttribute("path", "./memberUpdatePwCheck.member");
 			}
-			actionFoward.setCheck(false);
-			actionFoward.setPath("./memberUpdatePwCheck.member");
+			actionFoward.setCheck(true);
+			actionFoward.setPath("../WEB-INF/view/common/result.jsp");
 		}
 		
 		return actionFoward;
