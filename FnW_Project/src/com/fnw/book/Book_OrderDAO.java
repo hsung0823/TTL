@@ -63,4 +63,14 @@ public class Book_OrderDAO {
 		}
 		return bookOrderDTO;
 	}
+	public int delete(int num) throws Exception{
+		Connection con = DBConnector.getConnect();
+		String sql = "delete from book_order where num=?";
+		PreparedStatement st = con.prepareStatement(sql);
+		st.setInt(1, num);
+		
+		int result = st.executeUpdate();
+		
+		return result;
+	}
 }

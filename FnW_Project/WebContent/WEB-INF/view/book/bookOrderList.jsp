@@ -31,7 +31,9 @@
 				<td>${bookOrder_list.price }</td>
 				<td>${bookOrder_list.library }</td>
 				<td>${bookOrder_list.state }</td>
-				<td>${bookOrder_list.cancel }</td>
+				<c:if test="${bookOrder_list.state ne 2 }">
+					<td>${bookOrder_list.cancel }</td>
+				</c:if>
 			</tr>
 		</c:forEach>
 	</table>

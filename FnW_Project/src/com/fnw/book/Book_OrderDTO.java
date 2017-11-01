@@ -79,7 +79,7 @@ public class Book_OrderDTO {
 	public String getCancel() {
 		return cancel;
 	}
-	public void setCancel(String cancle) {
+	public void setCancel(String cancel) {
 		this.cancel = cancel;
 	}
 }

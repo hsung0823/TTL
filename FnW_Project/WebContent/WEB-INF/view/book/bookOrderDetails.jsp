@@ -20,7 +20,9 @@
 		<p>price<input type="text" name="price" value=${bookOrderDetails.price }></p>
 		<p>library<input type="text" name="library" value=${bookOrderDetails.library } ></p>
 		<p>state<input type="text" name="state" value=${bookOrderDetails.state } ></p>
+		<c:if test="${bookOrderDetails.state ne 2 }">
 		<p>cancel<input type="text" name="cancel" value=${bookOrderDetails.cancel } ></p>
+		</c:if>
 		<button type="submit">확인</button>
 		<c:if test="${bookOrderDetails.state eq 2 }">
 		<a href="./bookOrderUpdate.book?num=${bookOrderDetails.num }"><input type="button" value="정보 수정"></a>
