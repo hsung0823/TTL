@@ -19,7 +19,7 @@
 			<th>price</th>
 			<th>library</th>
 			<th>state</th>
-			<th>cancle</th>
+			<th>cancel</th>
 		</tr>
 		<c:forEach items="${bookOrderList }" var="bookOrder_list">
 			<tr>
@@ -31,7 +31,7 @@
 				<td>${bookOrder_list.price }</td>
 				<td>${bookOrder_list.library }</td>
 				<td>${bookOrder_list.state }</td>
-				<td>${bookOrder_list.cancle }</td>
+				<td>${bookOrder_list.cancel }</td>
 			</tr>
 		</c:forEach>
 	</table>

@@ -9,22 +9,21 @@ import com.fnw.action.Action;
 import com.fnw.action.ActionFoward;
 
 public class BookOrderDetailsService implements Action {
-
 	@Override
 	public ActionFoward doProcess(HttpServletRequest request, HttpServletResponse response) {
 		ActionFoward actionFoward = new ActionFoward();
 		
+		Book_OrderDTO book_OrderDTO = null;
 		Book_OrderDAO book_OrderDAO = new Book_OrderDAO();
-		ArrayList<Book_OrderDTO> list = new ArrayList<>();
+		
 		try {
-			list = book_OrderDAO.selectList("joy");
+			book_OrderDTO = book_OrderDAO.selectOne(Integer.parseInt(request.getParameter("num")));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
-		request.setAttribute("bookOrderList", list);
+		request.setAttribute("bookOrderDetails", book_OrderDTO);
 		actionFoward.setCheck(true);
-		actionFoward.setPath("../WEB-INF/view/book/bookOrderList.jsp");
+		actionFoward.setPath("../WEB-INF/view/book/bookOrderDetails.jsp");
 		return actionFoward;
 	}
 }
