@@ -1,12 +1,12 @@
 package com.fnw.book;
 
-import java.util.Date;
+import java.sql.Date;
 
 public class Book_Rent_DetailsDTO {
 
 	private int num;
 	private String title;
-	private String location;
+	private String section;
 	private String writer;
 	private String company;
 	private Date publish_date;
@@ -28,11 +28,11 @@ public class Book_Rent_DetailsDTO {
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	public String getLocation() {
-		return location;
+	public String getSection() {
+		return section;
 	}
-	public void setLocation(String location) {
-		this.location = location;
+	public void setSection(String section) {
+		this.section = section;
 	}
 	public String getWriter() {
 		return writer;
@@ -82,6 +82,4 @@ public class Book_Rent_DetailsDTO {
 	public void setLate_date(int late_date) {
 		this.late_date = late_date;
 	}
-	
-	
 }

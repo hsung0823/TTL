@@ -10,18 +10,17 @@ public class BookDealDetailsViewService implements Action {
 
 	@Override
 	public ActionFoward doProcess(HttpServletRequest request, HttpServletResponse response) {
-		System.out.println("HERE");
 		ActionFoward actionFoward = new ActionFoward();
 
-		Market_TotalDTO market_TotalDTO = null;
-		Market_TotalDAO market_TotalDAO = new Market_TotalDAO();
+		Book_Deal_DetailsDTO book_Deal_DetailsDTO = null;
+		Book_Deal_DetailsDAO book_Deal_DetailsDAO = new Book_Deal_DetailsDAO();
 		
 		try {
-			market_TotalDTO = market_TotalDAO.selectOne(Integer.parseInt(request.getParameter("num")));
+			book_Deal_DetailsDTO = book_Deal_DetailsDAO.selectOne(Integer.parseInt(request.getParameter("num")));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		request.setAttribute("bookDealsDetail", market_TotalDTO);
+		request.setAttribute("bookDealsDetail", book_Deal_DetailsDTO);
 		actionFoward.setCheck(true);
 		actionFoward.setPath("../WEB-INF/view/market/bookDealsDetails.jsp");
 

@@ -41,4 +41,30 @@
 	<url-pattern>*.seat</url-pattern>
 </servlet-mapping>
 
+<servlet>
+	<servlet-name>book</servlet-name>
+	<servlet-class>com.fnw.control.BookController</servlet-class>
+	<init-param>
+		<param-name>properties</param-name>
+		<param-value>book.properties</param-value>
+	</init-param>
+</servlet>
+<servlet-mapping>
+	<servlet-name>book</servlet-name>
+	<url-pattern>*.book</url-pattern>
+</servlet-mapping>
+
+<servlet>
+	<servlet-name>library</servlet-name>
+	<servlet-class>com.fnw.control.LibraryController</servlet-class>
+	<init-param>
+		<param-name>properties</param-name>
+		<param-value>library.properties</param-value>
+	</init-param>
+</servlet>
+<servlet-mapping>
+	<servlet-name>library</servlet-name>
+	<url-pattern>*.library</url-pattern>
+</servlet-mapping>
+
 </web-app>

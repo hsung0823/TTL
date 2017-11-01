@@ -18,7 +18,7 @@ public class MemberUpdatePwCheckService implements Action {
 		if(method.equals("GET")) {
 			MemberDTO memberDTO = null;
 			try {
-				memberDTO = memberDAO.selectOne("joy");
+				memberDTO = memberDAO.selectOne(request.getParameter("id"));
 			} catch (Exception e) {
 				e.printStackTrace();
 			}

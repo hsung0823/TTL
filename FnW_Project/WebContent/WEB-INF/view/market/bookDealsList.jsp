@@ -16,9 +16,11 @@
 			<th>writer</th>
 			<th>company</th>
 			<th>publish_date</th>
+			<th>T_date</th>
 			<th>library</th>
 			<th>price</th>
-			<th>approval</th>
+			<th>state</th>
+			<th>delivery</th>
 		</tr>
 		<c:forEach items="${bookDeals }" var="bookDeals_list">
 			<tr>
@@ -27,9 +29,11 @@
 				<td>${bookDeals_list.writer }</td>
 				<td>${bookDeals_list.company }</td>
 				<td>${bookDeals_list.publish_date }</td>
+				<td>${bookDeals_list.t_date }</td>
 				<td>${bookDeals_list.library }</td>
 				<td>${bookDeals_list.price }</td>
-				<td>${bookDeals_list.approval }</td>
+				<td>${bookDeals_list.state }</td>
+				<td>${bookDeals_list.delivery }</td>
 			</tr>
 		</c:forEach>
 	</table>

@@ -21,11 +21,22 @@ public class MemberDeleteService implements Action {
 		}
 		if(result>0) {
 			request.setAttribute("message", "탈퇴 완료");
+			MemberDTO memberDTO =(MemberDTO)request.getSession().getAttribute("member");
+			String id = memberDTO.getId();
+			
+			if(id.equals(request.getParameter("id"))) { // 본인이면
+				request.setAttribute("path", "../index.jsp");
+				request.getSession().invalidate();
+			}else {//본인이 아니면
+				request.setAttribute("path", "./memberList.member");
+			}
+			
 		}else {
 			request.setAttribute("message", "탈퇴 실패");
+			request.setAttribute("path", "../index.jsp");
 		}
-		actionFoward.setCheck(false);
-		actionFoward.setPath("./memberUpdatePwCheck.member");
+		actionFoward.setCheck(true);
+		actionFoward.setPath("../WEB-INF/view/common/result.jsp");
 		return actionFoward;
 	}
 

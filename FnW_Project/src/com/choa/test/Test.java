@@ -48,10 +48,10 @@ public class Test {
 			
 				System.out.println(Date.valueOf((st.nextToken().trim())));
 				
-				book_TotalDTO.setPublish_date(Date.valueOf(st.nextToken().trim()));
+				book_TotalDTO.setPublish_date(st.nextToken().trim());
 				book_TotalDTO.setSection(st.nextToken().trim());
 				book_TotalDTO.setLibrary(Integer.parseInt(st.nextToken().trim()));
-				book_TotalDTO.setType(Integer.parseInt(st.nextToken().trim()));
+				book_TotalDTO.setType(st.nextToken().trim());
 				book_TotalDTO.setState(Integer.parseInt(st.nextToken().trim()));
 				book_TotalDTO.setRent_id(st.nextToken().trim());
 				book_TotalDTO.setRent_count(Integer.parseInt(st.nextToken().trim()));

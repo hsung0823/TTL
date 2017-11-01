@@ -3,6 +3,7 @@ package com.fnw.member;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 import java.sql.Date;
 
 import com.fnw.util.DBConnector;
@@ -20,7 +21,7 @@ public class MemberDAO {
 		st.setString(6, memberDTO.getAddr());
 		st.setString(7, memberDTO.getPhone());
 		st.setString(8, memberDTO.getEmail());
-		/*st.setString(9, memberDTO.getLocation());*/
+		st.setInt(9, memberDTO.getLibrary());
 		/*st.setInt(10, memberDTO.getKind());*/
 		
 		int result = st.executeUpdate();
@@ -78,9 +79,61 @@ public class MemberDAO {
 		DBConnector.disConnect(rs, st, con);
 		return memberDTO;
 	}
+	
+	public MemberDTO IdFind(String name,String email) throws Exception {
+		Connection con = DBConnector.getConnect();
+		String sql = "SELECT * FROM member WHERE name=? and email=?";
+		PreparedStatement st = con.prepareStatement(sql);
+		st.setString(1, name);
+		st.setString(2, email);
+		
+		ResultSet rs = st.executeQuery();
+		MemberDTO memberDTO = null;
+		if(rs.next()) {
+			memberDTO = new MemberDTO();
+			memberDTO.setId(rs.getString("id"));
+			memberDTO.setPw(rs.getString("pw"));
+			memberDTO.setName(rs.getString("name"));
+			memberDTO.setBirth(rs.getDate("birth"));
+			memberDTO.setGender(rs.getString("gender"));
+			memberDTO.setAddr(rs.getString("addr"));
+			memberDTO.setPhone(rs.getString("phone"));
+			memberDTO.setEmail(rs.getString("email"));
+			memberDTO.setLibrary(rs.getInt("library"));
+			memberDTO.setKind(rs.getInt("kind"));
+		}
+		DBConnector.disConnect(rs, st, con);
+		return memberDTO;
+	}
+	public MemberDTO PwFind(String id ,String name,String email) throws Exception {
+		Connection con = DBConnector.getConnect();
+		String sql = "SELECT * FROM member WHERE id=? and name=? and email=?";
+		PreparedStatement st = con.prepareStatement(sql);
+		st.setString(1, id);
+		st.setString(2, name);
+		st.setString(3, email);
+		
+		ResultSet rs = st.executeQuery();
+		MemberDTO memberDTO = null;
+		if(rs.next()) {
+			memberDTO = new MemberDTO();
+			memberDTO.setId(rs.getString("id"));
+			memberDTO.setPw(rs.getString("pw"));
+			memberDTO.setName(rs.getString("name"));
+			memberDTO.setBirth(rs.getDate("birth"));
+			memberDTO.setGender(rs.getString("gender"));
+			memberDTO.setAddr(rs.getString("addr"));
+			memberDTO.setPhone(rs.getString("phone"));
+			memberDTO.setEmail(rs.getString("email"));
+			memberDTO.setLibrary(rs.getInt("library"));
+			memberDTO.setKind(rs.getInt("kind"));
+		}
+		DBConnector.disConnect(rs, st, con);
+		return memberDTO;
+	}
 	public int update(MemberDTO memberDTO) throws Exception{
 		Connection con = DBConnector.getConnect();
-		String sql="UPDATE member SET pw=?, birth=?, addr=?, phone=?, email=?, library=? WHERE id=?";
+		String sql="UPDATE member SET pw=?, birth=?, addr=?, phone=?, email=?, library=?, kind=? WHERE id=?";
 		PreparedStatement st = con.prepareStatement(sql);
 		
 		st.setString(1, memberDTO.getPw());
@@ -89,7 +142,8 @@ public class MemberDAO {
 		st.setString(4, memberDTO.getPhone());
 		st.setString(5, memberDTO.getEmail());
 		st.setInt(6, memberDTO.getLibrary());
-		st.setString(7, memberDTO.getId());
+		st.setInt(7, memberDTO.getKind());
+		st.setString(8, memberDTO.getId());
 		
 		int result = st.executeUpdate();
 		DBConnector.disConnect(st, con);
@@ -105,4 +159,30 @@ public class MemberDAO {
 		
 		return result;
 	}
+	
+	public ArrayList<MemberDTO> selectList() throws Exception {
+		Connection con = DBConnector.getConnect();
+		String sql ="select rownum R, M.* from member M order by kind desc, id asc";
+		PreparedStatement st = con.prepareStatement(sql);
+		ArrayList<MemberDTO> ar = new ArrayList<>();
+		
+		ResultSet rs = st.executeQuery();
+		while(rs.next()) {
+			MemberDTO memberDTO = new MemberDTO();
+			memberDTO.setId(rs.getString("id"));
+			memberDTO.setPw(rs.getString("pw"));
+			memberDTO.setName(rs.getString("name"));
+			memberDTO.setBirth(rs.getDate("birth"));
+			memberDTO.setGender(rs.getString("gender"));
+			memberDTO.setAddr(rs.getString("addr"));
+			memberDTO.setPhone(rs.getString("phone"));
+			memberDTO.setEmail(rs.getString("email"));
+			memberDTO.setLibrary(rs.getInt("library"));
+			memberDTO.setKind(rs.getInt("kind"));
+			ar.add(memberDTO);
+		}
+		
+		DBConnector.disConnect(rs, st, con);
+		return ar;
+	}//
 }

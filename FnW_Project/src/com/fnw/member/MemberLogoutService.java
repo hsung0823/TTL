@@ -10,8 +10,12 @@ public class MemberLogoutService implements Action {
 
 	@Override
 	public ActionFoward doProcess(HttpServletRequest request, HttpServletResponse response) {
-		// TODO Auto-generated method stub
-		return null;
+		ActionFoward actionFoward = new ActionFoward();
+		request.getSession().invalidate();
+		
+		actionFoward.setCheck(false);
+		actionFoward.setPath("../index.jsp");
+		return actionFoward;
 	}
 
 }

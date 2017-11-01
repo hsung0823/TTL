@@ -19,7 +19,7 @@ public class MemberUpdateService implements Action {
 		int result = 0;
 		if(method.equals("GET")) {
 			try {
-				memberDTO = memberDAO.selectOne("joy");
+				memberDTO = memberDAO.selectOne(request.getParameter("id"));
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -27,26 +27,44 @@ public class MemberUpdateService implements Action {
 			actionFoward.setCheck(true);
 			actionFoward.setPath("../WEB-INF/view/member/memberUpdate.jsp");
 		}else {
-			memberDTO = new MemberDTO();
-			memberDTO.setPw(request.getParameter("pw"));
-			memberDTO.setAddr(request.getParameter("addr"));
-			memberDTO.setBirth(Date.valueOf(request.getParameter("birth")));
-			memberDTO.setEmail(request.getParameter("email"));
-			memberDTO.setLibrary(Integer.parseInt(request.getParameter("library")));
-			memberDTO.setPhone(request.getParameter("phone"));
-			memberDTO.setId(request.getParameter("id"));
+			
 			try {
-				result = memberDAO.update(memberDTO);
-			} catch (Exception e) {
-				e.printStackTrace();
+				memberDTO = memberDAO.selectOne(request.getParameter("id"));
+				memberDTO.setId(request.getParameter("id"));
+				memberDTO.setPw(request.getParameter("pw"));
+				memberDTO.setAddr(request.getParameter("addr"));
+				memberDTO.setBirth(Date.valueOf(request.getParameter("birth")));
+				memberDTO.setEmail(request.getParameter("email"));
+				memberDTO.setLibrary(Integer.parseInt(request.getParameter("library")));
+				memberDTO.setPhone(request.getParameter("phone"));
+				memberDTO.setKind(Integer.parseInt(request.getParameter("kind")));
+				try {
+					result = memberDAO.update(memberDTO);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			} catch (Exception e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
 			}
+			
 			if(result>0) {
-				request.setAttribute("message", "수정 완료");
+				
+				System.out.println(memberDTO.getKind());
+				if(((MemberDTO)request.getSession().getAttribute("member")).getKind() == 10) {
+					request.setAttribute("message", "수정 완료");
+					request.setAttribute("path", "./memberList.member");
+				}else {
+					request.setAttribute("message", "수정 완료");
+					request.getSession().setAttribute("member", memberDTO);
+					request.setAttribute("path", "./memberUpdatePwCheck.member");
+				}
 			}else {
 				request.setAttribute("message", "수정 실패");
+				request.setAttribute("path", "./memberUpdatePwCheck.member");
 			}
-			actionFoward.setCheck(false);
-			actionFoward.setPath("./memberUpdatePwCheck.member");
+			actionFoward.setCheck(true);
+			actionFoward.setPath("../WEB-INF/view/common/result.jsp");
 		}
 		
 		return actionFoward;

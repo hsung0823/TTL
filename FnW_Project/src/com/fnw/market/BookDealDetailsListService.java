@@ -13,11 +13,10 @@ public class BookDealDetailsListService implements Action {
 	@Override
 	public ActionFoward doProcess(HttpServletRequest request, HttpServletResponse response) {
 		ActionFoward actionFoward = new ActionFoward();
-		Market_TotalDAO market_TotalDAO = new Market_TotalDAO();
-		
-		ArrayList<Market_TotalDTO> list = new ArrayList<>();
+		Book_Deal_DetailsDAO book_Deal_DetailsDAO = new Book_Deal_DetailsDAO();
+		ArrayList<Book_Deal_DetailsDTO> list = new ArrayList<>();
 		try {
-			list = market_TotalDAO.selectList("joy");
+			list = book_Deal_DetailsDAO.selectList(request.getParameter("id"));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

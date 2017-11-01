@@ -17,7 +17,7 @@ public class SeatDetailsListService implements Action {
 		
 		ArrayList<Seat_DetailsDTO> list = new ArrayList<>();
 		try {
-			list = seat_DetailsDAO.selectList("joy");
+			list = seat_DetailsDAO.selectList(request.getParameter("id"));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

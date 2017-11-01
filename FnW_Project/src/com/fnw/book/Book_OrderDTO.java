@@ -1,6 +1,6 @@
 package com.fnw.book;
 
-import java.util.Date;
+import java.sql.Date;
 
 public class Book_OrderDTO {
 	
@@ -14,7 +14,7 @@ public class Book_OrderDTO {
 	private int price;
 	private int library;
 	private int state;
-	private String cancle;
+	private String cancel;
 	
 	public int getNum() {
 		return num;
@@ -76,10 +76,10 @@ public class Book_OrderDTO {
 	public void setState(int state) {
 		this.state = state;
 	}
-	public String getCancle() {
-		return cancle;
+	public String getCancel() {
+		return cancel;
 	}
-	public void setCancle(String cancle) {
-		this.cancle = cancle;
+	public void setCancel(String cancel) {
+		this.cancel = cancel;
 	}
 }
