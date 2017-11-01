@@ -16,7 +16,7 @@ public class BookDealDetailsListService implements Action {
 		Book_Deal_DetailsDAO book_Deal_DetailsDAO = new Book_Deal_DetailsDAO();
 		ArrayList<Book_Deal_DetailsDTO> list = new ArrayList<>();
 		try {
-			list = book_Deal_DetailsDAO.selectList("joy");
+			list = book_Deal_DetailsDAO.selectList(request.getParameter("id"));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

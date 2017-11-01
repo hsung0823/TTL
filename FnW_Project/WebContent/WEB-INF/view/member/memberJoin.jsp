@@ -18,7 +18,7 @@
 	<p>addr<input type="text" name="addr"></p>
 	<p>phone<input type="text" name="phone"></p>
 	<p>email<input type="text" name="email"></p>
-	<p>location<input type="text" name="location"></p>
+	<p>library<input type="number" name="location"></p>
 <!-- 	<p>kind<input type="number" name="kind"></p> -->
 	<p><button type="submit">join</button></p>
 </form>

@@ -19,7 +19,7 @@ public class MemberUpdateService implements Action {
 		int result = 0;
 		if(method.equals("GET")) {
 			try {
-				memberDTO = memberDAO.selectOne("joy");
+				memberDTO = memberDAO.selectOne(request.getParameter("id"));
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -27,14 +27,14 @@ public class MemberUpdateService implements Action {
 			actionFoward.setCheck(true);
 			actionFoward.setPath("../WEB-INF/view/member/memberUpdate.jsp");
 		}else {
-			memberDTO = new MemberDTO();
+			memberDTO = (MemberDTO)request.getSession().getAttribute("member");
+			memberDTO.setId(request.getParameter("id"));
 			memberDTO.setPw(request.getParameter("pw"));
 			memberDTO.setAddr(request.getParameter("addr"));
 			memberDTO.setBirth(Date.valueOf(request.getParameter("birth")));
 			memberDTO.setEmail(request.getParameter("email"));
 			memberDTO.setLibrary(Integer.parseInt(request.getParameter("library")));
 			memberDTO.setPhone(request.getParameter("phone"));
-			memberDTO.setId(request.getParameter("id"));
 			try {
 				result = memberDAO.update(memberDTO);
 			} catch (Exception e) {
@@ -42,6 +42,7 @@ public class MemberUpdateService implements Action {
 			}
 			if(result>0) {
 				request.setAttribute("message", "수정 완료");
+				request.getSession().setAttribute("member", memberDTO);
 				request.setAttribute("path", "./memberUpdatePwCheck.member");
 			}else {
 				request.setAttribute("message", "수정 실패");

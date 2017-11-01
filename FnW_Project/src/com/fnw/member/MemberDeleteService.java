@@ -21,6 +21,7 @@ public class MemberDeleteService implements Action {
 		}
 		if(result>0) {
 			request.setAttribute("message", "탈퇴 완료");
+			request.getSession().invalidate();
 		}else {
 			request.setAttribute("message", "탈퇴 실패");
 		}
