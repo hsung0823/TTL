@@ -25,6 +25,7 @@
 	<p><a href="./member/memberLogin.member">login</a>
 	<p><a href="./member/memberJoin.member">Join</a>
 	<p><a href="./member/memberLogout.member">Logout</a>
+	<p><a href="./library/libraryView.library">도서관지도</a></p>
 	<p><a href="./member/memberList.member">admin 전용 회원리스트 / 블랙리스트</a></p>
 	
 	

@@ -5,8 +5,8 @@ public class LibraryDTO {
 	private String name;
 	private String area;
 	private int budget;
-	private int x_position;
-	private int y_position;
+	private Double x_position;
+	private Double y_position;
 	
 	public int getLibrary() {
 		return library;
@@ -32,16 +32,17 @@ public class LibraryDTO {
 	public void setBudget(int budget) {
 		this.budget = budget;
 	}
-	public int getX_position() {
+	public Double getX_position() {
 		return x_position;
 	}
-	public void setX_position(int x_position) {
+	public void setX_position(Double x_position) {
 		this.x_position = x_position;
 	}
-	public int getY_position() {
+	public Double getY_position() {
 		return y_position;
 	}
-	public void setY_position(int y_position) {
+	public void setY_position(Double y_position) {
 		this.y_position = y_position;
 	}
+	
 }
