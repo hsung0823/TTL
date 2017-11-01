@@ -27,6 +27,7 @@
 	<p><a href="./member/memberList.member">admin 전용 회원리스트 / 블랙리스트</a></p>
 	
 	
+	
 	<c:if test="${empty sessionScope.member }">
 		login plz
 	</c:if>
