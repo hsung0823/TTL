@@ -11,6 +11,7 @@
 	<p><a href="./member/memberUpdatePwCheck.member">MyPage Update O</a></p>
 	<p><a href="./market/bookDealsList.market">Market Order List O</a></p>
 	<p><a href="./seat/seatTotalList.seat">Seat Rent List O</a></p>
+	<p><a href="./book/bookRentList.book">Book Rent List</a></p>
 	
 	<h2>kim</h2>
 	<p><a href="./member/memberLogin.member">login</a>
