@@ -222,8 +222,6 @@ public class Test3 {
         	for(int j=0; j<11; j++){
         		String[] txtArr2 = txtArr1[i].split("~~"); //한줄을 ~~로 파싱
         		
-        		/*System.out.println(j+"번 : "+txtArr2[j].trim());
-        		j++;
         		System.out.println(j+"번 : "+txtArr2[j].trim());
         		j++;
         		System.out.println(j+"번 : "+txtArr2[j].trim());
@@ -243,8 +241,10 @@ public class Test3 {
         		System.out.println(j+"번 : "+txtArr2[j].trim());
         		j++;
         		System.out.println(j+"번 : "+txtArr2[j].trim());
-        		j++;*/
-        		book_TotalDTO.setNum(Integer.parseInt(txtArr2[j].trim()));
+        		j++;
+        		System.out.println(j+"번 : "+txtArr2[j].trim());
+        		j++;
+        		/*book_TotalDTO.setNum(Integer.parseInt(txtArr2[j].trim()));
         		j++;
             	book_TotalDTO.setTitle(txtArr2[j].trim());
             	j++;
@@ -273,7 +273,7 @@ public class Test3 {
         		//System.out.println(txtArr2[j].trim());
         		
         		//book_TotalDTO.setNum(Integer.parseInt(txtArr2[j].trim()));
-        		/*book_TotalDTO.setTitle(txtArr2[j+1].trim());*/
+        		book_TotalDTO.setTitle(txtArr2[j+1].trim());*/
         		
         	/*	book_TotalDTO.setNum(Integer.parseInt(txtArr2[j].trim()));
             	book_TotalDTO.setTitle(txtArr2[j].trim());
