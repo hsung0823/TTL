@@ -28,7 +28,8 @@
 	<p><a href="./member/memberLogout.member">Logout</a>
 	<p><a href="./member/memberList.member">admin 전용 회원리스트 / 블랙리스트</a></p>
 	
-	
+	<p><a href="./member/memberIdFind.member">Id Find</a>
+	<p><a href="./member/memberPwFind.member">Pw Find</a>
 	
 	<c:if test="${empty sessionScope.member }">
 		login plz
