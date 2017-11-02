@@ -1,7 +1,5 @@
 package com.fnw.book;
 
-import java.sql.Date;
-
 public class Book_Buy_WishDTO {
 	private int num;
 	private String title;

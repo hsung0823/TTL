@@ -7,23 +7,24 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.fnw.action.Action;
 import com.fnw.action.ActionFoward;
-import com.fnw.book.Book_Buy_WishDAO;
 import com.fnw.util.PageMaker;
 
-public class BookOrderWishListService implements Action {
+public class BookOrderTotalListService implements Action {
 
 	@Override
 	public ActionFoward doProcess(HttpServletRequest request, HttpServletResponse response) {
 		ActionFoward actionFoward = new ActionFoward();
-		Book_Buy_WishDAO book_Buy_WishDAO = new Book_Buy_WishDAO();
-		ArrayList<Book_Buy_WishDTO> list = new ArrayList<>();
 		
-		int curPage = 1;
+		Book_OrderDAO book_OrderDAO = new Book_OrderDAO();
+		ArrayList<Book_OrderDTO> list = new ArrayList<>();
+		
+		int curPage = 0;
 		try {
 			curPage = Integer.parseInt(request.getParameter("curPage"));
 		} catch (Exception e) {
-			curPage = 1 ;
+			curPage = 1;
 		}
+		
 		String kind = request.getParameter("kind");
 		if(kind==null) {
 			kind="title";
@@ -32,21 +33,23 @@ public class BookOrderWishListService implements Action {
 		if(search==null) {
 			search="";
 		}
-		
+
 		String id = request.getParameter("id");
 		int totalCount = 0;
+
 		try {
-			totalCount = book_Buy_WishDAO.getTotalCount(kind, search);
+			totalCount = book_OrderDAO.getTotalCount(kind, search);
 			PageMaker pageMaker = new PageMaker(curPage, totalCount);
-			list = book_Buy_WishDAO.selectList(id,pageMaker.getMakeRow(),kind,search);
-			request.setAttribute("bookOrderWishList", list);
+			list = book_OrderDAO.selectList(id,pageMaker.getMakeRow(),kind,search);
+			request.setAttribute("bookOrderTotalList", list);
 			request.setAttribute("id", id);
 			request.setAttribute("page", pageMaker.getMakePage());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		actionFoward.setCheck(true);
-		actionFoward.setPath("../WEB-INF/view/book/bookOrderWishList.jsp");
+		actionFoward.setPath("../WEB-INF/view/book/bookOrderTotalList.jsp");
+		
 		return actionFoward;
 	}
 }
