@@ -11,7 +11,10 @@
 		
 		$("#mailCheck").click(function(){
 			var email = $("#email").val();
-			location.href="./memberEmailCheck.member?email="+email;
+			 window.open('./memberEmailCheck.member?email='+email)
+			 
+			 
+			/* location.href="./memberEmailCheck.member?email="+email; */
 		});
 		
 		/* $("#mailCheck").click(function(){

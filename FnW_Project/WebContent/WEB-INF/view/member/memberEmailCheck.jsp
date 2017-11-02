@@ -9,14 +9,20 @@
 <script type="text/javascript">
 	$(function(){
 		//${check }  -> sessionScope.check  => 인증번호 //String
-		var num = $("#num").val();
-		
+	
 		$("#btn").click(function(){
+			var num = $("#num").val();
 			
-			if(num == '${check }' ){
-				alert("eq");
+			if(num == '${check}'){
+				alert("인증 성공!");
+				
+				
+				
+				
+				
+				close();
 			}else{
-				alert("ne");
+				alert("인증 실패!");
 			} 
 			
 		});
@@ -30,10 +36,10 @@
 <body>
 	<form action="">
 	
-		<p>인증번호입력<input type="text" id="num"></p>
+		<p>인증번호입력<input type="text" id="num" ></p>
 	
 		<input type="button" id="btn" value ="확인">
-		${check }
+		${check}
 	
 	</form>
 
