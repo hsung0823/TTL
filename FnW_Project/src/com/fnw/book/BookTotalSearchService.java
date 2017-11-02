@@ -1,5 +1,6 @@
 package com.fnw.book;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -7,47 +8,61 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.fnw.action.Action;
 import com.fnw.action.ActionFoward;
+import com.fnw.member.MemberDAO;
+import com.fnw.member.MemberDTO;
 import com.fnw.util.PageMaker;
 
 public class BookTotalSearchService implements Action {
 
+	
+	
 	@Override
 	public ActionFoward doProcess(HttpServletRequest request, HttpServletResponse response) {
 
 		ActionFoward actionFoward = new ActionFoward();
-		Book_TotalDAO book_TotalDAO = new Book_TotalDAO();
+		String method = request.getMethod();
+		ArrayList<Book_TotalDTO> ar = new ArrayList<>();
 
 		int curPage=1;
-		try {
-			curPage=Integer.parseInt(request.getParameter("curPage"));
-		}catch (Exception e) {
-			e.printStackTrace();
-		}
+		
+		if(method.equals("GET")) {
+			actionFoward.setCheck(true);
+			actionFoward.setPath("../WEB-INF/view/book/bookTotalSearch.jsp");
+		} else {
+			Book_TotalDAO book_TotalDAO = new Book_TotalDAO();
+			try {
+				curPage=Integer.parseInt(request.getParameter("curPage"));
+			}catch (Exception e) {
+				e.printStackTrace();
+			}
+	
+			String kind = request.getParameter("kind");
+			if(kind==null) {
+				kind="title";
+			}
+			String search=request.getParameter("search");
+			if(search==null) {
+				search="";
+			}
 
-		String kind = request.getParameter("kind");
-		if(kind==null) {
-			kind="title";
-		}
-		String search=request.getParameter("search");
-		if(search==null) {
-			search="";
-		}
+			String message = "검색 결과가 없습니다";
+			int totalCount=0;
+			try {
+				totalCount = book_TotalDAO.getTotalCount(kind, search);
+				PageMaker pageMaker = new PageMaker(curPage, totalCount);
+				ar = book_TotalDAO.selectList(pageMaker.getMakeRow(), kind, search);
+				request.setAttribute("list", ar);
+				request.setAttribute("page", pageMaker.getMakePage());
+				request.setAttribute("board", "notice");
+				message = null;
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 
-		int totalCount=0;
-		try {
-			totalCount = book_TotalDAO.getTotalCount(kind, search);
-			PageMaker pageMaker = new PageMaker(curPage, totalCount);
-			List<Book_TotalDTO> ar = book_TotalDAO.selectList(pageMaker.getMakeRow(), kind, search);
-			request.setAttribute("list", ar);
-			request.setAttribute("page", pageMaker.getMakePage());
-			request.setAttribute("board", "notice");
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			actionFoward.setCheck(true);
+			actionFoward.setPath("../WEB-INF/common/result.jsp");
 		}
-		actionFoward.setCheck(true);
-		actionFoward.setPath("../WEB-INF/view/integration_portal/total_book_search.jsp");
-
 		return actionFoward;
 	}
 }

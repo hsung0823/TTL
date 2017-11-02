@@ -12,13 +12,13 @@ $(function(){
 	
 		$("#send").click(function(){
 			$.ajax({
-				url: "../memberEmailCheck.jsp",
+				url: "./memberEmailCheck.member",
 				type: "POST",
 				data: {
-					
+					email: ${param.email}
 				},
 				success:function(data){
-					$("#ch").load(data);
+					alert(data);
 				}
 			});//
 		});// 

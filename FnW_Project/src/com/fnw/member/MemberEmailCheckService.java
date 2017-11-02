@@ -16,12 +16,19 @@ public class MemberEmailCheckService implements Action {
 		String email = request.getParameter("email");
 		if(method.equals("GET")) {
 			
+			actionFoward.setCheck(true);
+			actionFoward.setPath("../WEB-INF/view/member/memberJoinEmail.jsp");
+			
 		}else {
+			
 			EmailDAO emailDAO = new EmailDAO();
-			emailDAO.send(request, email);
+			int result = emailDAO.send(request, email);
+			actionFoward.setCheck(true);
+			actionFoward.setPath("../WEB-INF/view/member/memberEmailCheck.jsp");
+			
 		}
-		actionFoward.setCheck(true);
-		actionFoward.setPath("../WEB-INF/view/member/memberJoinEmail.jsp");
+
+		
 		return actionFoward;
 	}
 

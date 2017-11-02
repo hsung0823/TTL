@@ -21,7 +21,7 @@
 		<p>state<input type="text" name="state" value=${bookDealsDetail.state } ></p>
 		<p>delivery<input type="text" name="delivery" value=${bookDealsDetail.delivery } ></p>
 		<button type="submit">확인</button>
-		<a href="./bookDealsDelete.market?num=${bookDealsDetail.num }"><input type="button" value="내역 삭제"></a>
+		<a href="./marketDealsDelete.market?num=${bookDealsDetail.num }"><input type="button" value="내역 삭제"></a>
 	</form>	
 </body>
 </html>

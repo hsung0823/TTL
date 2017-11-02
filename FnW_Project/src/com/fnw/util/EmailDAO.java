@@ -12,12 +12,13 @@ import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
 
 public class EmailDAO {
-	public void send(HttpServletRequest request, String email) {
+	
+	public int send(HttpServletRequest request, String email) {
+		int result=0;
 		String host     = "smtp.naver.com";
 		  final String user   = "library_4";
 		  final String password  = "gudwns93";
 		  String to     = email;
-		  System.out.println("ss");
 		  // Get the session object
 		  Properties props = new Properties();
 		  props.put("mail.smtp.host", host);
@@ -36,7 +37,7 @@ public class EmailDAO {
 		   message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
 
 		   // Subject
-		   message.setSubject("FnW 인증 메일");
+		   message.setSubject("FnW 회원가입 인증 메일");
 		   
 		   // Textc 
 		   String a = "a12s";
@@ -44,14 +45,17 @@ public class EmailDAO {
 		   request.getSession().setAttribute("check", a);
 		   message.setText(mes); //보내는 내용
 
-
 		   // send the message
 		   Transport.send(message);
 		   System.out.println("message sent successfully...");
+		   result=1;
 
 		  } catch (MessagingException e) {
 		   e.printStackTrace();
+		   result=0;
 		  }
+		  return result;
+		  
 	}
 	
 /*	 public static void main(String[] args) {

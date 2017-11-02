@@ -1,5 +1,7 @@
 package com.fnw.seat;
 
 public class SeatDAO {
-	public void update() {}
+	public void update() {
+		 
+	}
 }
