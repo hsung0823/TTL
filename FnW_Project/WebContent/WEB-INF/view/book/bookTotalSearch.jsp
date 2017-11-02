@@ -55,7 +55,7 @@
 							<td>${dto.title }</td>
 							<td>${dto.writer }</td>
 							<td>${dto.company }</td>
-						</tr>			
+						</tr>
 					</c:forEach>
 			
 				</table>
@@ -63,36 +63,8 @@
 		</div>
 		
 		${ requestScope.list }
-		
-		
-		<table class="table table-hover">
-		<tr>
-			<td>num</td>
-			<td>title</td>
-			<td>writer</td>
-			<td>date</td>
-			<td>hit</td>
-		</tr>
-		<c:forEach items="${requestScope.list}" var="dto">
 
-		<tr>
-			<td>${dto.num}</td>
-			<td>
-			<c:catch>
-			<c:forEach begin="0" end="${dto.length}">
-				--
-			</c:forEach>
-			</c:catch>
-			<a href="./${requestScope.list}View.${requestScope.list}?num=${dto.num}">${dto.title}</a>
-			</td>
-			<td>${dto.title}</td>
-			<td>${dto.writer}</td>
-			<td>${dto.company}</td>
-		</tr>
-		</c:forEach>
-	</table>
-		
-	
+
 	<!-- 페이지네이션 -->	
 	<div>
 		<ul class="pagination">
