@@ -71,7 +71,7 @@ public class Book_TotalDAO {
 		
 		String sql = "select * from "
 				+ "(select rownum R, N.* from "
-				+ "(select * from book_total where "+ kind +" like ? order by num desc) N)"
+				+ "(select * from book_total where "+ kind +" like ? order by num asc) N)"
 				+ "where R between ? and ?";
 
 		PreparedStatement st = con.prepareStatement(sql);
