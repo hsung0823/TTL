@@ -2,7 +2,7 @@ package com.fnw.market;
 
 import java.util.Date;
 
-public class Book_Deal_DetailsDTO {
+public class Market_Deal_DetailsDTO {
 
 	private int num;
 	private String title;
