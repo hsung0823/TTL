@@ -19,6 +19,7 @@
 	<p><a href="./book/bookOrderList.book?id=${member.id }">Book Order List</a></p>
 	<p><a href="./book/bookOrderWishList.book?id=${member.id }">Basket Book Order List</a></p>
 	<p><a href="./book/bookRentWishList.book?id=${member.id }">Basket Book Rent List</a></p>
+	<p><a href="./seat/seatList.seat">Seat_On List</a></p>
 	</c:if>
 
 	<h2>김앤신(통합포털)</h2>
