@@ -52,7 +52,7 @@
 				</select></td>
 			</tr>
 		</table>
-		<button style = "text-align: center;" class = "btn btn-default" type = "submit">CONFIRM</button>
+		<button style = "float: right;" class = "btn btn-default" type = "submit">CONFIRM</button>
 	</form>
 
 </body>
