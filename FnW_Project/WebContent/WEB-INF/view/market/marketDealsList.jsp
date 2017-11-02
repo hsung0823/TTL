@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h2>MarketTotalList</h2>
+	<h2>MarketTotalList-MyPage</h2>
 
 
 	<table class="table" border="1">
@@ -47,11 +47,11 @@
 			</c:if>
 			<c:forEach begin="${page.startNum}" end="${page.lastNum}" var="i">
 			<li><a
-				href="./${requestScope.board}List.${requestScope.board}?curPage=${i}">${i}</a></li>
+				href="./marketDealsList.market?curPage=${i}&id=${id }">${i}</a></li>
 			</c:forEach>
 			<c:if test="${page.curBlock < page.totalBlock}">
 			<li><a
-				href="./${requestScope.board}List.${requestScope.board}?curPage=${requestScope.page.lastNum+1}">[다음]</a></li>
+				href="./marketDealsList.market?curPage=${requestScope.page.lastNum+1}">[다음]</a></li>
 			</c:if>
 		</ul>
 	</div>

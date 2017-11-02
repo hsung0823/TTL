@@ -17,6 +17,11 @@ public class MarketDealDetailsListService implements Action {
 		ArrayList<Market_Deal_DetailsDTO> list = new ArrayList<>();
 		
 		int curPage=1;
+		try {
+			curPage=Integer.parseInt(request.getParameter("curPage"));
+		}catch(Exception e) {
+			curPage=1;
+		}
 		
 		String kind = request.getParameter("kind");
 		if(kind==null) {
@@ -30,11 +35,11 @@ public class MarketDealDetailsListService implements Action {
 		String id = request.getParameter("id");
 		Market_Deal_DetailsDAO market_Deal_DetailsDAO = new Market_Deal_DetailsDAO();
 		try {
-			curPage=Integer.parseInt(request.getParameter("curPage"));
 			totalCount = market_Deal_DetailsDAO.getTotalCount(kind, search);
 			PageMaker pageMaker = new PageMaker(curPage, totalCount);
 			list = market_Deal_DetailsDAO.selectList(id,pageMaker.getMakeRow(), kind, search);
 			request.setAttribute("bookDeals", list);
+			request.setAttribute("id", id);
 			request.setAttribute("page", pageMaker.getMakePage());
 		} catch (Exception e) {
 			e.printStackTrace();

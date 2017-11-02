@@ -13,7 +13,7 @@ public class Market_Deal_DetailsDAO {
 		Connection con = DBConnector.getConnect();
 		String sql = "select * from "
 				+ "(select rownum R, N.* from "
-				+ "(select * from market_deal_details where "+ kind +" like ? order by id=? asc) N)"
+				+ "(select * from market_deal_details where "+ kind +" like ? and id=? order by num asc) N)"
 				+ "where R between ? and ?";
 		PreparedStatement st = con.prepareStatement(sql);
 		st.setString(1, "%"+search+"%");
