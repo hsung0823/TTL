@@ -7,13 +7,21 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 
 import com.fnw.util.DBConnector;
+import com.fnw.util.MakeRow;
 
 public class Book_OrderDAO {
-	public ArrayList<Book_OrderDTO> selectList(String id) throws Exception {
+	public ArrayList<Book_OrderDTO> selectList(String id, MakeRow makeRow, String kind, String search) throws Exception {
 		Connection con = DBConnector.getConnect();
-		String sql = "select * from book_order where id=?";
+		String sql = "select * from" + 
+				"(select rownum R, N.* from" + 
+				"(select * from book_order where "+kind+" like ? and id=? order by num asc) N)" + 
+				"where R between ? and ?";
 		PreparedStatement st = con.prepareStatement(sql);
-		st.setString(1, id);
+		
+		st.setString(1, "%"+search+"%");
+		st.setString(2, id);
+		st.setInt(3, makeRow.getStartRow());
+		st.setInt(4, makeRow.getLastRow());
 		
 		ResultSet rs = st.executeQuery();
 		ArrayList<Book_OrderDTO> list = new ArrayList<>();
@@ -39,6 +47,19 @@ public class Book_OrderDAO {
 		
 		DBConnector.disConnect(rs, st, con);
 		return list;
+	}
+	public int getTotalCount(String kind, String search) throws Exception {
+		Connection con = DBConnector.getConnect();
+		String sql = "select nvl(count(num), 0) from book_order where "+ kind +" like ?" ;
+		
+		PreparedStatement st = con.prepareStatement(sql);
+		st.setString(1, "%"+search+"%");
+		ResultSet rs = st.executeQuery();
+		rs.next();
+		int result = rs.getInt(1);
+
+		DBConnector.disConnect(rs, st, con);
+		return result;
 	}
 	public Book_OrderDTO selectOne(int num) throws Exception{
 		Connection con = DBConnector.getConnect();
