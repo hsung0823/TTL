@@ -6,6 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 </head>
+
 <body>
 	<h2>Member Id Find</h2>
 	
@@ -14,5 +15,8 @@
 		<p>email<input type="text" name="email"></p>
 		<p><button type="submit">Id Find</button></p>
 	</form>
+
+
+
 </body>
 </html>

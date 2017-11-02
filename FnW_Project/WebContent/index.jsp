@@ -22,6 +22,7 @@
 	<p><a href="./seat/seatList.seat">Seat_On List</a></p>
 	</c:if>
 
+
 	<h2>김앤신(통합포털)</h2>
 	<p><a href="./book/bookTotalSearch.book">Book_search</a>
 	<p><a href="./member/memberLogin.member">Login</a>
@@ -32,6 +33,7 @@
 
 	<p><a href="./member/memberIdFind.member">Id Find</a>
 	<p><a href="./member/memberPwFind.member">Pw Find</a>
+	<p><a href="./member/memberJoinAgree.member">Join Agree</a></p>
 
 	<c:if test="${empty sessionScope.member }">
 		login plz
