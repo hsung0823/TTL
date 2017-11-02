@@ -20,25 +20,26 @@
 	<p><a href="./book/bookOrderWishList.book?id=${member.id }">Basket Book Order List</a></p>
 	<p><a href="./book/bookRentWishList.book?id=${member.id }">Basket Book Rent List</a></p>
 	</c:if>
-	
-	
-	<h2>kim</h2>
-	<p><a href="./member/memberLogin.member">login</a>
+
+
+	<h2>김앤신(통합포털)</h2>
+	<p><a href="./book/total_book_search.book">Book_search</a>
+	<p><a href="./member/memberLogin.member">Login</a>
 	<p><a href="./member/memberJoin.member">Join</a>
 	<p><a href="./member/memberLogout.member">Logout</a>
 	<p><a href="./library/libraryView.library">도서관지도</a></p>
 	<p><a href="./member/memberList.member">admin 전용 회원리스트 / 블랙리스트</a></p>
-	
+
 	<p><a href="./member/memberIdFind.member">Id Find</a>
 	<p><a href="./member/memberPwFind.member">Pw Find</a>
-	
+
 	<c:if test="${empty sessionScope.member }">
 		login plz
 	</c:if>
-	
+
 	<c:if test="${sessionScope.member.kind eq 10 }">
 		admin page
 	</c:if>
-	
+
 </body>
 </html>
