@@ -52,21 +52,12 @@ public class BookTotalSearchService implements Action {
 				request.setAttribute("list", ar);
 				request.setAttribute("page", pageMaker.getMakePage());
 				request.setAttribute("board", "notice");
-<<<<<<< HEAD
-=======
-				
->>>>>>> f8502da0b741ee36741b3f2954f828265aa0b80a
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			
 			actionFoward.setCheck(true);
-<<<<<<< HEAD
-			actionFoward.setPath("../WEB-INF/book/bookTotalSearch.jsp");
-=======
 			actionFoward.setPath("../WEB-INF/view/book/bookTotalSearch.jsp");
->>>>>>> f8502da0b741ee36741b3f2954f828265aa0b80a
 		}
 		return actionFoward;
 	}

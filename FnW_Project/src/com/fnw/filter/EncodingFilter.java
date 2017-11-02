@@ -36,13 +36,10 @@ public class EncodingFilter implements Filter {
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 		// TODO Auto-generated method stub
 		// place your code here
-		System.out.println("Encoding In");
 		// pass the request along the filter chain
 		request.setCharacterEncoding(encode);
 		response.setCharacterEncoding(encode);
 		chain.doFilter(request, response);
-		
-		System.out.println("Encoding Out");
 	}
 
 	/**

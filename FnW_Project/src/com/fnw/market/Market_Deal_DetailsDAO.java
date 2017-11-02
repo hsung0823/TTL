@@ -6,13 +6,20 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 
 import com.fnw.util.DBConnector;
+import com.fnw.util.MakeRow;
 
 public class Market_Deal_DetailsDAO {
-	public ArrayList<Market_Deal_DetailsDTO> selectList(String id) throws Exception {
+	public ArrayList<Market_Deal_DetailsDTO> selectList(String id, MakeRow makeRow, String kind, String search) throws Exception {
 		Connection con = DBConnector.getConnect();
-		String sql ="select rownum R, M.* from market_deal_details M where id=? order by num asc";
+		String sql = "select * from "
+				+ "(select rownum R, N.* from "
+				+ "(select * from market_deal_details where "+ kind +" like ? order by id=? asc) N)"
+				+ "where R between ? and ?";
 		PreparedStatement st = con.prepareStatement(sql);
-		st.setString(1, id);
+		st.setString(1, "%"+search+"%");
+		st.setString(2, id);
+		st.setInt(3, makeRow.getStartRow());
+		st.setInt(4, makeRow.getLastRow());
 		ResultSet rs = st.executeQuery();
 
 		ArrayList<Market_Deal_DetailsDTO> ar = new ArrayList<>();
@@ -71,6 +78,19 @@ public class Market_Deal_DetailsDAO {
 		
 		int result = st.executeUpdate();
 		
+		return result;
+	}
+	public int getTotalCount(String kind, String search) throws Exception {
+		Connection con = DBConnector.getConnect();
+		String sql = "select nvl(count(num), 0) from market_deal_details where "+ kind +" like ?" ;
+		
+		PreparedStatement st = con.prepareStatement(sql);
+		st.setString(1, "%"+search+"%");
+		ResultSet rs = st.executeQuery();
+		rs.next();
+		int result = rs.getInt(1);
+
+		DBConnector.disConnect(rs, st, con);
 		return result;
 	}
 }

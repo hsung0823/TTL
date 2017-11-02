@@ -60,6 +60,5 @@ public class Market_TotalDAO {
 		}
 		DBConnector.disConnect(rs, st, con);
 		return market_TotalDTO;
-
 	}
 }
