@@ -1,18 +1,17 @@
 package com.fnw.book;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.fnw.action.Action;
 import com.fnw.action.ActionFoward;
-import com.fnw.member.MemberDAO;
-import com.fnw.member.MemberDTO;
 import com.fnw.util.PageMaker;
 
 public class BookTotalSearchService implements Action {
+
+	
 	
 	@Override
 	public ActionFoward doProcess(HttpServletRequest request, HttpServletResponse response) {
@@ -31,18 +30,17 @@ public class BookTotalSearchService implements Action {
 			try {
 				curPage=Integer.parseInt(request.getParameter("curPage"));
 			}catch (Exception e) {
+				e.printStackTrace();
 			}
 	
 			String kind = request.getParameter("kind");
-			System.out.println("kind:"+kind);
-				if(kind==null) {
-					kind="title";
-				}
+			if(kind==null) {
+				kind="title";
+			}
 			String search=request.getParameter("search");
-			System.out.println("search:" +search);
-				if(search==null) {
-					search="";
-				}
+			if(search==null) {
+				search="";
+			}
 
 			int totalCount=0;
 			try {
@@ -55,7 +53,6 @@ public class BookTotalSearchService implements Action {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-			
 			actionFoward.setCheck(true);
 			actionFoward.setPath("../WEB-INF/view/book/bookTotalSearch.jsp");
 		}
