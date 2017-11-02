@@ -12,15 +12,14 @@
 	<c:if test="${not empty sessionScope.member }">
 	<h1>${sessionScope.member.id }</h1>
 	<h1>MyPage_Hees</h1>
-	<p><a href="./member/memberUpdatePwCheck.member">MyPage Update O</a></p>
-	<p><a href="./market/marketDealsList.market?id=${member.id }">Market Order List O</a></p>
-	<p><a href="./seat/seatTotalList.seat?id=${member.id }">Seat Rent List O</a></p>
-	<p><a href="./book/bookRentList.book?id=${member.id }">Book Rent List O</a></p>
+	<p><a href="./member/memberUpdatePwCheck.member">MyPage Update</a></p>
+	<p><a href="./market/marketDealsList.market?id=${member.id }">Market Order List</a></p>
+	<p><a href="./seat/seatTotalList.seat?id=${member.id }">Seat Rent List</a></p>
+	<p><a href="./book/bookRentList.book?id=${member.id }">Book Rent List</a></p>
 	<p><a href="./book/bookOrderList.book?id=${member.id }">Book Order List</a></p>
 	<p><a href="./book/bookOrderWishList.book?id=${member.id }">Basket Book Order List</a></p>
 	<p><a href="./book/bookRentWishList.book?id=${member.id }">Basket Book Rent List</a></p>
 	</c:if>
-	
 	
 	<h2>kim</h2>
 	<p><a href="./member/memberLogin.member">login</a>
