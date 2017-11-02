@@ -24,7 +24,7 @@ public class Book_Buy_WishDAO {
 			book_Buy_WishDTO.setNum(rs.getInt("num"));
 			book_Buy_WishDTO.setTitle(rs.getString("title"));
 			book_Buy_WishDTO.setWriter(rs.getString("writer"));
-			book_Buy_WishDTO.setPublish_date(rs.getDate("publish_date"));
+			book_Buy_WishDTO.setPublish_date(rs.getString("publish_date"));
 			book_Buy_WishDTO.setLibrary(rs.getInt("library"));
 			book_Buy_WishDTO.setId(rs.getString("id"));
 			book_Buy_WishDTO.setPrice(rs.getInt("price"));

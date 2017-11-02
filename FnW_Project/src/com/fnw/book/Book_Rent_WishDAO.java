@@ -24,7 +24,7 @@ public class Book_Rent_WishDAO {
 			book_Rent_WishDTO.setTitle(rs.getString("title"));
 			book_Rent_WishDTO.setWriter(rs.getString("writer"));
 			book_Rent_WishDTO.setCompany(rs.getString("company"));
-			book_Rent_WishDTO.setPublish_date(rs.getDate("publish_date"));
+			book_Rent_WishDTO.setPublish_date(rs.getString("publish_date"));
 			book_Rent_WishDTO.setSection(rs.getString("section"));
 			book_Rent_WishDTO.setLibrary(rs.getInt("library"));
 			book_Rent_WishDTO.setId(rs.getString("id"));

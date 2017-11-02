@@ -35,7 +35,7 @@ public class Book_Rent_DetailsDAO {
 			book_Rent_DetailsDTO.setSection(rs.getString("section"));
 			book_Rent_DetailsDTO.setWriter(rs.getString("writer"));
 			book_Rent_DetailsDTO.setCompany(rs.getString("company"));
-			book_Rent_DetailsDTO.setPublish_date(rs.getDate("publish_date"));
+			book_Rent_DetailsDTO.setPublish_date(rs.getString("publish_date"));
 			book_Rent_DetailsDTO.setId(rs.getString("id"));
 			book_Rent_DetailsDTO.setLibrary(rs.getInt("library"));
 			book_Rent_DetailsDTO.setIn_time(rs.getDate("in_time"));
@@ -64,7 +64,7 @@ public class Book_Rent_DetailsDAO {
 			book_Rent_DetailsDTO.setSection(rs.getString("section"));
 			book_Rent_DetailsDTO.setWriter(rs.getString("writer"));
 			book_Rent_DetailsDTO.setCompany(rs.getString("company"));
-			book_Rent_DetailsDTO.setPublish_date(rs.getDate("publish_date"));
+			book_Rent_DetailsDTO.setPublish_date(rs.getString("publish_date"));
 			book_Rent_DetailsDTO.setId(rs.getString("id"));
 			book_Rent_DetailsDTO.setLibrary(rs.getInt("library"));
 			book_Rent_DetailsDTO.setIn_time(rs.getDate("in_time"));

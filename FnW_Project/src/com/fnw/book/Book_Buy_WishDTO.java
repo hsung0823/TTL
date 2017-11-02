@@ -6,7 +6,7 @@ public class Book_Buy_WishDTO {
 	private int num;
 	private String title;
 	private String writer;
-	private Date publish_date;
+	private String publish_date;
 	private int library;
 	private String id;
 	private int price;
@@ -30,10 +30,11 @@ public class Book_Buy_WishDTO {
 	public void setWriter(String writer) {
 		this.writer = writer;
 	}
-	public Date getPublish_date() {
+	
+	public String getPublish_date() {
 		return publish_date;
 	}
-	public void setPublish_date(Date publish_date) {
+	public void setPublish_date(String publish_date) {
 		this.publish_date = publish_date;
 	}
 	public int getLibrary() {

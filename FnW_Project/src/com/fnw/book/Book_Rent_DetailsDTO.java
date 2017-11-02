@@ -9,7 +9,7 @@ public class Book_Rent_DetailsDTO {
 	private String section;
 	private String writer;
 	private String company;
-	private Date publish_date;
+	private String publish_date;
 	private String id;
 	private int library;
 	private Date in_time;
@@ -46,10 +46,11 @@ public class Book_Rent_DetailsDTO {
 	public void setCompany(String company) {
 		this.company = company;
 	}
-	public Date getPublish_date() {
+	
+	public String getPublish_date() {
 		return publish_date;
 	}
-	public void setPublish_date(Date publish_date) {
+	public void setPublish_date(String publish_date) {
 		this.publish_date = publish_date;
 	}
 	public String getId() {
