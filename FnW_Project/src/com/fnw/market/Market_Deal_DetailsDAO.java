@@ -7,18 +7,18 @@ import java.util.ArrayList;
 
 import com.fnw.util.DBConnector;
 
-public class Book_Deal_DetailsDAO {
-	public ArrayList<Book_Deal_DetailsDTO> selectList(String id) throws Exception {
+public class Market_Deal_DetailsDAO {
+	public ArrayList<Market_Deal_DetailsDTO> selectList(String id) throws Exception {
 		Connection con = DBConnector.getConnect();
-		String sql ="select rownum R, M.* from book_deal_details M where id=? order by num asc";
+		String sql ="select rownum R, M.* from market_deal_details M where id=? order by num asc";
 		PreparedStatement st = con.prepareStatement(sql);
 		st.setString(1, id);
 		ResultSet rs = st.executeQuery();
 
-		ArrayList<Book_Deal_DetailsDTO> ar = new ArrayList<>();
-		Book_Deal_DetailsDTO book_Deal_DetailsDTO = null;
+		ArrayList<Market_Deal_DetailsDTO> ar = new ArrayList<>();
+		Market_Deal_DetailsDTO book_Deal_DetailsDTO = null;
 		while(rs.next()) {
-			book_Deal_DetailsDTO = new Book_Deal_DetailsDTO();
+			book_Deal_DetailsDTO = new Market_Deal_DetailsDTO();
 			book_Deal_DetailsDTO.setNum(rs.getInt("num"));
 			book_Deal_DetailsDTO.setTitle(rs.getString("title"));
 			book_Deal_DetailsDTO.setWriter(rs.getString("writer"));
@@ -36,17 +36,17 @@ public class Book_Deal_DetailsDAO {
 		DBConnector.disConnect(rs, st, con);
 		return ar;
 	}
-	public Book_Deal_DetailsDTO selectOne(int num) throws Exception{
+	public Market_Deal_DetailsDTO selectOne(int num) throws Exception{
 		Connection con = DBConnector.getConnect();
-		String sql = "select * from book_deal_details where num=?";
+		String sql = "select * from market_deal_details where num=?";
 		PreparedStatement st = con.prepareStatement(sql);
 		st.setInt(1, num);
 
 		ResultSet rs = st.executeQuery();
 
-		Book_Deal_DetailsDTO book_Deal_DetailsDTO = null;
+		Market_Deal_DetailsDTO book_Deal_DetailsDTO = null;
 		while(rs.next()) {
-			book_Deal_DetailsDTO = new Book_Deal_DetailsDTO();
+			book_Deal_DetailsDTO = new Market_Deal_DetailsDTO();
 			book_Deal_DetailsDTO.setNum(rs.getInt("num"));
 			book_Deal_DetailsDTO.setTitle(rs.getString("title"));
 			book_Deal_DetailsDTO.setWriter(rs.getString("writer"));
@@ -65,7 +65,7 @@ public class Book_Deal_DetailsDAO {
 	}
 	public int delete(int num) throws Exception{
 		Connection con = DBConnector.getConnect();
-		String sql = "delete from book_deal_details where num=?";
+		String sql = "delete from market_deal_details where num=?";
 		PreparedStatement st = con.prepareStatement(sql);
 		st.setInt(1, num);
 		
