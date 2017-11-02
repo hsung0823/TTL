@@ -23,7 +23,7 @@ public class Market_TotalDAO {
 			market_TotalDTO.setTitle(rs.getString("title"));
 			market_TotalDTO.setWriter(rs.getString("writer"));
 			market_TotalDTO.setCompany(rs.getString("company"));
-			market_TotalDTO.setPublish_date(rs.getDate("publish_date"));
+			market_TotalDTO.setPublish_date(rs.getString("publish_date"));
 			market_TotalDTO.setLibrary(rs.getInt("library"));
 			market_TotalDTO.setPrice(rs.getInt("price"));
 			market_TotalDTO.setId(rs.getString("id"));
@@ -50,7 +50,7 @@ public class Market_TotalDAO {
 			market_TotalDTO.setTitle(rs.getString("title"));
 			market_TotalDTO.setWriter(rs.getString("writer"));
 			market_TotalDTO.setCompany(rs.getString("company"));
-			market_TotalDTO.setPublish_date(rs.getDate("publish_date"));
+			market_TotalDTO.setPublish_date(rs.getString("publish_date"));
 			market_TotalDTO.setLibrary(rs.getInt("library"));
 			market_TotalDTO.setPrice(rs.getInt("price"));
 			market_TotalDTO.setId(rs.getString("id"));

@@ -30,7 +30,7 @@ public class Market_Deal_DetailsDAO {
 			book_Deal_DetailsDTO.setTitle(rs.getString("title"));
 			book_Deal_DetailsDTO.setWriter(rs.getString("writer"));
 			book_Deal_DetailsDTO.setCompany(rs.getString("company"));
-			book_Deal_DetailsDTO.setPublish_date(rs.getDate("publish_date"));
+			book_Deal_DetailsDTO.setPublish_date(rs.getString("publish_date"));
 			book_Deal_DetailsDTO.setId(rs.getString("id"));
 			book_Deal_DetailsDTO.setT_date(rs.getDate("t_date"));
 			book_Deal_DetailsDTO.setPrice(rs.getInt("price"));
@@ -58,7 +58,7 @@ public class Market_Deal_DetailsDAO {
 			book_Deal_DetailsDTO.setTitle(rs.getString("title"));
 			book_Deal_DetailsDTO.setWriter(rs.getString("writer"));
 			book_Deal_DetailsDTO.setCompany(rs.getString("company"));
-			book_Deal_DetailsDTO.setPublish_date(rs.getDate("publish_date"));
+			book_Deal_DetailsDTO.setPublish_date(rs.getString("publish_date"));
 			book_Deal_DetailsDTO.setId(rs.getString("id"));
 			book_Deal_DetailsDTO.setT_date(rs.getDate("t_date"));
 			book_Deal_DetailsDTO.setPrice(rs.getInt("price"));
