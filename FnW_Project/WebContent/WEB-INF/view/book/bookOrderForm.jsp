@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -9,10 +9,19 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <title>Insert title here</title>
+<script type="text/javascript">
+
+	$(function() {
+		var library = ${member.library}
+	});
+
+</script>
 </head>
 <body>
 	<h3>Book_Order_Form</h3>
-	<form action="">
+	<div style = "height: 50px"></div>
+	<form action="./bookOrderForm.book" method="post">
+		<input type = "hidden" class = "form-control" name = "id" value = ${member.id}>
 		<table class = "table">
 			<tr>
 				<td>서명</td>
@@ -29,11 +38,21 @@
 			<tr>
 				<td>가격</td>
 				<td><input type = "text" class = "form-control" name = "price"></td>
-				<td>비고</td>
+				<td>신청사유</td>
 				<td><input type = "textarea" class = "form-control" name = "contents"></td>
 			</tr>
-			
+			<tr>
+				<td>비치 도서관</td>
+				<td><select name = "library">
+					<option value = "1" id = "1">기흥구</option>
+					<option value = "2" id = "2">송파구</option>
+					<option value = "3" id = "3">장안구</option>
+					<option value = "4" id = "4">강남구</option>
+					<option value = "5" id = "5">분당구</option>
+				</select></td>
+			</tr>
 		</table>
+		<button style = "text-align: center;" class = "btn btn-default" type = "submit">CONFIRM</button>
 	</form>
 
 </body>

@@ -9,6 +9,26 @@ import java.util.ArrayList;
 import com.fnw.util.DBConnector;
 
 public class Book_OrderDAO {
+	
+	//구매 도서 신청
+	public int insert(Book_OrderDTO book_OrderDTO) throws Exception {
+		Connection con = DBConnector.getConnect();
+		String sql = "insert into book_order values((select nvl(max(num),0) from book_order)+1,?,?,?,?,?,?,?,?,1,0)";
+		PreparedStatement st = con.prepareStatement(sql);
+		st.setString(1, book_OrderDTO.getTitle());
+		st.setString(2, book_OrderDTO.getWriter());
+		st.setString(3, book_OrderDTO.getCompany());
+		st.setString(4, book_OrderDTO.getPublish_date());
+		st.setString(5, book_OrderDTO.getContents());
+		st.setString(6, book_OrderDTO.getId());
+		st.setInt(7, book_OrderDTO.getPrice());
+		st.setInt(8, book_OrderDTO.getLibrary());
+
+		int result = st.executeUpdate();
+		DBConnector.disConnect(st, con);
+		return result;
+	}
+
 	public ArrayList<Book_OrderDTO> selectList(String id) throws Exception {
 		Connection con = DBConnector.getConnect();
 		String sql = "select * from book_order where id=?";
@@ -18,14 +38,14 @@ public class Book_OrderDAO {
 		ResultSet rs = st.executeQuery();
 		ArrayList<Book_OrderDTO> list = new ArrayList<>();
 		Book_OrderDTO book_OrderDTO = null;
-		
+	
 		while(rs.next()) {
 			book_OrderDTO = new Book_OrderDTO();
 			book_OrderDTO.setNum(rs.getInt("num"));
 			book_OrderDTO.setTitle(rs.getString("title"));
 			book_OrderDTO.setWriter(rs.getString("writer"));
 			book_OrderDTO.setCompany(rs.getString("company"));
-			book_OrderDTO.setPublish_date(rs.getDate("publish_date"));
+			book_OrderDTO.setPublish_date(rs.getString("publish_date"));
 			book_OrderDTO.setContents(rs.getString("contents"));
 			book_OrderDTO.setId(rs.getString("id"));
 			book_OrderDTO.setPrice(rs.getInt("price"));
@@ -36,7 +56,7 @@ public class Book_OrderDAO {
 			
 			list.add(book_OrderDTO);
 		}
-		
+
 		DBConnector.disConnect(rs, st, con);
 		return list;
 	}
@@ -54,7 +74,7 @@ public class Book_OrderDAO {
 			bookOrderDTO.setTitle(rs.getString("title"));
 			bookOrderDTO.setWriter(rs.getString("writer"));
 			bookOrderDTO.setCompany(rs.getString("company"));
-			bookOrderDTO.setPublish_date(rs.getDate("publish_date"));
+			bookOrderDTO.setPublish_date(rs.getString("publish_date"));
 			bookOrderDTO.setContents(rs.getString("contents"));
 			bookOrderDTO.setLibrary(rs.getInt("library"));
 			bookOrderDTO.setId(rs.getString("id"));
@@ -82,7 +102,7 @@ public class Book_OrderDAO {
 		st.setString(1, book_OrderDTO.getTitle());
 		st.setString(2, book_OrderDTO.getWriter());
 		st.setString(3, book_OrderDTO.getCompany());
-		st.setDate(4, book_OrderDTO.getPublish_date());
+		st.setString(4, book_OrderDTO.getPublish_date());
 		st.setString(5, book_OrderDTO.getContents());
 		st.setInt(6, book_OrderDTO.getPrice());
 		st.setInt(7, book_OrderDTO.getLibrary());

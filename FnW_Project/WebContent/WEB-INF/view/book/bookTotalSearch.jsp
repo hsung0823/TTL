@@ -74,12 +74,12 @@
 			
 			<c:forEach begin="${page.startNum}" end="${page.lastNum}" var="i">
 			<li><a
-				href="./${requestScope.board}List.${requestScope.board}?curPage=${i}">${i}</a></li>
+				href="./${requestScope.list}List.${requestScope.list}?curPage=${i}">${i}</a></li>
 			</c:forEach>
 			
 			<c:if test="${page.curBlock < page.totalBlock}">
 			<li><a
-				href="./${requestScope.board}List.${requestScope.board}?curPage=${requestScope.page.lastNum+1}">[다음]</a></li>
+				href="./${requestScope.list}List.${requestScope.list}?curPage=${requestScope.page.lastNum+1}">[다음]</a></li>
 			</c:if>
 			
 		</ul>
