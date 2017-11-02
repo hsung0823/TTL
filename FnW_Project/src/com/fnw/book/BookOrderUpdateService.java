@@ -34,7 +34,7 @@ public class BookOrderUpdateService implements Action {
 				book_OrderDTO.setTitle(request.getParameter("title"));
 				book_OrderDTO.setWriter(request.getParameter("writer"));
 				book_OrderDTO.setCompany(request.getParameter("company"));
-				book_OrderDTO.setPublish_date(Date.valueOf(request.getParameter("publish_date")));
+				book_OrderDTO.setPublish_date(request.getParameter("publish_date"));
 				book_OrderDTO.setContents(request.getParameter("contents"));
 				book_OrderDTO.setPrice(Integer.parseInt(request.getParameter("price")));
 				book_OrderDTO.setLibrary(Integer.parseInt(request.getParameter("library")));
