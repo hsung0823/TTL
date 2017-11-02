@@ -23,12 +23,25 @@ function chk(){
   alert("개인정보 약관에 동의하셔야 합니다.");
  }
 }
-function all_chk() {
-	form.req1.checked = true;
-	form.req2.checked = true;
-	form.req3.checked = true;
+
+
+function all_chk() 
+{
+	if((form.req1.checked||form.req1.checked||form.req1.checked)==false)
+		{
+		form.req1.checked = true;
+		form.req2.checked = true;
+		form.req3.checked = true;
+		}
+	else if((form.req1.checked||form.req1.checked||form.req1.checked)==true)
+		{
+			form.req1.checked = false;
+			form.req2.checked = false;
+			form.req3.checked = false;
+		}
 
 }
+
 function nochk(){
  alert("동의하지 않으면 가입하실 수 없습니다");
 location.href="../index.jsp";
@@ -71,7 +84,7 @@ location.href="../index.jsp";
    <td>
     <input type="button" value="동의" onclick="chk()"/>&nbsp;
     <input type="button" value="동의하지 않습니다" onclick="nochk()"/>&nbsp;
-    <input type="button" value="전체 동의" onclick="all_chk()"/>
+    <input type="button" value="전체 동의" name="allCheck" onclick="all_chk()"/>
    </td>
   </tr>
  </table>

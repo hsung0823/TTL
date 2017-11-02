@@ -63,7 +63,6 @@ public class BookController extends HttpServlet {
 				Class obj = Class.forName(value);;
 				Object instance = obj.newInstance();
 				
-				System.out.println(instance);		
 				//8. map 에 넣기
 				map.put(key, instance);
 			

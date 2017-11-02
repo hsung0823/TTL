@@ -5,6 +5,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.fnw.action.Action;
 import com.fnw.action.ActionFoward;
+import com.fnw.member.MemberDTO;
 
 public class BookRentWishDeleteService implements Action {
 
@@ -18,13 +19,13 @@ public class BookRentWishDeleteService implements Action {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+		String id = ((MemberDTO)request.getSession().getAttribute("member")).getId();
 		if(result>0) {
 			request.setAttribute("message", "삭제 완료");
-			request.setAttribute("path", "./bookRentWishList.book");
+			request.setAttribute("path", "./bookRentWishList.book?curPage=1&id="+id);
 		}else {
 			request.setAttribute("message", "삭제 실패");
-			request.setAttribute("path", "./bookRentWishList.book");
+			request.setAttribute("path", "./bookRentWishList.book?curPage=1&id="+id);
 		}
 		actionFoward.setCheck(true);
 		actionFoward.setPath("../WEB-INF/view/common/result.jsp");

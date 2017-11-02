@@ -60,7 +60,6 @@ public class MemberController extends HttpServlet {
 				//7. value 객체 생성
 				Class obj = Class.forName(value);
 				Object instance = obj.newInstance();
-				System.out.println(instance);
 				//8. map 에 넣기
 				map.put(key, instance);
 			}

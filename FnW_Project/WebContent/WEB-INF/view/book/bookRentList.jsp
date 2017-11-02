@@ -26,7 +26,7 @@
 		<c:forEach items="${bookRentList }" var="bookRent_list">
 			<tr>
 			<td>${bookRent_list.num }</td>
- 				<td><a href="./bookOrderDetails.book?num=${bookRent_list.num }">${bookRent_list.title }</a></td>
+ 				<td><a href="./bookRentDetails.book?num=${bookRent_list.num }">${bookRent_list.title }</a></td>
  				<td>${bookRent_list.section }</td>
 				<td>${bookRent_list.writer }</td>
 				<td>${bookRent_list.company }</td>
@@ -39,5 +39,20 @@
 			</tr>
 		</c:forEach>
 	</table>
+	<div>
+		<ul class="pagination">
+			<c:if test="${page.curBlock>1}">
+			<li><button class="go" id="${page.startNum-1}">[이전]</button></li>
+			</c:if>
+			<c:forEach begin="${page.startNum}" end="${page.lastNum}" var="i">
+			<li><a
+				href="./bookRentList.book?curPage=${i}&id=${id }">${i}</a></li>
+			</c:forEach>
+			<c:if test="${page.curBlock < page.totalBlock}">
+			<li><a
+				href="./bookRentList.book?curPage=${requestScope.page.lastNum+1}">[다음]</a></li>
+			</c:if>
+		</ul>
+	</div>
 </body>
 </html>

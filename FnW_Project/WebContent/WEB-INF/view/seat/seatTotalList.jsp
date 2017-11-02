@@ -29,5 +29,20 @@
 			</tr>
 		</c:forEach>
 	</table>
+	<div>
+		<ul class="pagination">
+			<c:if test="${page.curBlock>1}">
+			<li><button class="go" id="${page.startNum-1}">[이전]</button></li>
+			</c:if>
+			<c:forEach begin="${page.startNum}" end="${page.lastNum}" var="i">
+			<li><a
+				href="./seatTotalList.seat?curPage=${i}&id=${id }">${i}</a></li>
+			</c:forEach>
+			<c:if test="${page.curBlock < page.totalBlock}">
+			<li><a
+				href="./seatTotalList.seat?curPage=${requestScope.page.lastNum+1}">[다음]</a></li>
+			</c:if>
+		</ul>
+	</div>
 </body>
 </html>

@@ -61,7 +61,6 @@ public class SeatController extends HttpServlet {
 				Class obj = Class.forName(value);
 				Object instance = obj.newInstance();
 				
-				System.out.println(instance);
 				
 				map.put(key, instance);
 				
