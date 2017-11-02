@@ -21,7 +21,6 @@
 	<p><a href="./book/bookRentWishList.book?id=${member.id }">Basket Book Rent List</a></p>
 	</c:if>
 	
-	
 	<h2>kim</h2>
 	<p><a href="./member/memberLogin.member">login</a>
 	<p><a href="./member/memberJoin.member">Join</a>
@@ -31,6 +30,7 @@
 	
 	<p><a href="./member/memberIdFind.member">Id Find</a>
 	<p><a href="./member/memberPwFind.member">Pw Find</a>
+	<p><a href="./member/memberJoinAgree.member">Join Agree</a></p>
 	
 	<c:if test="${empty sessionScope.member }">
 		login plz
