@@ -25,7 +25,7 @@
 		<c:forEach items="${bookDeals }" var="bookDeals_list">
 			<tr>
 			<td>${bookDeals_list.num }</td>
- 				<td><a href="./bookDealsDetails.market?num=${bookDeals_list.num }">${bookDeals_list.title }</a></td>
+ 				<td><a href="./marketDealsDetails.market?num=${bookDeals_list.num }">${bookDeals_list.title }</a></td>
 				<td>${bookDeals_list.writer }</td>
 				<td>${bookDeals_list.company }</td>
 				<td>${bookDeals_list.publish_date }</td>
