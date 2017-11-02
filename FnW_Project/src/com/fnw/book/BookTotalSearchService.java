@@ -13,8 +13,6 @@ import com.fnw.member.MemberDTO;
 import com.fnw.util.PageMaker;
 
 public class BookTotalSearchService implements Action {
-
-	
 	
 	@Override
 	public ActionFoward doProcess(HttpServletRequest request, HttpServletResponse response) {
@@ -33,19 +31,19 @@ public class BookTotalSearchService implements Action {
 			try {
 				curPage=Integer.parseInt(request.getParameter("curPage"));
 			}catch (Exception e) {
-				e.printStackTrace();
 			}
 	
 			String kind = request.getParameter("kind");
-			if(kind==null) {
-				kind="title";
-			}
+			System.out.println("kind:"+kind);
+				if(kind==null) {
+					kind="title";
+				}
 			String search=request.getParameter("search");
-			if(search==null) {
-				search="";
-			}
+			System.out.println("search:" +search);
+				if(search==null) {
+					search="";
+				}
 
-			String message = "검색 결과가 없습니다";
 			int totalCount=0;
 			try {
 				totalCount = book_TotalDAO.getTotalCount(kind, search);
@@ -54,14 +52,14 @@ public class BookTotalSearchService implements Action {
 				request.setAttribute("list", ar);
 				request.setAttribute("page", pageMaker.getMakePage());
 				request.setAttribute("board", "notice");
-				message = null;
+				
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-
+			
 			actionFoward.setCheck(true);
-			actionFoward.setPath("../WEB-INF/common/result.jsp");
+			actionFoward.setPath("../WEB-INF/view/book/bookTotalSearch.jsp");
 		}
 		return actionFoward;
 	}

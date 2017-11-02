@@ -23,7 +23,7 @@
 	</c:if>
 
 	<h2>김앤신(통합포털)</h2>
-	<p><a href="./book/total_book_search.book">Book_search</a>
+	<p><a href="./book/bookTotalSearch.book">Book_search</a>
 	<p><a href="./member/memberLogin.member">Login</a>
 	<p><a href="./member/memberJoin.member">Join</a>
 	<p><a href="./member/memberLogout.member">Logout</a>
