@@ -12,10 +12,10 @@
 <p>
    <!--  <button onclick="setCenter()">지도 중심좌표 이동시키기</button> 
     <button onclick="panTo()">지도 중심좌표 부드럽게 이동시키기</button>  -->
-    <button onclick="panTo1()">1</button>
-    <button onclick="panTo2()">2</button>
-    <button onclick="panTo3()">3</button>
-    <button onclick="panTo4()">4</button>
+    <button onclick="panTo1()">kim</button>
+    <button onclick="panTo2()">Gee</button>
+    <button onclick="panTo3()">hs</button>
+    <button onclick="panTo4()">kh</button>
     ${library[0].x_position }
     ${library[1].x_position }
     ${library[2].x_position }
