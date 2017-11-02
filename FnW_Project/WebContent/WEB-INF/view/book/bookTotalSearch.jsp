@@ -39,6 +39,61 @@
 			</form>
 		</div>
 		
+		${ requestScope.list }
+		
+		
+		<table class="table table-hover">
+		<tr>
+			<td>num</td>
+			<td>title</td>
+			<td>writer</td>
+			<td>date</td>
+			<td>hit</td>
+		</tr>
+		<c:forEach items="${requestScope.list}" var="dto">
+
+		<tr>
+			<td>${dto.num}</td>
+			<td>
+			<c:catch>
+			<c:forEach begin="0" end="${dto.length}">
+				--
+			</c:forEach>
+			</c:catch>
+			<a href="./${requestScope.list}View.${requestScope.list}?num=${dto.num}">${dto.title}</a>
+			</td>
+			<td>${dto.title}</td>
+			<td>${dto.writer}</td>
+			<td>${dto.company}</td>
+		</tr>
+		</c:forEach>
+	</table>
+		
+	
+	<!-- 페이지네이션 -->	
+	<div>
+		<ul class="pagination">
+			<c:if test="${page.curBlock>1}">
+			<li><button class="go" id="${page.startNum-1}">[이전]</button></li>
+			</c:if>
+			
+			<c:forEach begin="${page.startNum}" end="${page.lastNum}" var="i">
+			<li><a
+				href="./${requestScope.board}List.${requestScope.board}?curPage=${i}">${i}</a></li>
+			</c:forEach>
+			
+			<c:if test="${page.curBlock < page.totalBlock}">
+			<li><a
+				href="./${requestScope.board}List.${requestScope.board}?curPage=${requestScope.page.lastNum+1}">[다음]</a></li>
+			</c:if>
+			
+		</ul>
+
+
+
+	</div>
+	
+		
 	</section>
 
 </body>

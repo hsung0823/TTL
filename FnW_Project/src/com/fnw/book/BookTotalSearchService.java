@@ -45,7 +45,6 @@ public class BookTotalSearchService implements Action {
 				search="";
 			}
 
-			String message = "검색 결과가 없습니다";
 			int totalCount=0;
 			try {
 				totalCount = book_TotalDAO.getTotalCount(kind, search);
@@ -54,14 +53,13 @@ public class BookTotalSearchService implements Action {
 				request.setAttribute("list", ar);
 				request.setAttribute("page", pageMaker.getMakePage());
 				request.setAttribute("board", "notice");
-				message = null;
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 
 			actionFoward.setCheck(true);
-			actionFoward.setPath("../WEB-INF/common/result.jsp");
+			actionFoward.setPath("../WEB-INF/book/bookTotalSearch.jsp");
 		}
 		return actionFoward;
 	}
