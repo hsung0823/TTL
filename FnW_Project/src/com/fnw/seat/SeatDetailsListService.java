@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.fnw.action.Action;
 import com.fnw.action.ActionFoward;
+import com.fnw.member.MemberDTO;
 import com.fnw.util.PageMaker;
 
 public class SeatDetailsListService implements Action {
@@ -16,32 +17,45 @@ public class SeatDetailsListService implements Action {
 		ActionFoward actionFoward = new ActionFoward();
 		ArrayList<Seat_DetailsDTO> list = new ArrayList<>();
 
+		String id = ((MemberDTO)request.getSession().getAttribute("member")).getId();
+
 		int curPage=1;
 		try {
 			curPage=Integer.parseInt(request.getParameter("curPage"));
 		}catch(Exception e) {
 			curPage=1;
 		}
+
+		String year = request.getParameter("year");
+		if(year == null) {
+			year="17";
+		}
+		String month = request.getParameter("month");
+		if(month == null) {
+			month="11";
+		}		
 		
-		String kind = request.getParameter("kind");
-		if(kind==null) {
-			kind="LIBRARY";
-		}
-		String search=request.getParameter("search");
-		if(search==null) {
-			search="1";
-		}
+		String day = request.getParameter("day");
+		if(day == null) {
+			day="03";
+		}		
+		String p_date = year+"/"+month+"/"+day;
 		
 		int totalCount=0;
-		String id = request.getParameter("id");
 		Seat_DetailsDAO seat_DetailsDAO = new Seat_DetailsDAO();
 		
 		try {
-			totalCount = seat_DetailsDAO.getTotalCount("LIBRARY", "1");
+			totalCount = seat_DetailsDAO.getTotalCount(p_date);
+			if(totalCount==0) {
+				totalCount=1;
+			}
 			PageMaker pageMaker = new PageMaker(curPage, totalCount);
-			list = seat_DetailsDAO.selectList(id,pageMaker.getMakeRow(), "LIBRARY", "1");
+			list = seat_DetailsDAO.selectList(id,pageMaker.getMakeRow(), p_date);
 			request.setAttribute("seatList", list);
 			request.setAttribute("id", id);
+			request.setAttribute("year", year);
+			request.setAttribute("month", month);
+			request.setAttribute("day", day);
 			request.setAttribute("page", pageMaker.getMakePage());
 		} catch (Exception e) {
 			e.printStackTrace();

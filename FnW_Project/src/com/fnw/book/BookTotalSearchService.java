@@ -17,45 +17,42 @@ public class BookTotalSearchService implements Action {
 	public ActionFoward doProcess(HttpServletRequest request, HttpServletResponse response) {
 
 		ActionFoward actionFoward = new ActionFoward();
-		String method = request.getMethod();
 		ArrayList<Book_TotalDTO> ar = new ArrayList<>();
 
 		int curPage=1;
-		
-		if(method.equals("GET")) {
-			actionFoward.setCheck(true);
-			actionFoward.setPath("../WEB-INF/view/book/bookTotalSearch.jsp");
-		} else {
-			Book_TotalDAO book_TotalDAO = new Book_TotalDAO();
-			try {
-				curPage=Integer.parseInt(request.getParameter("curPage"));
-			}catch (Exception e) {
-				e.printStackTrace();
-			}
 	
-			String kind = request.getParameter("kind");
-			if(kind==null) {
-				kind="title";
-			}
-			String search=request.getParameter("search");
-			if(search==null) {
-				search="";
-			}
-
-			int totalCount=0;
-			try {
-				totalCount = book_TotalDAO.getTotalCount(kind, search);
-				PageMaker pageMaker = new PageMaker(curPage, totalCount);
-				ar = book_TotalDAO.selectList(pageMaker.getMakeRow(), kind, search);
-				request.setAttribute("list", ar);
-				request.setAttribute("page", pageMaker.getMakePage());
-				request.setAttribute("board", "notice");
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-			actionFoward.setCheck(true);
-			actionFoward.setPath("../WEB-INF/view/book/bookTotalSearch.jsp");
+		Book_TotalDAO book_TotalDAO = new Book_TotalDAO();
+		try {
+			curPage=Integer.parseInt(request.getParameter("curPage"));
+		}catch (Exception e) {
+			e.printStackTrace();
 		}
+
+		String kind = request.getParameter("kind");
+		if(kind==null) {
+			kind="title";
+		}
+		String search=request.getParameter("search");
+		if(search==null) {
+			search="";
+		}
+
+		int totalCount=0;
+		try {
+			totalCount = book_TotalDAO.getTotalCount(kind, search);
+			PageMaker pageMaker = new PageMaker(curPage, totalCount);
+			ar = book_TotalDAO.selectList(pageMaker.getMakeRow(), kind, search);
+			request.setAttribute("list", ar);
+			request.setAttribute("page", pageMaker.getMakePage());
+			request.setAttribute("kind", kind);
+			request.setAttribute("search", search);
+			request.setAttribute("board", "notice");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		actionFoward.setCheck(true);
+		actionFoward.setPath("../WEB-INF/view/book/bookTotalSearch.jsp");
+
 		return actionFoward;
 	}
 }

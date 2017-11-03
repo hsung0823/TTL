@@ -84,10 +84,10 @@ public class Market_Deal_DetailsDAO {
 	}
 	public int getTotalCount(String search) throws Exception {
 		Connection con = DBConnector.getConnect();
-		String sql = "select nvl(count(num), 0) from market_deal_details where publish_date like ?" ;
+		String sql = "select nvl(count(num), 0) from market_deal_details where t_date < ?" ;
 		
 		PreparedStatement st = con.prepareStatement(sql);
-		st.setString(1, "%"+search+"%");
+		st.setString(1, search);
 		ResultSet rs = st.executeQuery();
 		rs.next();
 		int result = rs.getInt(1);
