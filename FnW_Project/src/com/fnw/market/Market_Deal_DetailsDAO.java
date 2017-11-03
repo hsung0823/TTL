@@ -13,10 +13,11 @@ public class Market_Deal_DetailsDAO {
 		Connection con = DBConnector.getConnect();
 		String sql = "select * from "
 				+ "(select rownum R, N.* from "
-				+ "(select * from market_deal_details where PUBLISH_DATE like ? and id=? order by num asc) N)"
+				+ "(select * from market_deal_details where T_date < ? and id=? order by num asc) N)"
 				+ "where R between ? and ?";
+		
 		PreparedStatement st = con.prepareStatement(sql);
-		st.setString(1, "%"+search+"%");
+		st.setString(1, search);
 		st.setString(2, id);
 		st.setInt(3, makeRow.getStartRow());
 		st.setInt(4, makeRow.getLastRow());
@@ -26,6 +27,7 @@ public class Market_Deal_DetailsDAO {
 		Market_Deal_DetailsDTO book_Deal_DetailsDTO = null;
 		while(rs.next()) {
 			book_Deal_DetailsDTO = new Market_Deal_DetailsDTO();
+			book_Deal_DetailsDTO.setId(rs.getString("id"));
 			book_Deal_DetailsDTO.setNum(rs.getInt("num"));
 			book_Deal_DetailsDTO.setTitle(rs.getString("title"));
 			book_Deal_DetailsDTO.setWriter(rs.getString("writer"));

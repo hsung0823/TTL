@@ -6,22 +6,39 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript">
+$(function(){
+		var y = '${year}';
+		
+		$(".years").each(function() {
+			if($(this).val()==y){
+				$(this).attr("selected", true);
+				
+			}
+		});
+		
+	
+	
+});
+</script>
 </head>
 <body>
 	<h2>MarketTotalList-MyPage</h2>
 	<div>
 	<form name="frm" class="form-inline" action="./marketDealsList.market" method="post">
+	
 		<div>
 			<span>
-				<select id="year" value="2017">
-		            <option value="2017">2017</option>
-		            <option value="2016">2016</option>
-		            <option value="2015">2015</option>
-		            <option value="2014">2014</option>
-		            <option value="2013">2013</option>
+				<select id="year" name="year">
+		            <option class="years" value="2017" >2017</option>
+		            <option class="years" value="2016">2016</option>
+		            <option class="years" value="2015">2015</option>
+		            <option class="years" value="2014">2014</option>
+		            <option class="years" value="2013">2013</option>
   			      </select>
        			 년
-       			 <select id="month" value="11">
+       			 <select id="month" name="month">
 		            <option value="01">01</option>
 		            <option value="02">02</option>
 		            <option value="03">03</option>
@@ -36,7 +53,7 @@
 		            <option value="12">12</option>
 		        </select>
     		    월
-		        <select id="day" value="02">
+		        <select id="day" name="day">
 		            <option value="01">01</option>
 		            <option value="02">02</option>
 		            <option value="03">03</option>
