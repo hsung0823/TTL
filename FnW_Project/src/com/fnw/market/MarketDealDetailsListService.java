@@ -26,11 +26,9 @@ public class MarketDealDetailsListService implements Action {
 		}
 
 		String year = request.getParameter("year");
-		System.out.println("1:"+year);
 		if(year == null) {
-			year="2017";
+			year="17";
 		}
-		System.out.println("2:"+year);
 		String month = request.getParameter("month");
 		if(month == null) {
 			month="11";
@@ -38,22 +36,24 @@ public class MarketDealDetailsListService implements Action {
 		
 		String day = request.getParameter("day");
 		if(day == null) {
-			day="2";
+			day="03";
 		}		
-		
 		String p_date = year+"/"+month+"/"+day;
-		
-		System.out.println(p_date);
 
 		int totalCount=0;
 		Market_Deal_DetailsDAO market_Deal_DetailsDAO = new Market_Deal_DetailsDAO();
 		try {
 			totalCount = market_Deal_DetailsDAO.getTotalCount(p_date);
+			if(totalCount==0) {
+				totalCount=1;
+			}
 			PageMaker pageMaker = new PageMaker(curPage, totalCount);
 			list = market_Deal_DetailsDAO.selectList(id,pageMaker.getMakeRow(), p_date);
 			request.setAttribute("bookDeals", list);
 			request.setAttribute("id", id);
 			request.setAttribute("year", year);
+			request.setAttribute("month", month);
+			request.setAttribute("day", day);
 			request.setAttribute("page", pageMaker.getMakePage());
 		} catch (Exception e) {
 			e.printStackTrace();
