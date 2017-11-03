@@ -15,11 +15,11 @@
     <button onclick="panTo1()">kim</button>
     <button onclick="panTo2()">Gee</button>
     <button onclick="panTo3()">hs</button>
-    <button onclick="panTo4()">kh</button>
-    ${library[0].x_position }
-    ${library[1].x_position }
-    ${library[2].x_position }
-    ${library[3].x_position }
+    <button onclick="panTo4()">ssin</button>
+<%--     ${library[0].x_position } --%>
+<%--     ${library[1].x_position } --%>
+<%--     ${library[2].x_position } --%>
+<%--     ${library[3].x_position } --%>
     
 </p>
 

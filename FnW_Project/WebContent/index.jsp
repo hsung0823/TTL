@@ -1,7 +1,7 @@
 ﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 
 <html>
 <head>
@@ -22,7 +22,6 @@
 	<p><a href="./book/bookRentWishList.book?id=${member.id }">Basket Book Rent List</a></p>
 	<p><a href="./seat/seatList.seat">Seat_On List</a></p>
 	</c:if>
-
 
 	<h2>김앤신(통합포털)</h2>
 	<p><a href="./book/bookTotalSearch.book">Book_search</a>
