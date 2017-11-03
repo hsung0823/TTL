@@ -36,7 +36,6 @@ $(function(){
 	<h2>MarketTotalList-MyPage</h2>
 	<div>
 	<form name="frm" class="form-inline" action="./marketDealsList.market" method="post">
-	
 		<div>
 			<span>
 				<select id="year" name="year">
@@ -105,8 +104,6 @@ $(function(){
 		</div>
 		</form>
 	</div>
-
-
 	<table class="table" border="1">
 		<tr>
 			<th>num</th>
