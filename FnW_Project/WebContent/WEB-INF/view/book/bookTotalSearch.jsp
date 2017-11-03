@@ -64,8 +64,7 @@
 								<c:when test="${dto.library == 1 }"><td>kim_lib</td></c:when>
 								<c:when test="${dto.library == 2 }"><td>gee_lib</td></c:when>
 								<c:when test="${dto.library == 3 }"><td>hs_lib</td></c:when>
-								<c:when test="${dto.library == 4 }"><td>kh_lib</td></c:when>
-								<c:when test="${dto.library == 5 }"><td>ssin_lib</td></c:when>
+								<c:when test="${dto.library == 4 }"><td>ssin_lib</td></c:when>
 							</c:choose>
 							
 							<c:choose>
