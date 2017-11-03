@@ -16,13 +16,22 @@
 			if(num == '${check}'){
 				alert("인증 성공!");
 				
-				
-				
-				
+				$.ajax({
+					url: "./memberEmailOk.member",
+					type:"POST",
+					data: {
+						
+					}, success:function(data){
+						
+					}
+					
+				});
 				
 				close();
+				
 			}else{
 				alert("인증 실패!");
+				
 			} 
 			
 		});

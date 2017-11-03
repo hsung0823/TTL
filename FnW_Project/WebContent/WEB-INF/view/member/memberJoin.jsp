@@ -17,19 +17,19 @@
 			/* location.href="./memberEmailCheck.member?email="+email; */
 		});
 		
-		/* $("#mailCheck").click(function(){
-			var email = $("#email").val();
-			$.ajax({
-				url:"../memberJoinEmail.jsp",
-				type:"post",
-				data:{
-					email: email
-				},
-				success:function(data){
-					alert(data);
-				}
-			});
-		});//mailCheck */
+		
+		$("#btn").click(function(){
+			var ok = '${email}';
+			
+		
+			if(ok == 'ok'){
+				alert("ok");
+			}else{
+				alert("no")
+			}
+		});
+		
+		
 	});//
 
 </script>
@@ -46,10 +46,12 @@
 	<p>addr<input type="text" name="addr"></p>
 	<p>phone<input type="text" name="phone"></p>
 	<p>email<input type="text" id="email" name="email"></p>
+	인증여부 : ${email }
 	<input type="button" id="mailCheck" value="이메일 인증"></a>
 	<p>library<input type="number" name="location"></p>
 <!-- 	<p>kind<input type="number" name="kind"></p> -->
 	<p><button type="submit">join</button></p>
+	<input type="button" id="btn" value="go">
 </form>
 
 </body>
