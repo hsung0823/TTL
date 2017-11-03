@@ -9,6 +9,22 @@ import java.sql.Date;
 import com.fnw.util.DBConnector;
 
 public class MemberDAO {
+
+	//totalCount
+	public int getTotalCount(int kind) throws Exception {
+		Connection con = DBConnector.getConnect();
+		String sql = "select nvl(count(id),0) from member where kind = ?" ;
+		
+		PreparedStatement st = con.prepareStatement(sql);
+		st.setInt(1, kind);
+		ResultSet rs = st.executeQuery();
+		rs.next();
+		int result = rs.getInt(1);
+
+		DBConnector.disConnect(rs, st, con);
+		return result;
+	}
+	
 	public int insert(MemberDTO memberDTO) throws Exception{
 		Connection con =  DBConnector.getConnect();
 		String sql = "insert into member values(?,?,?,?,?,?,?,?,?,1)";
