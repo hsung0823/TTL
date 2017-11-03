@@ -1,17 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <title>Insert title here</title>
 </head>
 <body>
 
 	<h3>Integration_Book_Search_Page</h3>
 	<section>
-	
+
 		<div class="row-right">
 			<form name="frm" class="form-inline" action="./bookTotalSearch.book" method="post">
 					<!-- KIND -->
@@ -38,36 +42,49 @@
 						</div>
 					</div>
 			</form>
-			
-			
+		
 			<form action="">
-				<table>
-						<tr>
-							<td>num</td>
-							<td>title</td>
-							<td>writer </td>
-							<td>company </td>
-						</tr>
+				<table class = "table">
+					<tr>
+						<td>번호</td>
+						<td>제목</td>
+						<td>저자</td>
+						<td>출판사</td>
+						<td>비치 도서관</td>
+						<td>대여여부</td>
+					</tr>
 					<c:forEach items="${list }" var="dto">
-						
 						<tr>	
 							<td>${dto.num }</td>
 							<td>${dto.title }</td>
 							<td>${dto.writer }</td>
 							<td>${dto.company }</td>
+							
+							<c:choose>
+								<c:when test="${dto.library == 1 }"><td>kim_lib</td></c:when>
+								<c:when test="${dto.library == 2 }"><td>gee_lib</td></c:when>
+								<c:when test="${dto.library == 3 }"><td>hs_lib</td></c:when>
+								<c:when test="${dto.library == 4 }"><td>kh_lib</td></c:when>
+								<c:when test="${dto.library == 5 }"><td>ssin_lib</td></c:when>
+							</c:choose>
+							
+							<c:choose>
+								<c:when test="${dto.state == 0 }"><td>대여 가능</td></c:when>
+								<c:when test="${dto.state == 1 }"><td>대여 불가</td></c:when>
+							</c:choose>
 						</tr>
 					</c:forEach>
-			
 				</table>
 			</form>
+			
 		</div>
 		
-		${ requestScope.list }
+<%-- 		${ requestScope.list } --%>
 
 
 	<!-- 페이지네이션 -->	
 	<div>
-		<ul class="pagination">
+		<ul style = "text-decoration: none" class="pagination">
 			<c:if test="${page.curBlock>1}">
 			<li><button class="go" id="${page.startNum-1}">[이전]</button></li>
 			</c:if>
