@@ -24,23 +24,36 @@ public class BookRentListService implements Action {
 			curPage=1;
 		}
 		
-		String kind = request.getParameter("kind");
-		if(kind==null) {
-			kind="title";
+		String year = request.getParameter("year");
+		if(year==null) {
+			year="17";
 		}
-		String search = request.getParameter("search");
-		if(search==null) {
-			search="";
+		String month = request.getParameter("month");
+		if(month==null) {
+			month="11";
 		}
+		String day =request.getParameter("day");
+		if(day==null) {
+			day="03";
+		}
+		String p_date = year+"/"+month+"/"+day;
+		
+		System.out.println(p_date);
 		
 		int totalCount = 0;
 		String id = request.getParameter("id");
 		try {
-			totalCount = book_Rent_DetailsDAO.getTotalCount(kind, search);
+			totalCount = book_Rent_DetailsDAO.getTotalCount(p_date);
+			if(totalCount==0) {
+				totalCount=1;
+			}
 			PageMaker pageMaker = new PageMaker(curPage, totalCount);
-			list = book_Rent_DetailsDAO.selectList(id,pageMaker.getMakeRow(),kind,search);
+			list = book_Rent_DetailsDAO.selectList(id,pageMaker.getMakeRow(),p_date);
 			request.setAttribute("bookRentList", list);
 			request.setAttribute("id", id);
+			request.setAttribute("year", year);
+			request.setAttribute("month", month);
+			request.setAttribute("day", day);
 			request.setAttribute("page", pageMaker.getMakePage());
 		} catch (Exception e) {
 			e.printStackTrace();
