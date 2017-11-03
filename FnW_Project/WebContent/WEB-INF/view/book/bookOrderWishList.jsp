@@ -5,12 +5,27 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+	$("#checkAll").click(function() {
+		if($("#checkAll").prop("checked")){
+			$("input[name=Pcheck]").prop("checked",true);
+		}else{
+			$("input[name=Pcheck]").prop("checked",false);
+		}
+	});
+	$("#Pdelete").click(function() {
+	});
+});
+</script>
 <title>Insert title here</title>
 </head>
 <body>
 <h2>Book Order List-Book_Order</h2>
 <table class="table" border="1">
 		<tr>
+			<th>전체선택<input type="checkbox" id="checkAll"></th>
 			<th>num</th>
 			<th>title</th>
 			<th>writer</th>
@@ -22,7 +37,8 @@
 		</tr>
 		<c:forEach items="${bookOrderWishList }" var="bookOrderWish_list">
 			<tr>
-			<td>${bookOrderWish_list.num }</td>
+				<td><input type="checkbox" name="Pcheck" value="${bookOrderWish_list.num }"></td>
+				<td>${bookOrderWish_list.num }</td>
  				<td>${bookOrderWish_list.title }</td>
 				<td>${bookOrderWish_list.writer }</td>
 				<td>${bookOrderWish_list.publish_date }</td>
@@ -34,6 +50,9 @@
 				</c:if>
 			</tr>
 		</c:forEach>
+		<tr>
+			<td><a href=""><input type="button" value="삭제" id="Pdelete"></a></td>
+		</tr>
 	</table>
 	<div>
 		<ul class="pagination">
