@@ -36,7 +36,6 @@ public class Book_OrderDAO {
 				"(select * from book_order where "+kind+" like ? and id=? order by num asc) N)" + 
 				"where R between ? and ?";
 		PreparedStatement st = con.prepareStatement(sql);
-
 		st.setString(1, "%"+search+"%");
 		st.setString(2, id);
 		st.setInt(3, makeRow.getStartRow());
