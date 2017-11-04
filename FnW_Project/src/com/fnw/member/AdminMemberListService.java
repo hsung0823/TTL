@@ -7,58 +7,60 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.fnw.action.Action;
 import com.fnw.action.ActionFoward;
+import com.fnw.util.PageMaker;
 
 public class AdminMemberListService implements Action {
 
 	@Override
 	public ActionFoward doProcess(HttpServletRequest request, HttpServletResponse response) {
 		ActionFoward actionFoward = new ActionFoward();
-		String search = request.getParameter("search");
-		
-		if(search==null) {
-			search = "";
-		}
-
-		MemberDAO memberDAO = new MemberDAO();
-		ArrayList<MemberDTO> ar = null;
+		String method=request.getMethod();
+		int kind = 1;
 		try {
-			ar = memberDAO.selectList();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			kind = Integer.parseInt(request.getParameter("kind"));
+		}catch (Exception e) {
 		}
 		
-		request.setAttribute("list", ar);
-		request.setAttribute("search", search);
-		actionFoward.setCheck(true);
-		actionFoward.setPath("../WEB-INF/view/admin/admin_member_list.jsp");
-		
+		if(method.equals("GET")) {
+			this.pagination(request, kind);
+			
+			actionFoward.setCheck(true);
+			actionFoward.setPath("../WEB-INF/view/admin/admin_member_list.jsp");
+			
+		}else {
+			
+			this.pagination(request, kind);
+			
+			actionFoward.setCheck(true);
+			actionFoward.setPath("../WEB-INF/view/admin/admin_member_list_ajax.jsp");
+		}
 		
 		return actionFoward;
 	}
 
-	public void pagination(HttpServletRequest request, HttpServletResponse response, MemberDAO memberDAO) {
+	public void pagination(HttpServletRequest request, int kind) {
 		int curPage = 1;
-		curPage = Integer.parseInt(request.getParameter("curPage"));
-		
-		int totalCount = 0;
-		
-		int kind=1;
 		try {
-			kind = Integer.parseInt(request.getParameter("kind"));
-		}catch (Exception e) {
-			kind =1;
+			curPage = Integer.parseInt(request.getParameter("curPage"));
+		} catch (Exception e) {
+			curPage=1;
 		}
-		
-		
-				
+		MemberDAO memberDAO = new MemberDAO();
+		int totalCount = 0;
+		ArrayList<MemberDTO> ar = new ArrayList<>();
 		try {
-			memberDAO.getTotalCount(kind);
+			totalCount = memberDAO.getTotalCount(kind);
+			PageMaker pageMaker = new PageMaker(curPage, totalCount);
+			
+			ar = memberDAO.selectList(kind, pageMaker.getMakeRow());
+			request.setAttribute("list", ar);
+			request.setAttribute("page", pageMaker.getMakePage());
+			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
-	}
+	}//pagination 끝
 	
 }

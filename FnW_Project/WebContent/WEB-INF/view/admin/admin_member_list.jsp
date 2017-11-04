@@ -20,21 +20,38 @@
  		$(".kind1").attr("style", "background-color: #fff");
  		$("#btn_admin").attr("style", "background-color: #dcdcdc");
 		
-		$(".kind").attr("style", "display: none");
-		$("#admin").attr("style", "display: block");
+		$.ajax({
+			url:"./memberList.member",
+			type:"POST",
+			data: {
+				kind:10
+			},
+			success:function(data){
+				$("#list").html(data);
+			}
+		});
 		
 		$("#info").html("Admin List");
+		
 	});
 
 	$("#btn_member").click(function() {
 		
  		$(".kind1").attr("style", "background-color: #fff");
  		$("#btn_member").attr("style", "background-color: #dcdcdc");
-		
-		$(".kind").attr("style", "display: none");
-		$("#member").attr("style", "display: block");
-		
-		$("#info").html("Member List");
+ 		
+ 		$.ajax({
+			url:"./memberList.member",
+			type:"post",
+			data: {
+				kind:1
+			},
+			success:function(data){
+				$("#list").html(data);
+			}
+		});
+ 		$("#info").html("Member List");
+ 		
 	});
 
 	$("#btn_black").click(function() {
@@ -42,9 +59,18 @@
 		$(".kind1").attr("style", "background-color: #fff");
 		$("#btn_black").attr("style", "background-color: #dcdcdc");
 	
-		$(".kind").attr("style", "display: none");
-		$("#black").attr("style", "display: block");
+		$.ajax({
+			url:"./memberList.member",
+			type:"post",
+			data: {
+				kind:0
+			},
+			success:function(data){
+				$("#list").html(data);
+			}
+		});
 		$("#info").html("Black List");
+		
 	});
 
 	});
@@ -67,7 +93,9 @@
 				</div>
 			</div>
 	</form>
+	
 	<div style = "height: 50px"></div>
+	
 	<form action="">
 		<table class = "table">
 			<tr>
@@ -80,84 +108,21 @@
 
 	<h2 id="info" >Member List</h2>
 	
-	
-	<table id = "admin" class="table kind" border="1" style = "display: none;">
-		<tr>
-			<th>id</th>
-			<th>pw</th>
-			<th>name</th>
-			<th>birth</th>
-			<th>gender</th>
-			<th>addr</th>
-			<th>phone</th>
-			<th>email</th>
-			<th>library</th>
-			<th>kind</th>
-		</tr>
-		<c:forEach items="${list }" var="dto">
-			<c:if test="${dto.kind == 10 }">
+	<div id = "list"> 
+		<table id = "member" class="kind" border="1">
 			<tr>
-				<td><a href="./memberUpdate.member?id=${dto.id }">${dto.id }</a></td>
-				<td>${dto.pw }</td>
-				<td>${dto.name }</td>
-				<td>${dto.birth }</td>
-				<td>${dto.gender }</td>
-				<td>${dto.addr }</td>
-				<td>${dto.phone }</td>
-				<td>${dto.email }</td>
-				<td>${dto.library }</td>
-				<td>${dto.kind }</td>
+				<th>id</th>
+				<th>pw</th>
+				<th>name</th>
+				<th>birth</th>
+				<th>gender</th>
+				<th>addr</th>
+				<th>phone</th>
+				<th>email</th>
+				<th>library</th>
+				<th>kind</th>
 			</tr>
-			</c:if>
-		</c:forEach>
-	</table>
-
-	<table id = "member" class="table kind" border="1">
-		<tr>
-			<th>id</th>
-			<th>pw</th>
-			<th>name</th>
-			<th>birth</th>
-			<th>gender</th>
-			<th>addr</th>
-			<th>phone</th>
-			<th>email</th>
-			<th>library</th>
-			<th>kind</th>
-		</tr>
-		<c:forEach items="${list }" var="dto">
-			<c:if test="${dto.kind <10 }">
-			<tr>
-				<td><a href="./memberUpdate.member?id=${dto.id }">${dto.id }</a></td>
-				<td>${dto.pw }</td>
-				<td>${dto.name }</td>
-				<td>${dto.birth }</td>
-				<td>${dto.gender }</td>
-				<td>${dto.addr }</td>
-				<td>${dto.phone }</td>
-				<td>${dto.email }</td>
-				<td>${dto.library }</td>
-				<td>${dto.kind }</td>
-			</tr>
-			</c:if>
-		</c:forEach>
-	</table>
-	
-	<table id = "black" class="table kind" border="1" style = "display: none;">
-		<tr>
-			<th>id</th>
-			<th>pw</th>
-			<th>name</th>
-			<th>birth</th>
-			<th>gender</th>
-			<th>addr</th>
-			<th>phone</th>
-			<th>email</th>
-			<th>library</th>
-			<th>kind</th>
-		</tr>
-		<c:forEach items="${list }" var="dto">
-			<c:if test="${dto.kind eq 0 }">
+			<c:forEach items="${list }" var="dto">
 				<tr>
 					<td><a href="./memberUpdate.member?id=${dto.id }">${dto.id }</a></td>
 					<td>${dto.pw }</td>
@@ -170,26 +135,28 @@
 					<td>${dto.library }</td>
 					<td>${dto.kind }</td>
 				</tr>
-			</c:if>
-		</c:forEach>
-	</table>
-
+			</c:forEach>
+		</table>
 		<div style = "text-align: center;">
 			<ul class="pagination pagination-sm">
 				<c:if test="${page.curBlock>1}">
-				<li><a href = "./admin_member_list.member?curPage=${page.startNum-1}&search=${search}">[이전]</a></li>
+				<li><a href = "./memberList.member?curPage=${page.startNum-1}&search=${search}">[이전]</a></li>
 				</c:if>
 				
 				<c:forEach begin="${page.startNum}" end="${page.lastNum}" var="i">
 				<li><a
-					href="./admin_member_list.member?curPage=${i}&search=${search}">${i}</a></li>
+					href="./memberList.member?curPage=${i}">${i}</a></li>
 				</c:forEach>
 
 				<c:if test="${page.curBlock < page.totalBlock}">
-				<li><a href="./admin_member_list.member?curPage=${page.lastNum+1}&search=${search}">[다음]</a></li>
+				<li><a href="./memberList.member?curPage=${page.lastNum+1}&search=${search}">[다음]</a></li>
 				</c:if>
 			</ul>
 		</div>
+	</div>
+
+
+
 
 	<a href="../index.jsp">home</a>
 </body>

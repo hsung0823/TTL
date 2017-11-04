@@ -7,13 +7,14 @@ import java.util.ArrayList;
 import java.sql.Date;
 
 import com.fnw.util.DBConnector;
+import com.fnw.util.MakeRow;
 
 public class MemberDAO {
 
 	//totalCount
 	public int getTotalCount(int kind) throws Exception {
 		Connection con = DBConnector.getConnect();
-		String sql = "select nvl(count(id),0) from member where kind = ?" ;
+		String sql = "select nvl(count(id),0) from member where kind = ?";
 		
 		PreparedStatement st = con.prepareStatement(sql);
 		st.setInt(1, kind);
@@ -176,10 +177,16 @@ public class MemberDAO {
 		return result;
 	}
 	
-	public ArrayList<MemberDTO> selectList() throws Exception {
+	public ArrayList<MemberDTO> selectList(int kind, MakeRow makeRow) throws Exception {
 		Connection con = DBConnector.getConnect();
-		String sql ="select rownum R, M.* from member M order by kind desc, id asc";
+		String sql ="select * from \r\n" + 
+				"(select rownum R, M.* from member M where kind=? order by id asc) N\r\n" + 
+				"where R between ? and ?";
 		PreparedStatement st = con.prepareStatement(sql);
+		st.setInt(1, kind);
+		st.setInt(2, makeRow.getStartRow());
+		st.setInt(3, makeRow.getLastRow());
+		
 		ArrayList<MemberDTO> ar = new ArrayList<>();
 		
 		ResultSet rs = st.executeQuery();
