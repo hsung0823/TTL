@@ -38,7 +38,7 @@
 				
 				<c:forEach begin="${page.startNum}" end="${page.lastNum}" var="i">
 				<li><a
-					href="./memberList.member?curPage=${i}">${i}</a></li>
+					href="./memberList.member?curPage=${i}&kind=${kind}">${i}</a></li>
 				</c:forEach>
 
 				<c:if test="${page.curBlock < page.totalBlock}">

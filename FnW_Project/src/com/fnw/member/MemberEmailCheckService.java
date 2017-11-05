@@ -22,7 +22,7 @@ public class MemberEmailCheckService implements Action {
 		}else {
 			
 			EmailDAO emailDAO = new EmailDAO();
-			int result = emailDAO.send(request, email);
+			emailDAO.send(request, email);
 			actionFoward.setCheck(true);
 			actionFoward.setPath("../WEB-INF/view/member/memberEmailCheck.jsp");
 			

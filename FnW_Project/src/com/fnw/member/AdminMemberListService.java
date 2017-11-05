@@ -24,12 +24,18 @@ public class AdminMemberListService implements Action {
 		if(method.equals("GET")) {
 			this.pagination(request, kind);
 			
-			actionFoward.setCheck(true);
-			actionFoward.setPath("../WEB-INF/view/admin/admin_member_list.jsp");
+			if(kind==1) {
+				actionFoward.setCheck(true);
+				actionFoward.setPath("../WEB-INF/view/admin/admin_member_list.jsp");
+			} else {
+				actionFoward.setCheck(true);
+				actionFoward.setPath("../WEB-INF/view/admin/admin_member_list_ajax.jsp");
+			}
 			
 		}else {
 			
 			this.pagination(request, kind);
+			request.getSession().setAttribute("kind", kind);
 			
 			actionFoward.setCheck(true);
 			actionFoward.setPath("../WEB-INF/view/admin/admin_member_list_ajax.jsp");

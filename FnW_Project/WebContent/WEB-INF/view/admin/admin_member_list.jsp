@@ -73,6 +73,8 @@
 		
 	});
 
+	
+	
 	});
 </script>
 </head>
@@ -144,8 +146,7 @@
 				</c:if>
 				
 				<c:forEach begin="${page.startNum}" end="${page.lastNum}" var="i">
-				<li><a
-					href="./memberList.member?curPage=${i}">${i}</a></li>
+				<li><a id="pa" href="./memberList.member?curPage=${i}">${i}</a></li>
 				</c:forEach>
 
 				<c:if test="${page.curBlock < page.totalBlock}">

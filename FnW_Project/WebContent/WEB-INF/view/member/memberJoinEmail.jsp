@@ -18,7 +18,7 @@ $(function(){
 					email: ${param.email}
 				},
 				success:function(data){
-					alert(data);
+					
 				}
 			});//
 		});// 

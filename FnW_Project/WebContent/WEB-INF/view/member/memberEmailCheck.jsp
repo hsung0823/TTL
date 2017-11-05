@@ -15,28 +15,18 @@
 			
 			if(num == '${check}'){
 				alert("인증 성공!");
-				
 				$.ajax({
 					url: "./memberEmailOk.member",
 					type:"POST",
 					data: {
-						
 					}, success:function(data){
-						
 					}
-					
 				});
-				
 				close();
-				
 			}else{
 				alert("인증 실패!");
-				
 			} 
-			
 		});
-		
-		
 		
 	});//
 
@@ -46,7 +36,6 @@
 	<form action="">
 	
 		<p>인증번호입력<input type="text" id="num" ></p>
-	
 		<input type="button" id="btn" value ="확인">
 		${check}
 	
