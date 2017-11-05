@@ -13,7 +13,6 @@
 			var email = $("#email").val();
 			 window.open('./memberEmailCheck.member?email='+email)
 			 
-			 
 			/* location.href="./memberEmailCheck.member?email="+email; */
 		});
 		
