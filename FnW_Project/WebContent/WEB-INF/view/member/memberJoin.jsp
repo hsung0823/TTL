@@ -12,6 +12,7 @@
 		
 		$("#id").change(function(){
 			var id = $("#id").val();
+			
 			$.ajax({
 				url: "./memberIdCheck.member",
 				type: "POST",
@@ -19,14 +20,19 @@
 					id:id
 				},
 				success:function(data){
-					if(data.trim() == 'ok'){
-						$("#ch_id").html('<p style="color: green">사용가능 아이디</p>');	
-						check= true;
+					if($("#id").val().length>5){
+						if(data.trim() == 'ok'){
+							$("#ch_id").html('<p style="color: green">사용가능 아이디</p>');	
+							check= true;
+						}else{
+							$("#ch_id").html('<p style="color: red">중복된 아이디</p>');	
+							check= false;
+						}
 					}else{
-						$("#ch_id").html('<p style="color: red">중복된 아이디</p>');	
+						$("#ch_id").html('<p style="color: red">아이디는 6자 이상</p>');	
 						check= false;
 					}
-				}
+				}//
 			});
 			
 		});
@@ -66,7 +72,7 @@
 		
 		$("#btn").click(function(){
 			if(check==true){
-				alert("서브밋");
+				document.frm.submit();
 			}else{
 				alert("불가");
 			}
@@ -79,7 +85,7 @@
 <body>
 <h1>memberJoinForm</h1>
 
-<form action="./memberJoin.member" method="post">
+<form action="./memberJoin.member" method="post" id="frm" name="frm">
 	<p>id<input type="text" id ="id" name="id"></p>
 	<div id="ch_id"></div>
 	<p>pw<input type="text" name="pw"></p>

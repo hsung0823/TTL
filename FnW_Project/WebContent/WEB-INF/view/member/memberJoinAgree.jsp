@@ -50,7 +50,7 @@ location.href="../index.jsp";
 
 
 
-<form action="#" name="form" method="post">
+<form action="./memberJoin.member" name="form" method="get">
 
  <table>
    <tr>
