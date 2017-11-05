@@ -36,6 +36,7 @@
 	<p><a href="./member/memberJoinAgree.member">Join Agree</a></p>
 	
 	<p><a href="./seat/seatList.seat">Seat List</a></p>
+	<p><a href="./market/marketTotalList.market">Market Total List</a></p>
 	<c:if test="${empty sessionScope.member }">
 		login plz
 	</c:if>

@@ -6,13 +6,33 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 
 import com.fnw.util.DBConnector;
+import com.fnw.util.MakeRow;
 
 public class Market_TotalDAO {
-	public ArrayList<Market_TotalDTO> selectList(String id) throws Exception {
+	
+	public int getTotalCount() throws Exception{
 		Connection con = DBConnector.getConnect();
-		String sql ="select rownum R, M.* from market_total M where id=? order by num asc";
+		String sql = "select nvl(count(num),0) from market_total";
 		PreparedStatement st = con.prepareStatement(sql);
-		st.setString(1, id);
+		ResultSet rs = st.executeQuery();
+		int result = 0;
+		if(rs.next()) {
+			result = rs.getInt(1);
+		}
+		
+		DBConnector.disConnect(rs, st, con);
+		return result;
+	}
+	
+	public ArrayList<Market_TotalDTO> selectList(MakeRow makeRow) throws Exception {
+		Connection con = DBConnector.getConnect();
+		String sql ="select * from "
+				+ "(select rownum R, M.* from market_total M order by num asc) "
+				+ "where R between ? and ?";
+		PreparedStatement st = con.prepareStatement(sql);
+		st.setInt(1, makeRow.getStartRow());
+		st.setInt(2, makeRow.getLastRow());
+		
 		ResultSet rs = st.executeQuery();
 
 		ArrayList<Market_TotalDTO> ar = new ArrayList<>();
@@ -35,6 +55,8 @@ public class Market_TotalDAO {
 		DBConnector.disConnect(rs, st, con);
 		return ar;
 	}
+	
+	
 	public Market_TotalDTO selectOne(int num) throws Exception{
 		Connection con = DBConnector.getConnect();
 		String sql = "select * from market_total where num=?";
