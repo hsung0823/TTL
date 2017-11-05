@@ -54,9 +54,9 @@
 			
 		});//
 		
-		$("#seatList").on("click", ".seats" , function(){
+		/* $("#seatList").on("click", ".seats" , function(){
 			alert("as");
-		});
+		}); */
 		
 		
 	});
