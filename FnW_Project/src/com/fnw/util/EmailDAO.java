@@ -1,6 +1,7 @@
 package com.fnw.util;
 
 import java.util.Properties;
+import java.util.Random;
 
 import javax.mail.Message;
 import javax.mail.MessagingException;
@@ -40,9 +41,16 @@ public class EmailDAO {
 		   message.setSubject("FnW 회원가입 인증 메일");
 		   
 		   // Textc 
-		   String a = "a12s";
-		   String mes = "인증번호 :"+a;
-		   request.getSession().setAttribute("check", a);
+		   Random r = new Random();
+		   String str = String.valueOf(r.nextInt(9));
+		   str = str + String.valueOf(r.nextInt(9));
+		   str = str + String.valueOf(r.nextInt(9));
+		   str = str + String.valueOf(r.nextInt(9));
+		   str = str + String.valueOf(r.nextInt(9));
+		   str = str + String.valueOf(r.nextInt(9));
+		   
+		   String mes = "인증번호 :"+str;
+		   request.getSession().setAttribute("check", str);
 		   message.setText(mes); //보내는 내용
 
 		   // send the message

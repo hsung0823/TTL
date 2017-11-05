@@ -15,9 +15,19 @@ public class MemberEmailCheckService implements Action {
 		String method = request.getMethod();
 		String email = request.getParameter("email");
 		if(method.equals("GET")) {
+			EmailDAO emailDAO = new EmailDAO();
+			int result = emailDAO.send(request, email);
 			
-			actionFoward.setCheck(true);
-			actionFoward.setPath("../WEB-INF/view/member/memberJoinEmail.jsp");
+			if(result>0) {
+				actionFoward.setCheck(true);
+				actionFoward.setPath("../WEB-INF/view/member/memberEmailCheck.jsp");
+			}else {
+				request.setAttribute("message", "이메일 형식이 다릅니다");
+				request.setAttribute("path", "#");
+				
+				actionFoward.setCheck(true);
+				actionFoward.setPath("../WEB-INF/view/common/result.jsp");
+			}
 			
 		}else {
 			

@@ -8,24 +8,44 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script type="text/javascript">
 	$(function(){
+		var check = false;
 		
 		$("#mailCheck").click(function(){
 			var email = $("#email").val();
-			 window.open('./memberEmailCheck.member?email='+email)
-			 
-			/* location.href="./memberEmailCheck.member?email="+email; */
+			/* location.href="./memberEmailCheck.member"; */
+			$.ajax({
+				url: "./memberEmailCheck.member",
+				type: "GET",
+				data: {
+					email: email
+				},
+				success:function(data){
+					$("#ch").html(data);
+				}
+			});
+			
+		});
+	
+		
+		
+		$("#ch").on("click", "#check_mail" , function(){
+			if($("#num").val() == $("#check").val()){
+				alert("인증번호 일치");
+				check=true;
+				
+			}else{
+				alert("인증번호 불일치");
+				check=false;
+			}	
 		});
 		
-	
 		$("#btn").click(function(){
-			var ok = '${email}';
-			if(ok == 'ok'){
-				alert("ok");
+			if(check==true){
+				alert("서브밋");
 			}else{
-				alert("no")
+				alert("불가");
 			}
 		});
-		
 		
 	});//
 
@@ -44,7 +64,7 @@
 	<p>phone<input type="text" name="phone"></p>
 	<p>email<input type="text" id="email" name="email">
 	<input type="button" id="mailCheck" value="이메일 인증"></p>
-	<div id="agree"></div>
+	<div id="ch"></div>
 	<p>library<input type="number" name="location"></p>
 	<input type="button" id="btn" value="join">
 </form>
