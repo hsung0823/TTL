@@ -74,8 +74,6 @@ public class MemberController extends HttpServlet {
 				e.printStackTrace();
 			}
 		}
-    	
-    			
     }
     
 	/**
@@ -99,9 +97,6 @@ public class MemberController extends HttpServlet {
 		}else {
 			response.sendRedirect(actionFoward.getPath());
 		}
-		
-
-		
 	}
 
 	/**
