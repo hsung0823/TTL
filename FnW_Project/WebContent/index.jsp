@@ -44,6 +44,9 @@
 	<p><a href="./member/memberJoinAgree.member">Join Agree</a></p>
 	<p><a href="./market/marketDealForm.market">마켓판매신청form</a></p>
 	
+	<p><a href="./notice/noticeList.notice">공지사항</a></p>
+
+	
 	<p><a href="./seat/seatList.seat">Seat List</a></p>
 	<p><a href="./market/marketTotalList.market">Market Total List</a></p>
 	<c:if test="${empty sessionScope.member }">
