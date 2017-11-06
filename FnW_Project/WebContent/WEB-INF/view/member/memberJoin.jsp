@@ -36,8 +36,8 @@
 			});
 			
 		});
-		
-		
+
+
 		$("#mailCheck").click(function(){
 			var email = $("#email").val();
 			$.ajax({
@@ -52,7 +52,7 @@
 			});
 			
 		});
-		
+
 		$("#email").change(function(){
 			check=false;
 			$("#ch_email").html("<p style=\"color: red\">이메일 인증 필요</p>");

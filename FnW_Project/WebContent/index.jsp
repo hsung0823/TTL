@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>MyPage</title>
+<title>Total Library Page</title>
 </head>
 
 <body>
@@ -34,7 +34,7 @@
 	<!-- 도서관 페이지  -->
 	<h2>도서관 페이지</h2>
 	<p><a href="./library/libraryMain.library">Library_Main_Page</a></p>
-	<p></p>
+	<div style = "height: 10px"></div>
 	
 	
 	<p><a href="./member/memberList.member">admin 전용 회원리스트 / 블랙리스트</a></p>
