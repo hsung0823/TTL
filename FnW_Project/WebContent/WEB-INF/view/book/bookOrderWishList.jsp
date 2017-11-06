@@ -15,15 +15,16 @@ $(document).ready(function() {
 			$("input[name=Pcheck]").prop("checked",false);
 		}
 	});
-	$("#Pdelete").click(function() {
-	});
+	
+	
 });
 </script>
 <title>Insert title here</title>
 </head>
 <body>
 <h2>Book Order List-Book_Order</h2>
-<table class="table" border="1">
+<form action="./bookOrderWishDelete.book" method="POST">
+	<table class="table" border="1">
 		<tr>
 			<th>전체선택<input type="checkbox" id="checkAll"></th>
 			<th>num</th>
@@ -51,9 +52,12 @@ $(document).ready(function() {
 			</tr>
 		</c:forEach>
 		<tr>
-			<td><a href=""><input type="button" value="삭제" id="Pdelete"></a></td>
+			<!-- <td><a href=""><input type="button" value="삭제" id="Pdelete"></a></td> -->
+			<td><button type="submit" id="Pdelete">삭제 </button></td>
 		</tr>
 	</table>
+</form>
+	
 	<div>
 		<ul class="pagination">
 			<c:if test="${page.curBlock>1}">
