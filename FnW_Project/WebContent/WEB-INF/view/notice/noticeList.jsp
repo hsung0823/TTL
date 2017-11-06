@@ -9,6 +9,25 @@
 <title>Notice</title>
 </head>
 <body>
+	<div>
+		<form name="frm" class="form-inline" action="./noticeList.notice"
+			method="post">
+			<div>
+				<span> <select name="kind">
+						<option value="title">제목</option>
+						<option value="writer">글쓴이</option>
+						<option value="contents">내용</option>
+				</select> <input type="text" class="form-control" id="search"
+					placeholder="Enter" name="search">
+				</span>
+				<div class="form-group">
+					<div class="col-sm-offset-2 col-sm-10">
+						<input type="submit" class="btn btn-default" value="Search">
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
 	<h1>${fn:toUpperCase(requestScope.notice)}</h1>
 	<table class="table table-hover">
 		<tr>
