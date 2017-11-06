@@ -34,6 +34,7 @@
 	<p><a href="./member/memberIdFind.member">Id Find</a>
 	<p><a href="./member/memberPwFind.member">Pw Find</a>
 	<p><a href="./member/memberJoinAgree.member">Join Agree</a></p>
+	<p><a href="./market/marketDealForm.market">마켓판매신청form</a></p>
 	
 	<p><a href="./seat/seatList.seat">Seat List</a></p>
 	<p><a href="./market/marketTotalList.market">Market Total List</a></p>
