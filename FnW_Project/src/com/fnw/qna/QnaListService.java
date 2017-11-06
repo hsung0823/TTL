@@ -20,17 +20,29 @@ public class QnaListService implements Action {
 		}catch (Exception e) {
 			curPage=1;
 		}
+		String kind = request.getParameter("kind");
+		if(kind==null) {
+			kind="title";
+		}
+		String search = request.getParameter("search");
+		if(search==null) {
+			search="";
+		}
+		
 		int totalCount =0;
 		QnaDAO qnaDAO = new QnaDAO();
 		ArrayList<QnaDTO> ar = new ArrayList<>();
 		try {
-			totalCount = qnaDAO.getTotalCount();
+			totalCount = qnaDAO.getTotalCount(kind, search);
 			if(totalCount==0) {
 				totalCount=1;
 			}
 			PageMaker pageMaker = new PageMaker(curPage, totalCount);
-			ar = qnaDAO.selectList(pageMaker.getMakeRow());
+			ar = qnaDAO.selectList(pageMaker.getMakeRow(),kind, search);
 			request.setAttribute("list", ar);
+			request.setAttribute("page", pageMaker.getMakePage());
+			request.setAttribute("search", search);
+			request.setAttribute("kind", kind);
 			request.setAttribute("page", pageMaker.getMakePage());
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -1,6 +1,6 @@
 package com.fnw.qna;
 
-import java.util.Date;
+import java.sql.Date;
 
 public class QnaDTO {
 	private int num;

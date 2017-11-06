@@ -5,33 +5,52 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
-import com.fnw.member.MemberDTO;
 import com.fnw.util.DBConnector;
 import com.fnw.util.MakeRow;
 
 public class QnaDAO {
-	public int getTotalCount() throws Exception{
+	public int insert(QnaDTO qnaDTO) throws Exception {
 		Connection con = DBConnector.getConnect();
-		String sql = "select nvl(count(num),0) from qna";
+		String sql = "insert into qna values(?,?,?,?,?,?,?,?,?)";
 		PreparedStatement st = con.prepareStatement(sql);
+		st.setInt(1, qnaDTO.getNum());
+		st.setInt(2, qnaDTO.getType());
+		st.setString(3, qnaDTO.getTitle());
+		st.setString(4, qnaDTO.getWriter());
+		st.setString(5, qnaDTO.getContents());
+		st.setDate(6, qnaDTO.getReg_date());
+		st.setInt(7, qnaDTO.getHit());
+		st.setString(8, qnaDTO.getPw());
+		st.setInt(9, qnaDTO.getKind());
+
+		int result = st.executeUpdate();
+		DBConnector.disConnect(st, con);
+		return result;
+	}
+	public int getTotalCount(String kind, String search) throws Exception{
+		Connection con = DBConnector.getConnect();
+		String sql = "select nvl(count(num), 0) from qna where "+ kind +" like ?" ;
+
+		PreparedStatement st = con.prepareStatement(sql);
+		st.setString(1, "%"+search+"%");
 		ResultSet rs = st.executeQuery();
-		int result = 0;
-		if(rs.next()) {
-			result = rs.getInt(1);
-		}
-		
+		rs.next();
+		int result = rs.getInt(1);
+
 		DBConnector.disConnect(rs, st, con);
 		return result;
 	}
 	
-	public ArrayList<QnaDTO> selectList(MakeRow makeRow) throws Exception {
+	public ArrayList<QnaDTO> selectList(MakeRow makeRow, String kind, String search) throws Exception {
 		Connection con = DBConnector.getConnect();
-		String sql ="select * from "
-				+ "(select rownum R, M.* from qna M order by num asc) "
-				+ "where R between ? and ?";
+		String sql = "select * from" + 
+				"(select rownum R, N.* from" + 
+				"(select * from qna where "+kind+" like ? order by num asc) N)" + 
+				"where R between ? and ?";
 		PreparedStatement st = con.prepareStatement(sql);
-		st.setInt(1, makeRow.getStartRow());
-		st.setInt(2, makeRow.getLastRow());
+		st.setString(1, "%"+search+"%");
+		st.setInt(2, makeRow.getStartRow());
+		st.setInt(3, makeRow.getLastRow());
 		
 		ResultSet rs = st.executeQuery();
 
