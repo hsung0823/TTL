@@ -77,9 +77,9 @@ public class LibraryDAO {
 	//Book_selectList
 	public ArrayList<Book_TotalDTO> selectList(MakeRow makeRow, String kind, String search, int library) throws Exception {
 		Connection con = DBConnector.getConnect();
-		String sql = "select * from (select rownum R, N.* from"
-				+ "(select * from book_total where" + kind + "like ?"
-				+ "order by num asc) N)"
+		String sql = "select * from (select rownum R, N.* from "
+				+ "(select * from book_total where" + kind + "like ? "
+				+ "order by num asc) N) "
 				+ "where R between ? and ? and library = ?";
 
 		PreparedStatement st = con.prepareStatement(sql);

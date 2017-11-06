@@ -51,6 +51,14 @@ public class AdminMemberListService implements Action {
 		} catch (Exception e) {
 			curPage=1;
 		}
+		String type = "member";
+		if(kind==0) {
+			type="black";
+		}else if(kind==10){
+			type="admin";
+		}else {
+			
+		}
 		MemberDAO memberDAO = new MemberDAO();
 		int totalCount = 0;
 		ArrayList<MemberDTO> ar = new ArrayList<>();
@@ -60,6 +68,7 @@ public class AdminMemberListService implements Action {
 			
 			ar = memberDAO.selectList(kind, pageMaker.getMakeRow());
 			request.setAttribute("list", ar);
+			request.setAttribute("type", type);
 			request.setAttribute("page", pageMaker.getMakePage());
 			
 		} catch (Exception e) {
