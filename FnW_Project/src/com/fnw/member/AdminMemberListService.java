@@ -29,7 +29,7 @@ public class AdminMemberListService implements Action {
 				actionFoward.setPath("../WEB-INF/view/admin/admin_member_list.jsp");
 			} else {
 				actionFoward.setCheck(true);
-				actionFoward.setPath("../WEB-INF/view/admin/admin_member_list_ajax.jsp");
+				actionFoward.setPath("../WEB-INF/view/admin/admin_member_list.jsp");
 			}
 			
 		}else {
