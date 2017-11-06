@@ -24,7 +24,7 @@ public class BookRentService implements Action {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 		if(result>0) {
 			request.setAttribute("message", "대여 완료");
 			request.setAttribute("path", "../libraryBookSearch.library");

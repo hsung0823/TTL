@@ -47,7 +47,8 @@
 						<td>출판사</td>
 						<td>대여여부</td>
 					</tr>
-					<c:forEach items="${list }" var="dto">
+					<c:forEach items="${list}" var="dto">
+						<a href="../book/bookInformation.book?num=%{dto.num}">
 						<tr>	
 							<td>${dto.num }</td>
 							<td>${dto.title }</td>
@@ -55,10 +56,11 @@
 							<td>${dto.company }</td>
 
 							<c:choose>
-								<c:when test="${dto.state == 0 }"><td><button class = "btn btn-default" type = "submit" href = "#">대여</td></c:when>
+								<c:when test="${dto.state == 0 }"><td><button class = "btn btn-default" id = "rent_btn" type = "submit" href = "#">대여</td></c:when>
 								<c:when test="${dto.state == 1 }"><td>대여 불가</td></c:when>
 							</c:choose>
 						</tr>
+						</a>
 					</c:forEach>
 				</table>
 			</form>

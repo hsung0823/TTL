@@ -23,7 +23,6 @@ $(function(){
 				alert(data);
 			}
 		});
-		
 	});
 	
 });
@@ -32,6 +31,7 @@ $(function(){
 </head>
 <body>
 	<h2>책 상세정보 페이지</h2>
+	<div style = "height: 30px"></div>
 	<section>
 		<form action="#">
 			<table>
@@ -53,7 +53,7 @@ $(function(){
 					<td>${ book.section }</td>
 					<c:choose>
 						<c:when test="${ book.state == 0 }">
-							<td><a href = "#"><button type = "submit" id = "btn">대여</button></a></td>
+							<td><button type = "submit" id = "btn">대여</button></td>
 						</c:when>
 						<c:when test="${ book.state == 1 }">
 							<td>대여불가</td>
