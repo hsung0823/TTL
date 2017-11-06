@@ -59,7 +59,7 @@
 
 	</div>
 	
-	<c:if test="${not empty member}">
+	<c:if test="${not empty member and member.kind eq 10}">
 		<a href="./${requestScope.notice}Write.${requestScope.notice}">WRITE</a>
 	</c:if>
 	
