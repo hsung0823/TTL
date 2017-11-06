@@ -60,7 +60,7 @@
 	</div>
 	
 	<c:if test="${not empty member}">
-		<a href="./${requestScope.board}Write.${requestScope.board}">WRITE</a>
+		<a href="./${requestScope.notice}Write.${requestScope.notice}">WRITE</a>
 	</c:if>
 	
 

@@ -37,6 +37,9 @@ public class BookOrderWishListService implements Action {
 		int totalCount = 0;
 		try {
 			totalCount = book_Buy_WishDAO.getTotalCount(kind, search);
+			if(totalCount==0) {
+				totalCount = 1;
+			}
 			PageMaker pageMaker = new PageMaker(curPage, totalCount);
 			list = book_Buy_WishDAO.selectList(id,pageMaker.getMakeRow(),kind,search);
 			request.setAttribute("bookOrderWishList", list);

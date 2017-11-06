@@ -39,6 +39,9 @@ public class BookRentWishListService implements Action {
 		
 		try {
 			totalCount = book_Rent_WishDAO.getTotalCount(kind, search);
+			if(totalCount==0) {
+				totalCount=1;
+			}
 			PageMaker pageMaker = new PageMaker(curPage, totalCount);
 			list = book_Rent_WishDAO.selectList(id,pageMaker.getMakeRow(),kind,search);
 			request.setAttribute("bookRentWishList", list);
