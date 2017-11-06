@@ -25,13 +25,12 @@ public class NoticeDAO {
 	}
 	public int update(NoticeDTO noticeDTO) throws Exception{
 		Connection con = DBConnector.getConnect();
-		String sql ="update notice set title=?, writer=?, contents=? where num=?";
+		String sql ="update notice set title=?, contents=? where num=?";
 		
 		PreparedStatement st = con.prepareStatement(sql);
 		st.setString(1, noticeDTO.getTitle());
-		st.setString(2, noticeDTO.getWriter());
-		st.setString(3, noticeDTO.getContents());
-		st.setInt(4, noticeDTO.getNum());
+		st.setString(2, noticeDTO.getContents());
+		st.setInt(3, noticeDTO.getNum());
 		int result = st.executeUpdate();
 		
 		

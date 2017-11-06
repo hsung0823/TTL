@@ -2,6 +2,7 @@
 <%@page import="com.fnw.notice.NoticeDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>	
 <!DOCTYPE html>
 <html>
 <head>
@@ -36,10 +37,11 @@
 		</table>
 	</div>
 	
-	<a href="./${requestScope.notice}Update.${requestScope.notice}?num=${requestScope.view.num}">UPDATE</a>
-	<a href="./${requestScope.notice}Delete.${requestScope.notice}?num=${requestScope.view.num}">DELETE</a>
-
+	
+	<c:if test="${member.id eq view.writer }">
+		<a href="./${requestScope.notice}Update.${requestScope.notice}?num=${requestScope.view.num}">UPDATE</a>
+		<a href="./${requestScope.notice}Delete.${requestScope.notice}?num=${requestScope.view.num}">DELETE</a>
+	</c:if>
 	<a href="./${requestScope.notice}List.${requestScope.notice}">LIST</a>
-
 </body>
 </html>
