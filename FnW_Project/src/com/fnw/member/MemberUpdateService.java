@@ -27,7 +27,6 @@ public class MemberUpdateService implements Action {
 			actionFoward.setCheck(true);
 			actionFoward.setPath("../WEB-INF/view/member/memberUpdate.jsp");
 		}else {
-			
 			try {
 				memberDTO = memberDAO.selectOne(request.getParameter("id"));
 				memberDTO.setId(request.getParameter("id"));
@@ -49,8 +48,6 @@ public class MemberUpdateService implements Action {
 			}
 			
 			if(result>0) {
-				
-				System.out.println(memberDTO.getKind());
 				if(((MemberDTO)request.getSession().getAttribute("member")).getKind() == 10) {
 					request.setAttribute("message", "수정 완료");
 					request.setAttribute("path", "./memberList.member");
