@@ -20,7 +20,7 @@ public class AdminMemberListService implements Action {
 			kind = Integer.parseInt(request.getParameter("kind"));
 		}catch (Exception e) {
 		}
-		
+		System.out.println(kind);
 		if(method.equals("GET")) {
 			this.pagination(request, kind);
 			

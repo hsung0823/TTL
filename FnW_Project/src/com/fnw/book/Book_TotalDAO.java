@@ -10,10 +10,6 @@ import com.fnw.util.MakeRow;
 
 public class Book_TotalDAO {
 
-	
-
-	
-	
 	//totalCount
 	public int getTotalCount(String kind, String search) throws Exception {
 		Connection con = DBConnector.getConnect();
@@ -40,25 +36,25 @@ public class Book_TotalDAO {
 
 		ResultSet rs = st.executeQuery();
 
-		Book_TotalDTO noticeDTO=null;
+		Book_TotalDTO book_TotalDTO=null;
 
 		if(rs.next()) {
-			noticeDTO = new Book_TotalDTO();
-			noticeDTO.setNum(rs.getInt("num"));
-			noticeDTO.setTitle(rs.getString("title"));
-			noticeDTO.setWriter(rs.getString("writer"));
-			noticeDTO.setCompany(rs.getString("company"));
-			noticeDTO.setPublish_date(rs.getString("publish_date"));
-			noticeDTO.setSection(rs.getString("section"));
-			noticeDTO.setLibrary(rs.getInt("library"));
-			noticeDTO.setState(rs.getInt("state"));
-			noticeDTO.setRent_id(rs.getString("rent_id"));
-			noticeDTO.setRent_count(rs.getInt("rent_count"));
+			book_TotalDTO = new Book_TotalDTO();
+			book_TotalDTO.setNum(rs.getInt("num"));
+			book_TotalDTO.setTitle(rs.getString("title"));
+			book_TotalDTO.setWriter(rs.getString("writer"));
+			book_TotalDTO.setCompany(rs.getString("company"));
+			book_TotalDTO.setPublish_date(rs.getString("publish_date"));
+			book_TotalDTO.setSection(rs.getString("section"));
+			book_TotalDTO.setLibrary(rs.getInt("library"));
+			book_TotalDTO.setState(rs.getInt("state"));
+			book_TotalDTO.setRent_id(rs.getString("rent_id"));
+			book_TotalDTO.setRent_count(rs.getInt("rent_count"));
 		}
 
 		DBConnector.disConnect(rs, st, con);
 		
-		return noticeDTO;
+		return book_TotalDTO;
 
 	}
 	

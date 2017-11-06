@@ -12,8 +12,10 @@ public class LibraryMainService implements Action {
 	public ActionFoward doProcess(HttpServletRequest request, HttpServletResponse response) {
 		ActionFoward actionFoward = new ActionFoward();
 		
+		actionFoward.setCheck(true);
+		actionFoward.setPath("../WEB-INF/view/library/libraryMain.jsp");
 		
 		return actionFoward;
 	}
-	
+
 }
