@@ -20,11 +20,7 @@ $(function(){
 				result:result
 			},
 			success: function(data) {
-				if(result > 0) {
-					alert("대여 완료");
-				} else {
-					alert("대여 실패");
-				}
+				alert(data);
 			}
 		});
 		
