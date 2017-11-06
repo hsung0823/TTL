@@ -29,9 +29,9 @@
 	<h2>김앤신(통합포털)</h2>
 	<p><a href="./book/bookTotalSearch.book">Book_search</a>
 	<p><a href="./book/bookOrderTotalList.book">Book_Order(도서 신청)</a>
-	<p><a href="./member/memberLogin.member">Login</a>
-	<p><a href="./member/memberJoin.member">Join</a>
-	<p><a href="./member/memberLogout.member">Logout</a>
+	<p><a href="./member/memberLogin.member">로그인</a>
+	<p><a href="./member/memberJoin.member">회원가입</a>
+	<p><a href="./member/memberLogout.member">로그아웃</a>
 	<p><a href="./library/libraryView.library">도서관지도</a></p>
 	
 	<p></p>
