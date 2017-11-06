@@ -20,22 +20,16 @@ public class AdminMemberListService implements Action {
 			kind = Integer.parseInt(request.getParameter("kind"));
 		}catch (Exception e) {
 		}
-		System.out.println(kind);
 		if(method.equals("GET")) {
 			this.pagination(request, kind);
 			
-			if(kind==1) {
-				actionFoward.setCheck(true);
-				actionFoward.setPath("../WEB-INF/view/admin/admin_member_list.jsp");
-			} else {
-				actionFoward.setCheck(true);
-				actionFoward.setPath("../WEB-INF/view/admin/admin_member_list.jsp");
-			}
+			actionFoward.setCheck(true);
+			actionFoward.setPath("../WEB-INF/view/admin/admin_member_list.jsp");
 			
-		}else {
+		}else { //post 일 때
 			
 			this.pagination(request, kind);
-			request.getSession().setAttribute("kind", kind);
+			
 			
 			actionFoward.setCheck(true);
 			actionFoward.setPath("../WEB-INF/view/admin/admin_member_list_ajax.jsp");
@@ -57,7 +51,7 @@ public class AdminMemberListService implements Action {
 		}else if(kind==10){
 			type="admin";
 		}else {
-			
+			type="member";
 		}
 		MemberDAO memberDAO = new MemberDAO();
 		int totalCount = 0;
@@ -69,6 +63,7 @@ public class AdminMemberListService implements Action {
 			ar = memberDAO.selectList(kind, pageMaker.getMakeRow());
 			request.setAttribute("list", ar);
 			request.setAttribute("type", type);
+			request.setAttribute("kind", kind);
 			request.setAttribute("page", pageMaker.getMakePage());
 			
 		} catch (Exception e) {

@@ -11,35 +11,20 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <title>Insert title here</title>
 <script type="text/javascript">
-var i = 0;
 	$(function(){
-		var currentPage = 1;
-	    checkForHash();
-	    
-	    $(".link").on("click", function(e) {
-	        document.location.hash = "#" + currentPage;
-	    });
-	    
-	    $("#list").on("click", ".link" , function(){
-	    	 document.location.hash = "#" + currentPage;
-	    });
-	    
-	    function checkForHash() {
-	        if(document.location.hash){
-	            var HashLocationName = document.location.hash;
-	            HashLocationName = HashLocationName.replace("#","");
-	            alert("asd");
-	            $("#display").html(HashLocationName)
-	            
-	        } else {
-	        	alert("qwe");
-	            $("#display").html($("#btn_member").val())
-	        }
-	    }   
-	 
-
+	
+		if(${kind} == 10){
+			$(".kind1").attr("style", "background-color: #fff");
+	 		$("#btn_admin").attr("style", "background-color: #dcdcdc");
+		}else if(${kind} == 0){
+			$(".kind1").attr("style", "background-color: #fff");
+	 		$("#btn_black").attr("style", "background-color: #dcdcdc");
+		}else{
+			$(".kind1").attr("style", "background-color: #fff");
+	 		$("#btn_member").attr("style", "background-color: #dcdcdc");
+		}
+		
 	$("#btn_admin").click(function() {
-		currentPage = $(this).val();
  		$(".kind1").attr("style", "background-color: #fff");
  		$("#btn_admin").attr("style", "background-color: #dcdcdc");
 		
@@ -59,7 +44,6 @@ var i = 0;
 	});
 
 	$("#btn_member").click(function() {
-		currentPage = $(this).val();
  		$(".kind1").attr("style", "background-color: #fff");
  		$("#btn_member").attr("style", "background-color: #dcdcdc");
  		
@@ -78,7 +62,6 @@ var i = 0;
 	});
 
 	$("#btn_black").click(function() {
-		currentPage = $(this).val();
 		$(".kind1").attr("style", "background-color: #fff");
 		$("#btn_black").attr("style", "background-color: #dcdcdc");
 	
@@ -95,16 +78,13 @@ var i = 0;
 		$("#info").html("Black List");
 		
 	});
-
 	
 	
 	});
 </script>
 </head>
 <body>
-	<div id="display"> asd </div>
 	<div style = "height: 100px"></div>
-
 	<form name="frm" class="form-inline" action="./admin_member_list.member" method="post">
 			<!-- SEARCH -->
 			<div class="form-group">
@@ -121,7 +101,8 @@ var i = 0;
 	</form>
 	
 	<div style = "height: 50px"></div>
-	
+	${type }
+	${kind }
 	<form action="">
 		<table class = "table">
 			<tr>
