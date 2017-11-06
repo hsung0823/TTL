@@ -21,5 +21,10 @@
 		<a href="./qnaDelete.qna?num=${qnaDTO.num }"><input type="button" value="삭제"></a>
 		<a href="./qnaUpdate.qna?num=${qnaDTO.num }"><input type="button" value="수정"></a>
 </form>	
+<hr>
+<form>
+<p><input type="text" name="reply"> </p>
+<a href="./qnaDelete.qna?num=${qnaDTO.num }"><input type="button" value="등록"></a>
+</form>
 </body>
 </html>
