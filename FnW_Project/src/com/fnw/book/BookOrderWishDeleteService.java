@@ -54,7 +54,6 @@ public class BookOrderWishDeleteService implements Action {
 				}
 				actionFoward.setCheck(true);
 				actionFoward.setPath("../WEB-INF/view/common/result.jsp");
-
 			}
 		}
 		return actionFoward;

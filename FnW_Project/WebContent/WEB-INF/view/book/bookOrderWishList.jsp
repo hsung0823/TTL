@@ -15,8 +15,6 @@ $(document).ready(function() {
 			$("input[name=Pcheck]").prop("checked",false);
 		}
 	});
-	
-	
 });
 </script>
 <title>Insert title here</title>
@@ -52,7 +50,6 @@ $(document).ready(function() {
 			</tr>
 		</c:forEach>
 		<tr>
-			<!-- <td><a href=""><input type="button" value="삭제" id="Pdelete"></a></td> -->
 			<td><button type="submit" id="Pdelete">삭제 </button></td>
 		</tr>
 	</table>
