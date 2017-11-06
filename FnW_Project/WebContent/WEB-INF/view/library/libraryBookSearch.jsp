@@ -1,10 +1,24 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri = "http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<script type="text/javascript">
+
+$(function(){
+	 var kind = '${kind}';
+	 $(".kind").each(function(){
+		 if($(this).val() == kind) {
+			 $(this).attr("selected", true);
+		 }
+	 });
+	 
+});
+
+</script>
 </head>
 <body>
 
@@ -56,7 +70,7 @@
 							<td>${dto.company }</td>
 
 							<c:choose>
-								<c:when test="${dto.state == 0 }"><td><button class = "btn btn-default" id = "rent_btn" type = "submit" href = "#">대여</td></c:when>
+								<c:when test="${dto.state == 0 }"><td><button class = "btn btn-default" id = "rent_btn" type = "submit" href = "#">대여</button></td></c:when>
 								<c:when test="${dto.state == 1 }"><td>대여 불가</td></c:when>
 							</c:choose>
 						</tr>
