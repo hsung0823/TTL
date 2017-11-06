@@ -25,10 +25,13 @@ public class LibraryBookSearchService implements Action {
 		if(method.equals("GET")){
 
 			actionFoward.setCheck(true);
-			actionFoward.setPath("../WEB-INF/view/library/librarySearch.jsp");
+			actionFoward.setPath("../WEB-INF/view/library/libraryBookSearch.jsp");
 
 		}else {
-			ar = this.doPost(request);
+			this.doPost(request);
+			
+			actionFoward.setCheck(true);
+			actionFoward.setPath("../WEB-INF/view/library/libraryBookSearch.jsp");
 		}
 
 		return actionFoward;
@@ -36,7 +39,6 @@ public class LibraryBookSearchService implements Action {
 
 
 	private ArrayList<Book_TotalDTO> doPost(HttpServletRequest request) {
-		ActionFoward actionFoward = new ActionFoward();
 		ArrayList<Book_TotalDTO> ar = new ArrayList<>();
 		int curPage=1;
 
@@ -56,8 +58,6 @@ public class LibraryBookSearchService implements Action {
 		if(search==null) {
 			search="";
 		}
-		System.out.println(kind);
-		System.out.println(search);
 		int library=1;
 		try {
 			library = Integer.parseInt(request.getParameter("library"));
@@ -76,8 +76,7 @@ public class LibraryBookSearchService implements Action {
 			e.printStackTrace();
 		}
 
-		actionFoward.setCheck(true);
-		actionFoward.setPath("../WEB-INF/view/library/libraryBookSearch.jsp");
+		
 		
 		return ar;
 	}

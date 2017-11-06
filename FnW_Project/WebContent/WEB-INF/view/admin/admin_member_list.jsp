@@ -132,7 +132,7 @@ var i = 0;
 		</table>
 	</form>
 
-	<h2 id="info" >Member List</h2>
+	<h2 id="info" >${type} List</h2>
 	
 	<div id = "list"> 
 		<table id = "member" class="kind" border="1">

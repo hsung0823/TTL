@@ -26,7 +26,7 @@ $(function(){
 	
 	<section>
 		<div class="row-right">
-			<form name="frm" class="form-inline" action="./bookTotalSearch.book" method="post">
+			<form name="frm" class="form-inline" action="./libraryBookSearch.library" method="post">
 					<!-- KIND -->
 					<div class="form-group">
 						<div class="col-sm-10">
@@ -61,8 +61,9 @@ $(function(){
 						<td>출판사</td>
 						<td>대여여부</td>
 					</tr>
+					${list }
 					<c:forEach items="${list}" var="dto">
-						<a href="../book/bookInformation.book?num=%{dto.num}">
+						<a href="../book/bookInformation.book?num=${dto.num}">
 						<tr>	
 							<td>${dto.num }</td>
 							<td>${dto.title }</td>
