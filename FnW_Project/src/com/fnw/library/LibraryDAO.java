@@ -17,7 +17,6 @@ public class LibraryDAO {
 	public void delete() {}
 	public void update() {}
 	
-
 	//totalCount
 	public int getTotalCount(String kind, String search) throws Exception {
 		Connection con = DBConnector.getConnect();
@@ -49,13 +48,12 @@ public class LibraryDAO {
 	}
 
 	//selectOne
-	public Book_TotalDTO selectOne(int library, int num) throws Exception {
+	public Book_TotalDTO selectOne(int num) throws Exception {
 		Connection con = DBConnector.getConnect();
 		Book_TotalDTO book_TotalDTO = null;
-		String sql = "select * from book_total where library=? and num=?";
+		String sql = "select * from book_total where num=?";
 		PreparedStatement st = con.prepareStatement(sql);
-		st.setInt(1, library);
-		st.setInt(2, num);
+		st.setInt(1, num);
 
 		ResultSet rs = st.executeQuery();
 		while(rs.next()) {
@@ -75,7 +73,7 @@ public class LibraryDAO {
 		DBConnector.disConnect(rs, st, con);
 		return book_TotalDTO;
 	}
-	
+
 	//Book_selectList
 	public ArrayList<Book_TotalDTO> selectList(MakeRow makeRow, String kind, String search, int library) throws Exception {
 		Connection con = DBConnector.getConnect();
