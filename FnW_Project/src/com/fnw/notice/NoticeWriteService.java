@@ -18,14 +18,20 @@ public class NoticeWriteService implements Action {
 			noticeDTO.setTitle(request.getParameter("title"));
 			noticeDTO.setContents(request.getParameter("contents"));
 			noticeDTO.setWriter(request.getParameter("writer"));
+			int result=0;
 			try {
-				int result = noticeDAO.insert(noticeDTO);
+				result = noticeDAO.insert(noticeDTO);
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			actionFoward.setCheck(false);
-			actionFoward.setPath("./noticeList.notice");
+			if(result>0) {
+				actionFoward.setCheck(false);
+				actionFoward.setPath("./noticeList.notice");
+			}else {
+				actionFoward.setCheck(false);
+				actionFoward.setPath("../index.jsp");
+			}
 			
 		}else {
 			request.setAttribute("notice", "notice");

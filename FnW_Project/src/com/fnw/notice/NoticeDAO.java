@@ -12,7 +12,7 @@ import com.fnw.util.MakeRow;
 public class NoticeDAO {
 	public int insert(NoticeDTO noticeDTO) throws Exception{
 		Connection con = DBConnector.getConnect();
-		String sql ="insert into notice values(board_seq.nextval,?,?,?,sysdate,0)";
+		String sql ="insert into notice values(notice_seq.nextval,?,?,?,sysdate,0)";
 		PreparedStatement st = con.prepareStatement(sql);
 		st.setString(1, noticeDTO.getTitle());
 		st.setString(2, noticeDTO.getWriter());
