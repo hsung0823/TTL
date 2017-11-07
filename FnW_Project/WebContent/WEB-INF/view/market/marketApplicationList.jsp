@@ -14,7 +14,7 @@
 
 	</div>
 	<h1>${fn:toUpperCase(requestScope.market)}</h1>
-	<table class="table table-hover">
+	<table class="table table-hover" border="1">
 		<tr>
 			<td>num</td>
 			<td>title</td>

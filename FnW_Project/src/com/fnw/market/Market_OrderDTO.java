@@ -1,6 +1,5 @@
 package com.fnw.market;
 
-import java.util.Date;
 
 public class Market_OrderDTO {
 
@@ -12,6 +11,7 @@ public class Market_OrderDTO {
 	private int price;
 	private String id;
 	private int library;
+	private int approval;
 	
 	public int getNum() {
 		return num;
@@ -62,6 +62,13 @@ public class Market_OrderDTO {
 	public void setLibrary(int library) {
 		this.library = library;
 	}
+	public int getApproval() {
+		return approval;
+	}
+	public void setApproval(int approval) {
+		this.approval = approval;
+	}
+	
 	
 	
 }

@@ -10,7 +10,11 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <title>Book Information</title>
+<<<<<<< HEAD
 <script type="text/javascript">
+=======
+<!-- <!-- <script type="text/javascript"> -->
+>>>>>>> 7af9491f6a4f22219bd60a53f6d24a102d77171f
 	
 $(function(){
 	var check = false;
@@ -30,7 +34,11 @@ $(function(){
 	});
 });
 
+<<<<<<< HEAD
 </script>
+=======
+<!-- <!-- </script> --> 
+>>>>>>> 7af9491f6a4f22219bd60a53f6d24a102d77171f
 
 </head>
 <body>
