@@ -17,7 +17,7 @@
 	<c:if test="${not empty sessionScope.member }">
 	<h1>${sessionScope.member.id }</h1>
 	<h1>MyPage_Hees</h1>
-	<p><a href="./member/memberUpdatePwCheck.member">MyPage Update</a></p>
+	<p><a href="./member/memberUpdatePwCheck.member">업데이트</a></p>
 	<p><a href="./market/marketDealsList.market?id=${member.id }">Market Order List</a></p>
 	<p><a href="./seat/seatTotalList.seat?id=${member.id }">Seat Rent List</a></p>
 	<p><a href="./book/bookRentList.book?id=${member.id }">Book Rent List</a></p>

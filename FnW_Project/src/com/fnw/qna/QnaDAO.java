@@ -121,6 +121,7 @@ public class QnaDAO {
 		DBConnector.disConnect(rs, st, con);
 		return qnaDTO;
 	}
+	
 	public int delete(int num) throws Exception{
 		Connection con = DBConnector.getConnect();
 		String sql = "delete from qna where num=?";
