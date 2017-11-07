@@ -23,20 +23,18 @@
 		<a href="./qnaUpdate.qna?num=${qnaDTO.num }"><input type="button" value="수정"></a>
 </form>	
 <hr>
-<form action="../index.jsp" method="post">
-<p><textarea name="reply"></textarea>
-<a href="../qnaReply/qnaReplyInsert.qnaReply?num=${qnaDTO.num }"> <input type="button" value="등록"></a></p>
-<c:if test="${qnaReplyDTO>1}">
-	<%-- <c:forEach items="${list }" var="qnaList">
-			<tr>
-				<td>${qnaList.num }</td>
-				<td><a href="./qnaDetailsCheck.qna?num=${qnaList.num }">${qnaList.title }</a></td>
-				<td>${qnaList.reg_date }</td>
-				<td>${qnaList.writer }</td>
-				<td>${qnaList.hit }</td>
-			</tr>
-	</c:forEach> --%>
-</c:if>
+<form action="../qnaReply/qnaReplyInsert.qnaReply?num=${qnaDTO.num }" method="post">
+	<p><textarea name="reply"></textarea><button>등록</button> </p>
 </form>
+<c:if test="${rDTO ne null }">
+<table>
+<c:forEach items="${rDTO }" var="rDTO">
+<tr>
+	<td>${rDTO.num }</td>
+	<td>${rDTO.contents }</td>
+</tr>
+</c:forEach>
+</table>
+</c:if>
 </body>
 </html>
