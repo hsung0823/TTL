@@ -40,8 +40,8 @@ public class MemberJoinService implements Action {
 		}
 		
 		return actionFoward;
-	}///
-	
+	}
+
 	private int doPost(HttpServletRequest request) {
 		MemberDAO memberDAO = new MemberDAO();
 		MemberDTO memberDTO = new MemberDTO();
@@ -62,6 +62,6 @@ public class MemberJoinService implements Action {
 			e.printStackTrace();
 		}
 		return result;
-	}//
+	}
 
 }
