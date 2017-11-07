@@ -12,12 +12,13 @@ import com.fnw.util.MakeRow;
 public class MemberDAO {
 
 	//totalCount
-	public int getTotalCount(int kind) throws Exception {
+	public int getTotalCount(int kind, String kind1, String search) throws Exception {
 		Connection con = DBConnector.getConnect();
-		String sql = "select nvl(count(id),0) from member where kind = ?";
+		String sql = "select nvl(count(id),0) from member where kind = ? and "+kind1+" like ?";
 		
 		PreparedStatement st = con.prepareStatement(sql);
 		st.setInt(1, kind);
+		st.setString(2, "%"+search+"%");
 		ResultSet rs = st.executeQuery();
 		rs.next();
 		int result = rs.getInt(1);
@@ -177,15 +178,16 @@ public class MemberDAO {
 		return result;
 	}
 	
-	public ArrayList<MemberDTO> selectList(int kind, MakeRow makeRow) throws Exception {
+	public ArrayList<MemberDTO> selectList(int kind, MakeRow makeRow, String kind1, String search) throws Exception {
 		Connection con = DBConnector.getConnect();
-		String sql ="select * from \r\n" + 
-				"(select rownum R, M.* from member M where kind=? order by id asc) N\r\n" + 
-				"where R between ? and ?";
+		String sql ="select * from "
+				+ "(select rownum R, M.* from member M where kind=? and "+ kind1 +" like ? order by id asc) N "
+				+ "where R between ? and ?";
 		PreparedStatement st = con.prepareStatement(sql);
 		st.setInt(1, kind);
-		st.setInt(2, makeRow.getStartRow());
-		st.setInt(3, makeRow.getLastRow());
+		st.setString(2, "%"+search+"%");
+		st.setInt(3, makeRow.getStartRow());
+		st.setInt(4, makeRow.getLastRow());
 		
 		ArrayList<MemberDTO> ar = new ArrayList<>();
 		

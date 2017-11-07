@@ -2,6 +2,11 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
+<c:if test="${size eq 0 }">
+		<h2>검색 결과가 없습니다.</h2>
+</c:if>
+<c:if test="${size ne 0 }">
+<input type="hidden" name="kind" id="kind0" value="${kind }">
 <table id = "member" class="kind" border="1">
 			<tr>
 				<th>id</th>
@@ -33,15 +38,16 @@
 		<div style = "text-align: center;">
 			<ul class="pagination pagination-sm">
 				<c:if test="${page.curBlock>1}">
-				<li><a href = "./memberList.member?curPage=${page.startNum-1}&search=${search}">[이전]</a></li>
+				<li><a href = "./memberList.member?curPage=${page.startNum-1}&kind=${kind}&search=${search}&kind1=${kind1}">[이전]</a></li>
 				</c:if>
 				
 				<c:forEach begin="${page.startNum}" end="${page.lastNum}" var="i">
-				<li><a class="link" href="./memberList.member?curPage=${i}&kind=${kind}">${i}</a></li>
+				<li><a href="./memberList.member?curPage=${i}&kind=${kind}&search=${search}&kind1=${kind1}">${i}</a></li>
 				</c:forEach>
 
 				<c:if test="${page.curBlock < page.totalBlock}">
-				<li><a href="./memberList.member?curPage=${page.lastNum+1}&search=${search}">[다음]</a></li>
+				<li><a href="./memberList.member?curPage=${page.lastNum+1}&search=${search}&search=${search}&kind1=${kind1}">[다음]</a></li>
 				</c:if>
 			</ul>
 		</div>
+</c:if>
