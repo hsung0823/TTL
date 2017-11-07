@@ -19,7 +19,6 @@ public class BookInformationService implements Action {
 
 		try {
 			book_TotalDTO = book_TotalDAO.selectOne(num);
-			System.out.println(book_TotalDTO.getLibrary());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

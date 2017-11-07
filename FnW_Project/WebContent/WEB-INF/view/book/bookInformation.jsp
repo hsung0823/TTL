@@ -10,35 +10,33 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <title>Book Information</title>
-<!-- <!-- <script type="text/javascript"> --> -->
+<script type="text/javascript">
 	
-<!-- // $(function(){ -->
-<!-- // 	var check = false; -->
+$(function(){
+	var check = false;
 	
-<!-- // 	$("#btn").click(function() { -->
+	$("#btn").click(function() {
 		
-<!-- // 		$ajax({ -->
-<!-- // 			url: "./bookRent.book?num=", -->
-<!-- // 			type: "GET", -->
-<!-- // 			data: { -->
-<%-- // 				num:${book.num}, --%>
-<!-- // 				result:result -->
-<!-- // 			}, -->
-<!-- // 			success: function(data) { -->
-<!-- // 				alert(data); -->
-<!-- // 			} -->
-<!-- // 		}); -->
-<!-- // 	}); -->
-<!-- // }); -->
+		$ajax({
+			url: "./bookRent.book",
+			type: "GET",
+			data: {
+				num:${book.num}
+			},
+			success: function(data) {
+				alert(data);
+			}
+		});
+	});
+});
 
-<!-- <!-- </script> --> -->
+</script>
 
 </head>
 <body>
 	<h2>책 상세정보 페이지</h2>
 	<div style = "height: 30px"></div>
 	<section>
-		<form action="./bookRent.book?num=${ book.num }&rent_id=${member.id}">
 			<table class="table">
 				<tr>
 					<td>번호</td>
@@ -60,13 +58,15 @@
 						<c:when test="${ book.state == 0 and not empty member }">
 							<td><button class = "btn btn-default" type = "submit" id = "btn">대여</button></td>
 						</c:when>
+						<c:when test="${ book.state == 0 and empty member }">
+							<td>대여가능</td>
+						</c:when>
 						<c:when test="${ book.state == 1 }">
 							<td>대여불가</td>
 						</c:when>
 					</c:choose>
 				</tr>
 			</table>
-		</form>
 
 	</section>
 
