@@ -40,7 +40,6 @@
 	<p><a href="./library/libraryMain.library">Library_Main_Page</a></p>
 	<div style = "height: 10px"></div>
 	
-	
 	<p><a href="./member/memberList.member">admin 전용 회원리스트 / 블랙리스트</a></p>
 
 	<p><a href="./member/memberIdFind.member">Id Find</a>

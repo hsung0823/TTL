@@ -1,6 +1,6 @@
 package com.fnw.qnaReply;
 
-import java.util.Date;
+import java.sql.Date;
 
 public class Qna_ReplyDTO {
 	private int num;

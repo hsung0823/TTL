@@ -15,7 +15,7 @@ public class AdminMemberListService implements Action {
 	public ActionFoward doProcess(HttpServletRequest request, HttpServletResponse response) {
 		ActionFoward actionFoward = new ActionFoward();
 		String method=request.getMethod();
-		
+		System.out.println(method);
 		if(method.equals("GET")) {
 			this.pagination(request);
 			
