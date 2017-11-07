@@ -29,7 +29,7 @@ public class Book_TotalDAO {
 	public Book_TotalDTO selectOne(int num) throws Exception{
 		Connection con = DBConnector.getConnect();
 
-		String sql ="select * from notice where num=?";
+		String sql ="select * from book_total where num=?";
 
 		PreparedStatement st = con.prepareStatement(sql);
 		st.setInt(1, num);

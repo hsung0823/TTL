@@ -1,10 +1,14 @@
 package com.fnw.qna;
 
+import java.util.ArrayList;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.fnw.action.Action;
 import com.fnw.action.ActionFoward;
+import com.fnw.qnaReply.Qna_ReplyDAO;
+import com.fnw.qnaReply.Qna_ReplyDTO;
 
 public class QnaDetailsCheckService implements Action {
 
@@ -13,9 +17,13 @@ public class QnaDetailsCheckService implements Action {
 		ActionFoward actionFoward = new ActionFoward();
 		
 		String method = request.getMethod();
-		
+		int num = 0;
+		try {
+			num = Integer.parseInt(request.getParameter("num"));
+		} catch (Exception e) {
+			num = 0;
+		}
 		if(method.equals("GET")) {
-			int num = Integer.parseInt(request.getParameter("num"));
 			request.setAttribute("num", num);
 			actionFoward.setCheck(true);
 			actionFoward.setPath("../WEB-INF/view/qna/qnaDetailsCheck.jsp");
@@ -29,6 +37,15 @@ public class QnaDetailsCheckService implements Action {
 				e.printStackTrace();
 			}
 			if(qnaDTO!=null) {
+				Qna_ReplyDAO qna_ReplyDAO = new Qna_ReplyDAO();
+				ArrayList<Qna_ReplyDTO> list = new ArrayList<>();
+				try {
+					list = qna_ReplyDAO.selectList(num);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				
+				request.setAttribute("rDTO", list);
 				request.setAttribute("qnaDTO", qnaDTO);
 				request.setAttribute("num", qnaDTO.getNum());
 				actionFoward.setCheck(true);

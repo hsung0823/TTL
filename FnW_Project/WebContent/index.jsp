@@ -6,6 +6,10 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <title>Total Library Page</title>
 </head>
 
@@ -17,7 +21,7 @@
 	<c:if test="${not empty sessionScope.member }">
 	<h1>${sessionScope.member.id }</h1>
 	<h1>MyPage_Hees</h1>
-	<p><a href="./member/memberUpdatePwCheck.member">MyPage Update</a></p>
+	<p><a href="./member/memberUpdatePwCheck.member">업데이트</a></p>
 	<p><a href="./market/marketDealsList.market?id=${member.id }">Market Order List</a></p>
 	<p><a href="./seat/seatTotalList.seat?id=${member.id }">Seat Rent List</a></p>
 	<p><a href="./book/bookRentList.book?id=${member.id }">Book Rent List</a></p>
@@ -40,13 +44,21 @@
 	<p><a href="./library/libraryMain.library">Library_Main_Page</a></p>
 	<div style = "height: 10px"></div>
 	
-	
 	<p><a href="./member/memberList.member">admin 전용 회원리스트 / 블랙리스트</a></p>
 
 	<p><a href="./member/memberIdFind.member">Id Find</a>
 	<p><a href="./member/memberPwFind.member">Pw Find</a>
 	<p><a href="./member/memberJoinAgree.member">Join Agree</a></p>
-	<p><a href="./market/marketDealForm.market">마켓판매신청form</a></p>
+	<p>=================================================</p>
+	<c:if test="${not empty sessionScope.member }">
+	<p><a href="./market/marketDealForm.market?id=${member.id }">마켓판매신청form</a></p><!-- 로그인시만 이용 -->
+	<p><a href="./market/marketDealList_personal.market?id=${member.id }">마켓판매신청 개인확인용</a></p><!-- 로그인시만 이용 -->
+	</c:if>
+	<p>=================================================</p>
+	마켓 관리자 승인용
+	<c:if test="${not empty member and member.kind eq 10}">
+	<p><a href="./market/marketApplicationList.market?id=${member.id }">마켓신청List 관리자용(승인용)</a></p><!--관리자로그인시만 이용 -->
+	</c:if>
 	
 	<p><a href="./notice/noticeList.notice">공지사항</a></p>
 

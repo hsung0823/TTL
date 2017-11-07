@@ -1,9 +1,9 @@
 package com.fnw.market;
 
-import java.util.Date;
 
 public class Market_OrderDTO {
 
+	private int num;
 	private String title;
 	private String writer;
 	private String company;
@@ -11,7 +11,14 @@ public class Market_OrderDTO {
 	private int price;
 	private String id;
 	private int library;
+	private int approval;
 	
+	public int getNum() {
+		return num;
+	}
+	public void setNum(int num) {
+		this.num = num;
+	}
 	public String getTitle() {
 		return title;
 	}
@@ -55,6 +62,13 @@ public class Market_OrderDTO {
 	public void setLibrary(int library) {
 		this.library = library;
 	}
+	public int getApproval() {
+		return approval;
+	}
+	public void setApproval(int approval) {
+		this.approval = approval;
+	}
+	
 	
 	
 }

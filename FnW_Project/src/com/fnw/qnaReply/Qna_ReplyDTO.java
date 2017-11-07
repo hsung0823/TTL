@@ -1,10 +1,10 @@
 package com.fnw.qnaReply;
 
-import java.util.Date;
+import java.sql.Date;
 
 public class Qna_ReplyDTO {
 	private int num;
-	private String wirter;
+	private String writer;
 	private String contents;
 	private Date reg_date;
 	private int ref;
@@ -17,11 +17,11 @@ public class Qna_ReplyDTO {
 	public void setNum(int num) {
 		this.num = num;
 	}
-	public String getWirter() {
-		return wirter;
+	public String getWriter() {
+		return writer;
 	}
-	public void setWirter(String wirter) {
-		this.wirter = wirter;
+	public void setWriter(String writer) {
+		this.writer = writer;
 	}
 	public String getContents() {
 		return contents;
