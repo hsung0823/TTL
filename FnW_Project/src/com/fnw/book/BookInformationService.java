@@ -19,8 +19,16 @@ public class BookInformationService implements Action {
 
 		if(method.equals("GET")) {
 			System.out.println("GET");
+			try {
+				book_TotalDTO = book_TotalDAO.selectOne(num);
+				System.out.println(book_TotalDTO.getLibrary());
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			request.setAttribute("book", book_TotalDTO);
 			actionFoward.setCheck(true);
 			actionFoward.setPath("../WEB-INF/view/book/bookInformation.jsp");
+			
 		} else {
 			System.out.println("POST");
 			try {
