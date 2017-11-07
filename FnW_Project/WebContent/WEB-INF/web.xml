@@ -105,4 +105,17 @@
 	<url-pattern>*.qna</url-pattern>
 </servlet-mapping>
 
+<servlet>
+	<servlet-name>qnaReply</servlet-name>
+	<servlet-class>com.fnw.control.QnaReplyController</servlet-class>
+	<init-param>
+		<param-name>properties</param-name>
+		<param-value>qnaReply.properties</param-value>
+	</init-param>
+</servlet>
+<servlet-mapping>
+	<servlet-name>qnaReply</servlet-name>
+	<url-pattern>*.qnaReply</url-pattern>
+</servlet-mapping>
+
 </web-app>

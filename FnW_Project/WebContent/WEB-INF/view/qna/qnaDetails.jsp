@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>  
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,9 +23,20 @@
 		<a href="./qnaUpdate.qna?num=${qnaDTO.num }"><input type="button" value="수정"></a>
 </form>	
 <hr>
-<form>
-<p><input type="text" name="reply"> </p>
-<a href="./qnaDelete.qna?num=${qnaDTO.num }"><input type="button" value="등록"></a>
+<form action="../index.jsp" method="post">
+<p><textarea name="reply"></textarea>
+<a href="../qnaReply/qnaReplyInsert.qnaReply?num=${qnaDTO.num }"> <input type="button" value="등록"></a></p>
+<c:if test="${qnaReplyDTO>1}">
+	<%-- <c:forEach items="${list }" var="qnaList">
+			<tr>
+				<td>${qnaList.num }</td>
+				<td><a href="./qnaDetailsCheck.qna?num=${qnaList.num }">${qnaList.title }</a></td>
+				<td>${qnaList.reg_date }</td>
+				<td>${qnaList.writer }</td>
+				<td>${qnaList.hit }</td>
+			</tr>
+	</c:forEach> --%>
+</c:if>
 </form>
 </body>
 </html>
