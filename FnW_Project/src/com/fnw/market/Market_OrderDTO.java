@@ -4,6 +4,7 @@ import java.util.Date;
 
 public class Market_OrderDTO {
 
+	private int num;
 	private String title;
 	private String writer;
 	private String company;
@@ -12,6 +13,12 @@ public class Market_OrderDTO {
 	private String id;
 	private int library;
 	
+	public int getNum() {
+		return num;
+	}
+	public void setNum(int num) {
+		this.num = num;
+	}
 	public String getTitle() {
 		return title;
 	}
