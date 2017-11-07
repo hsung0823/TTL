@@ -13,8 +13,15 @@ public class BookRentService implements Action {
 	public ActionFoward doProcess(HttpServletRequest request, HttpServletResponse response) {
 		ActionFoward actionFoward = new ActionFoward();
 		LibraryDAO libraryDAO = new LibraryDAO();
-		int num = Integer.parseInt(request.getParameter("num"));
+		int num=0;
+		try {
+		num = Integer.parseInt(request.getParameter("num"));
+		}catch (Exception e) {
+		}
 		String rent_id = request.getParameter("rent_id");
+		if(rent_id == null) {
+			rent_id="";
+		}
 		int result = 0;
 
 		try {
@@ -37,5 +44,4 @@ public class BookRentService implements Action {
 		
 		return actionFoward;
 	}
-	
 }
