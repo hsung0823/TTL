@@ -11,35 +11,41 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <title>Insert title here</title>
 <script type="text/javascript">
-var i = 0;
 	$(function(){
-		var currentPage = 1;
-	    checkForHash();
-	    
-	    $(".link").on("click", function(e) {
-	        document.location.hash = "#" + currentPage;
-	    });
-	    
-	    $("#list").on("click", ".link" , function(){
-	    	 document.location.hash = "#" + currentPage;
-	    });
-	    
-	    function checkForHash() {
-	        if(document.location.hash){
-	            var HashLocationName = document.location.hash;
-	            HashLocationName = HashLocationName.replace("#","");
-	            alert("asd");
-	            $("#display").html(HashLocationName)
-	            
-	        } else {
-	        	alert("qwe");
-	            $("#display").html($("#btn_member").val())
-	        }
-	    }   
-	 
-
+		
+		$("#btn").click(function(){
+			$.post("./memberList.member",
+			        {
+			         
+			          kind: "${kind}",
+			          kind1: "${kind1}",
+			          search: "${search}"
+			        },
+			        function(data){
+			        	$("#list").html(data);
+			        });
+			
+		});
+		
+		 var kind1 = '${kind1}';
+		 $(".kind1").each(function(){
+			 if($(this).val() == kind1) {
+				 $(this).attr("selected", true);
+			 }
+		 });
+		
+		if(${kind} == 10){
+			$(".kind1").attr("style", "background-color: #fff");
+	 		$("#btn_admin").attr("style", "background-color: #dcdcdc");
+		}else if(${kind} == 0){
+			$(".kind1").attr("style", "background-color: #fff");
+	 		$("#btn_black").attr("style", "background-color: #dcdcdc");
+		}else{
+			$(".kind1").attr("style", "background-color: #fff");
+	 		$("#btn_member").attr("style", "background-color: #dcdcdc");
+		}
+		
 	$("#btn_admin").click(function() {
-		currentPage = $(this).val();
  		$(".kind1").attr("style", "background-color: #fff");
  		$("#btn_admin").attr("style", "background-color: #dcdcdc");
 		
@@ -47,7 +53,10 @@ var i = 0;
 			url:"./memberList.member",
 			type:"POST",
 			data: {
-				kind:10
+				kind:10,
+				kind1:'${kind1}',
+				search:'${search}'
+				
 			},
 			success:function(data){
 				$("#list").html(data);
@@ -59,7 +68,6 @@ var i = 0;
 	});
 
 	$("#btn_member").click(function() {
-		currentPage = $(this).val();
  		$(".kind1").attr("style", "background-color: #fff");
  		$("#btn_member").attr("style", "background-color: #dcdcdc");
  		
@@ -67,7 +75,9 @@ var i = 0;
 			url:"./memberList.member",
 			type:"post",
 			data: {
-				kind:1
+				kind:1,
+				kind1:'${kind1}',
+				search:'${search}'
 			},
 			success:function(data){
 				$("#list").html(data);
@@ -78,7 +88,6 @@ var i = 0;
 	});
 
 	$("#btn_black").click(function() {
-		currentPage = $(this).val();
 		$(".kind1").attr("style", "background-color: #fff");
 		$("#btn_black").attr("style", "background-color: #dcdcdc");
 	
@@ -86,7 +95,9 @@ var i = 0;
 			url:"./memberList.member",
 			type:"post",
 			data: {
-				kind:0
+				kind:0,
+				kind1:'${kind1}',
+				search:'${search}'
 			},
 			success:function(data){
 				$("#list").html(data);
@@ -95,33 +106,41 @@ var i = 0;
 		$("#info").html("Black List");
 		
 	});
-
 	
 	
 	});
 </script>
 </head>
 <body>
-	<div id="display"> asd </div>
 	<div style = "height: 100px"></div>
+	<form name="frm" class="form-inline" action="./memberList.member" method="post">
+	<input type="hidden" name="sel" value="sel">
 
-	<form name="frm" class="form-inline" action="./admin_member_list.member" method="post">
+		<!-- KIND -->
+		<div class="form-group">
+			<div class="col-sm-10">
+				<select name="kind1" id = "kind1">
+					<option class = "kind1" value="id">id</option>
+					<option class = "kind1" value="name">name</option>
+					<option class = "kind1" value="email">email</option>
+				</select>
+			</div>
+		</div>
 			<!-- SEARCH -->
-			<div class="form-group">
-				<div class="col-sm-10">
-					<input type="text" class="form-control" id="search" placeholder="ID 검색" name="search" value = "${search}">
-				</div>
+		<div class="form-group">
+			<div class="col-sm-10">
+				<input type="text" class="form-control" id="search" placeholder="Enter" name="search" value = "${search}">
 			</div>
-
+		</div>
 			<div class="form-group">
-				<div class="col-sm-offset-2 col-sm-10">
-					<input type="submit" id = "search" class="btn btn-default" value="Search">
-				</div>
+			<div class="col-sm-offset-2 col-sm-10">
+				<input type="submit" id = "search" class="btn btn-default" value="Search">
+				<input type="button" id = "btn" class="btn btn-default" value="검색">
 			</div>
+		</div>
 	</form>
 	
 	<div style = "height: 50px"></div>
-	
 	<form action="">
 		<table class = "table">
 			<tr>
@@ -135,6 +154,10 @@ var i = 0;
 	<h2 id="info" >${type} List</h2>
 	
 	<div id = "list"> 
+	<c:if test="${size eq 0 }">
+		<h2>검색 결과가 없습니다.</h2>
+	</c:if>
+	<c:if test="${size ne 0 }">
 		<table id = "member" class="kind" border="1">
 			<tr>
 				<th>id</th>
@@ -166,22 +189,20 @@ var i = 0;
 		<div style = "text-align: center;">
 			<ul class="pagination pagination-sm">
 				<c:if test="${page.curBlock>1}">
-				<li><a href = "./memberList.member?curPage=${page.startNum-1}&search=${search}">[이전]</a></li>
+				<li><a href = "./memberList.member?curPage=${page.startNum-1}&kind=${kind}&search=${search}&kind1=${kind1}">[이전]</a></li>
 				</c:if>
 				
 				<c:forEach begin="${page.startNum}" end="${page.lastNum}" var="i">
-				<li><a id="pa" class="link" href="./memberList.member?curPage=${i}&kind=${kind}">${i}</a></li>
+				<li><a id="pa" href="./memberList.member?curPage=${i}&kind=${kind}&search=${search}&kind1=${kind1}">${i}</a></li>
 				</c:forEach>
 
 				<c:if test="${page.curBlock < page.totalBlock}">
-				<li><a href="./memberList.member?curPage=${page.lastNum+1}&search=${search}">[다음]</a></li>
+				<li><a href="./memberList.member?curPage=${page.lastNum+1}&kind=${kind}&search=${search}&kind1=${kind1}">[다음]</a></li>
 				</c:if>
 			</ul>
 		</div>
+	</c:if>
 	</div>
-
-
-
 
 	<a href="../index.jsp">home</a>
 </body>

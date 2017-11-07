@@ -1,0 +1,23 @@
+var currentPage = 1;
+	    checkForHash();
+	    
+	    $(".link").on("click", function(e) {
+	        document.location.hash = "#" + currentPage;
+	    });
+	    
+	    $("#list").on("click", ".link" , function(){
+	    	 document.location.hash = "#" + currentPage;
+	    });
+	    
+	    function checkForHash() {
+	        if(document.location.hash){
+	            var HashLocationName = document.location.hash;
+	            HashLocationName = HashLocationName.replace("#","");
+	            alert("asd");
+	            $("#display").html(HashLocationName)
+	            
+	        } else {
+	        	alert("qwe");
+	            $("#display").html($("#btn_member").val())
+	        }
+	    }   
