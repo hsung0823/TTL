@@ -46,6 +46,7 @@
 	<p><a href="./member/memberIdFind.member">Id Find</a>
 	<p><a href="./member/memberPwFind.member">Pw Find</a>
 	<p><a href="./member/memberJoinAgree.member">Join Agree</a></p>
+	<p><a href="./market/memberApplicationList">마켓신청List 관리자용(승인용)</a></p>
 	<p><a href="./market/marketDealForm.market">마켓판매신청form</a></p>
 	
 	<p><a href="./notice/noticeList.notice">공지사항</a></p>
