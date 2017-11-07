@@ -12,12 +12,30 @@ public class BookRentService implements Action {
 	@Override
 	public ActionFoward doProcess(HttpServletRequest request, HttpServletResponse response) {
 		ActionFoward actionFoward = new ActionFoward();
-		
 		LibraryDAO libraryDAO = new LibraryDAO();
-		int num = Integer.parseInt(request.getParameter("num"));
+<<<<<<< HEAD
+
+		int num = 0;
+		try {
+			num = Integer.parseInt(request.getParameter("num"));
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 		String rent_id = request.getParameter("rent_id");
+		if(rent_id == null) {
+			rent_id = "";
+=======
+		int num=0;
+		try {
+		num = Integer.parseInt(request.getParameter("num"));
+		}catch (Exception e) {
+		}
+		String rent_id = request.getParameter("rent_id");
+		if(rent_id == null) {
+			rent_id="";
+>>>>>>> 7af9491f6a4f22219bd60a53f6d24a102d77171f
+		}
 		int result = 0;
-		
 		try {
 			result = libraryDAO.bookRent(num, rent_id);
 		} catch (Exception e) {
@@ -25,18 +43,15 @@ public class BookRentService implements Action {
 			e.printStackTrace();
 		}
 
-		if(result>0) {
+		if(result > 0) {
 			request.setAttribute("message", "대여 완료");
-			request.setAttribute("path", "../libraryBookSearch.library");
 		}else {
 			request.setAttribute("message", "대여 실패");
-			request.setAttribute("path", "../libraryBookSearch.library");
 		}
 
 		actionFoward.setCheck(true);
-		actionFoward.setPath("../WEB-INF/view/common/result.jsp");
-		
+		actionFoward.setPath("../WEB-INF/view/book/bookRent.jsp");
+
 		return actionFoward;
 	}
-	
 }

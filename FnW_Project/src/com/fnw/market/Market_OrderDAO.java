@@ -13,7 +13,7 @@ public class Market_OrderDAO {
 	
 	public int insert(Market_OrderDTO market_OrderDTO) throws Exception{
 		Connection con = DBConnector.getConnect();
-		String sql = "insert into market_order values((select nvl(max(num),0) from market_order)+1,?,?,?,?,?,?,?)";
+		String sql = "insert into market_order values((select nvl(max(num),0) from market_order)+1,?,?,?,?,?,?,?,1)";
 		PreparedStatement st = con.prepareStatement(sql);
 		st.setString(1, market_OrderDTO.getTitle());
 		st.setString(2, market_OrderDTO.getWriter());
