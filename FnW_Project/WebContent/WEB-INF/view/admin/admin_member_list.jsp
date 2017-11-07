@@ -11,41 +11,27 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <title>Insert title here</title>
 <script type="text/javascript">
-	$(function(){
-		
-		$("#btn").click(function(){
-			$.post("./memberList.member",
-			        {
-			         
-			          kind: "${kind}",
-			          kind1: "${kind1}",
-			          search: "${search}"
-			        },
-			        function(data){
-			        	$("#list").html(data);
-			        });
-			
-		});
-		
-		 var kind1 = '${kind1}';
+$(function(){
+	 var kind1 = '${kind1}';
 		 $(".kind1").each(function(){
 			 if($(this).val() == kind1) {
 				 $(this).attr("selected", true);
 			 }
 		 });
 		
-		if(${kind} == 10){
-			$(".kind1").attr("style", "background-color: #fff");
-	 		$("#btn_admin").attr("style", "background-color: #dcdcdc");
-		}else if(${kind} == 0){
-			$(".kind1").attr("style", "background-color: #fff");
-	 		$("#btn_black").attr("style", "background-color: #dcdcdc");
-		}else{
-			$(".kind1").attr("style", "background-color: #fff");
-	 		$("#btn_member").attr("style", "background-color: #dcdcdc");
-		}
+			if(${kind} == 10){
+				$(".kind1").attr("style", "background-color: #fff");
+		 		$("#btn_admin").attr("style", "background-color: #dcdcdc");
+			}else if(${kind} == 0){
+				$(".kind1").attr("style", "background-color: #fff");
+		 		$("#btn_black").attr("style", "background-color: #dcdcdc");
+			}else{
+				$(".kind1").attr("style", "background-color: #fff");
+		 		$("#btn_member").attr("style", "background-color: #dcdcdc");
+			}
 		
 	$("#btn_admin").click(function() {
+		$("#kind0").val("10");
  		$(".kind1").attr("style", "background-color: #fff");
  		$("#btn_admin").attr("style", "background-color: #dcdcdc");
 		
@@ -56,18 +42,18 @@
 				kind:10,
 				kind1:'${kind1}',
 				search:'${search}'
-				
 			},
 			success:function(data){
 				$("#list").html(data);
 			}
 		});
-		
+
 		$("#info").html("Admin List");
 		
 	});
 
 	$("#btn_member").click(function() {
+		$("#kind0").val("1");
  		$(".kind1").attr("style", "background-color: #fff");
  		$("#btn_member").attr("style", "background-color: #dcdcdc");
  		
@@ -88,6 +74,7 @@
 	});
 
 	$("#btn_black").click(function() {
+		$("#kind0").val("0");
 		$(".kind1").attr("style", "background-color: #fff");
 		$("#btn_black").attr("style", "background-color: #dcdcdc");
 	
@@ -106,16 +93,14 @@
 		$("#info").html("Black List");
 		
 	});
-	
-	
-	});
+});
 </script>
 </head>
 <body>
 	<div style = "height: 100px"></div>
 	<form name="frm" class="form-inline" action="./memberList.member" method="post">
 	<input type="hidden" name="sel" value="sel">
-
+	<input type="hidden" name="kind" id="kind0" value="${kind }">
 		<!-- KIND -->
 		<div class="form-group">
 			<div class="col-sm-10">
@@ -135,7 +120,6 @@
 			<div class="form-group">
 			<div class="col-sm-offset-2 col-sm-10">
 				<input type="submit" id = "search" class="btn btn-default" value="Search">
-				<input type="button" id = "btn" class="btn btn-default" value="검색">
 			</div>
 		</div>
 	</form>

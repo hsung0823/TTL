@@ -17,7 +17,7 @@
 	<c:if test="${not empty sessionScope.member }">
 	<h1>${sessionScope.member.id }</h1>
 	<h1>MyPage_Hees</h1>
-	<p><a href="./member/memberUpdatePwCheck.member">MyPage Update</a></p>
+	<p><a href="./member/memberUpdatePwCheck.member">업데이트</a></p>
 	<p><a href="./market/marketDealsList.market?id=${member.id }">Market Order List</a></p>
 	<p><a href="./seat/seatTotalList.seat?id=${member.id }">Seat Rent List</a></p>
 	<p><a href="./book/bookRentList.book?id=${member.id }">Book Rent List</a></p>
@@ -39,7 +39,6 @@
 	<h2>도서관 페이지</h2>
 	<p><a href="./library/libraryMain.library">Library_Main_Page</a></p>
 	<div style = "height: 10px"></div>
-	
 	
 	<p><a href="./member/memberList.member">admin 전용 회원리스트 / 블랙리스트</a></p>
 

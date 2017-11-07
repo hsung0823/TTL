@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>  
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,9 +23,18 @@
 		<a href="./qnaUpdate.qna?num=${qnaDTO.num }"><input type="button" value="수정"></a>
 </form>	
 <hr>
-<form>
-<p><input type="text" name="reply"> </p>
-<a href="./qnaDelete.qna?num=${qnaDTO.num }"><input type="button" value="등록"></a>
+<form action="../qnaReply/qnaReplyInsert.qnaReply?num=${qnaDTO.num }" method="post">
+	<p><textarea name="reply"></textarea><button>등록</button> </p>
 </form>
+<c:if test="${rDTO ne null }">
+<table>
+<c:forEach items="${rDTO }" var="rDTO">
+<tr>
+	<td>${rDTO.num }</td>
+	<td>${rDTO.contents }</td>
+</tr>
+</c:forEach>
+</table>
+</c:if>
 </body>
 </html>
