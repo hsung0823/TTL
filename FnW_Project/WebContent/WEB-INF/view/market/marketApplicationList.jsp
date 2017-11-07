@@ -23,6 +23,7 @@
 			<td>publish_date</td>
 			<td>price</td>
 			<td>library</td>
+			<td>신청인 ID</td>
 		</tr>
 		<c:forEach items="${requestScope.list}" var="dto">
 		
@@ -41,6 +42,7 @@
 			<td>${dto.publish_date}</td>
 			<td>${dto.price}</td>
 			<td>${dto.library}</td>
+			<td>${dto.id}</td>
 		</tr>
 		</c:forEach>
 	</table>
