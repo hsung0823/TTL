@@ -1,6 +1,5 @@
 package com.fnw.library;
 
-import java.sql.Date;
 import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
@@ -9,8 +8,6 @@ import javax.servlet.http.HttpServletResponse;
 import com.fnw.action.Action;
 import com.fnw.action.ActionFoward;
 import com.fnw.book.Book_TotalDTO;
-import com.fnw.member.MemberDAO;
-import com.fnw.member.MemberDTO;
 import com.fnw.util.PageMaker;
 
 public class LibraryBookSearchService implements Action {
@@ -76,8 +73,6 @@ public class LibraryBookSearchService implements Action {
 			e.printStackTrace();
 		}
 
-		
-		
 		return ar;
 	}
 

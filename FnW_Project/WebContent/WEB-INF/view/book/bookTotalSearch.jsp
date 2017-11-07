@@ -67,24 +67,24 @@
 						<td>대여여부</td>
 					</tr>
 					<c:forEach items="${list }" var="dto">
-						<tr>	
-							<td>${dto.num }</td>
-							<td>${dto.title }</td>
-							<td>${dto.writer }</td>
-							<td>${dto.company }</td>
-							
-							<c:choose>
-								<c:when test="${dto.library == 1 }"><td>kim_lib</td></c:when>
-								<c:when test="${dto.library == 2 }"><td>gee_lib</td></c:when>
-								<c:when test="${dto.library == 3 }"><td>hs_lib</td></c:when>
-								<c:when test="${dto.library == 4 }"><td>ssin_lib</td></c:when>
-							</c:choose>
-							
-							<c:choose>
-								<c:when test="${dto.state == 0 }"><td><button class = "btn btn-default" type = "submit" href = "#">대여</td></c:when>
-								<c:when test="${dto.state == 1 }"><td>대여 불가</td></c:when>
-							</c:choose>
-						</tr>
+							<tr>
+								<td>${dto.num }</td>
+								<td><a href="./bookInformation.book?num=${dto.num}">${dto.title }</a></td>
+								<td>${dto.writer }</td>
+								<td>${dto.company }</td>
+	
+								<c:choose>
+									<c:when test="${dto.library == 1 }"><td>kim_lib</td></c:when>
+									<c:when test="${dto.library == 2 }"><td>gee_lib</td></c:when>
+									<c:when test="${dto.library == 3 }"><td>hs_lib</td></c:when>
+									<c:when test="${dto.library == 4 }"><td>ssin_lib</td></c:when>
+								</c:choose>
+								
+								<c:choose>
+									<c:when test="${dto.state == 0 }"><td><button class = "btn btn-default" type = "submit" href = "#">대여</td></c:when>
+									<c:when test="${dto.state == 1 }"><td>대여 불가</td></c:when>
+								</c:choose>
+							</tr>
 					</c:forEach>
 				</table>
 			</form>

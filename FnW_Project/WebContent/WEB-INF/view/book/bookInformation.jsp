@@ -33,7 +33,7 @@ $(function(){
 	<h2>책 상세정보 페이지</h2>
 	<div style = "height: 30px"></div>
 	<section>
-		<form action="#">
+		<form action="./bookRent.book?num=${ book.num }">
 			<table>
 				<tr>
 					<td>번호</td>
