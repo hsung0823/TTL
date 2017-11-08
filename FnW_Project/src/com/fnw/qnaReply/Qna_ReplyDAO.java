@@ -64,8 +64,8 @@ public class Qna_ReplyDAO {
 		Connection con = DBConnector.getConnect();
 		String sql="UPDATE qna_reply SET type=?, title=?, contents=?, kind=? WHERE num=?";
 		PreparedStatement st = con.prepareStatement(sql);
-		/*QnaDTO 
-		st.setInt(1, qnaDTO.getType());
+
+		/*st.setInt(1, qnaDTO.getType());
 		st.setString(2, qnaDTO.getTitle());
 		st.setString(3, qnaDTO.getContents());
 		st.setInt(4, qnaDTO.getKind());

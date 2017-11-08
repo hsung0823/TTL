@@ -23,6 +23,7 @@ public class BookRentService implements Action {
 		if(rent_id == null) {
 			rent_id="";
 			}
+
 		int result = 0;
 		try {
 			result = libraryDAO.bookRent(num, rent_id);
