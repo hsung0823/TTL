@@ -187,7 +187,6 @@ $(function(){
 		</div>
 	</c:if>
 	</div>
-
 	<a href="../index.jsp">home</a>
 </body>
 </html>

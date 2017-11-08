@@ -57,12 +57,11 @@
 	<p>=================================================</p>
 	마켓 관리자 승인용
 	<c:if test="${not empty member and member.kind eq 10}">
-	<p><a href="./market/marketApplicationList.market?id=${member.id }">마켓신청List 관리자용(승인용)</a></p><!--관리자로그인시만 이용 -->
+	<p><a href="./market/marketApplicationList.market">마켓신청List 관리자용(승인용)</a></p><!--관리자로그인시만 이용 -->
 	</c:if>
 	
 	<p><a href="./notice/noticeList.notice">공지사항</a></p>
 
-	
 	<p><a href="./seat/seatList.seat">Seat List</a></p>
 	<p><a href="./market/marketTotalList.market">Market Total List</a></p>
 	<c:if test="${empty sessionScope.member }">

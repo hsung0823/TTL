@@ -11,7 +11,7 @@ import com.fnw.market.Market_OrderDTO;
 import com.fnw.market.Market_OrderDAO;
 import com.fnw.util.PageMaker;
 
-public class MarketApplicationListService implements Action {
+public class AdminOrderListService implements Action {
 
 	@Override
 	public ActionFoward doProcess(HttpServletRequest request, HttpServletResponse response) {
@@ -47,7 +47,7 @@ public class MarketApplicationListService implements Action {
 			e.printStackTrace();
 		}
 		actionFoward.setCheck(true);
-		actionFoward.setPath("../WEB-INF/view/market/marketApplicationList.jsp");
+		actionFoward.setPath("../WEB-INF/view/admin/admin_order_list.jsp");
 		
 		return actionFoward;
 	
