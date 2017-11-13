@@ -22,7 +22,8 @@ public class BookRentService implements Action {
 		String rent_id = request.getParameter("rent_id");
 		if(rent_id == null) {
 			rent_id="";
-		}
+			}
+
 		int result = 0;
 		try {
 			result = libraryDAO.bookRent(num, rent_id);
