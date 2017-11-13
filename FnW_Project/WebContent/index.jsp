@@ -17,7 +17,7 @@
 
 <h1>QnA List Service</h1>
 <p><a href="./qna/qnaList.qna">QnaList</a></p>
-kl;
+
 	<c:if test="${not empty sessionScope.member }">
 	<h1>${sessionScope.member.id }</h1>
 	<h1>MyPage_Hees</h1>

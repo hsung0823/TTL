@@ -60,16 +60,16 @@ public class Qna_ReplyDAO {
 		
 		return result;
 	}
-	public int update(Qna_ReplyDTO ana_ReplyDTO) throws Exception{
+	public int update(Qna_ReplyDTO qna_ReplyDTO) throws Exception{
 		Connection con = DBConnector.getConnect();
 		String sql="UPDATE qna_reply SET type=?, title=?, contents=?, kind=? WHERE num=?";
 		PreparedStatement st = con.prepareStatement(sql);
 		
-		/*st.setInt(1, qnaDTO.getType());
+		st.setInt(1, qnaDTO.getType());
 		st.setString(2, qnaDTO.getTitle());
 		st.setString(3, qnaDTO.getContents());
 		st.setInt(4, qnaDTO.getKind());
-		st.setInt(5, qnaDTO.getNum());*/
+		st.setInt(5, qnaDTO.getNum());
 		
 		int result = st.executeUpdate();
 		DBConnector.disConnect(st, con);
